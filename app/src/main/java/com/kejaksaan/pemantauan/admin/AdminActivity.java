@@ -15,10 +15,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.ActivityAdminBinding;
 
-public class Admin extends AppCompatActivity {
+public class AdminActivity extends AppCompatActivity {
 
 
-    private Context context = Admin.this;
+    private Context context = AdminActivity.this;
     private ActivityAdminBinding binding;
     BottomNavigationView navView;
     AppBarConfiguration appBarConfiguration;

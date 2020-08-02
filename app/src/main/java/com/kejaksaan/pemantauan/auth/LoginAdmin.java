@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.kejaksaan.pemantauan.R;
-import com.kejaksaan.pemantauan.admin.Admin;
+import com.kejaksaan.pemantauan.admin.AdminActivity;
 
 public class LoginAdmin extends AppCompatActivity {
     Button login;
@@ -21,7 +21,7 @@ public class LoginAdmin extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginAdmin.this, Admin.class);
+                Intent i = new Intent(LoginAdmin.this, AdminActivity.class);
                 startActivity(i);
             }
         });

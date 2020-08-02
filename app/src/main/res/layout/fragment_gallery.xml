@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.gallery.GalleryFragment">
+    tools:context=".Pegawai.ui.gallery.GalleryFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,13 +22,13 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/profile_image"
                         android:layout_width="96dp"
                         android:layout_height="96dp"
@@ -36,7 +36,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="24dp"
                         app:civ_border_width="2dp"
-                        app:civ_border_color="#FF000000"/>
+                        app:civ_border_color="#FF000000" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorBlack"
                             android:text="NIP"
-                            android:textSize="10sp"/>
+                            android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/nip"
@@ -60,7 +60,7 @@
                             android:text="33012209078070"
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
-                            android:textSize="10sp"/>
+                            android:textSize="10sp" />
 
 
                         <TextView
@@ -68,7 +68,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorBlack"
                             android:textSize="10sp"
-                            android:text="NRP"/>
+                            android:text="NRP" />
 
                         <TextView
                             android:id="@+id/nrp"
@@ -78,14 +78,14 @@
                             android:text="1080799"
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
-                            android:textSize="10sp"/>
+                            android:textSize="10sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorBlack"
                             android:textSize="10sp"
-                            android:text="Nama Lengkap"/>
+                            android:text="Nama Lengkap" />
 
                         <EditText
                             android:id="@+id/nama_pegawai"
@@ -103,7 +103,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorBlack"
                             android:textSize="10sp"
-                            android:text="Golongan Pangkat"/>
+                            android:text="Golongan Pangkat" />
 
                         <EditText
                             android:id="@+id/golongan"
@@ -121,7 +121,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorBlack"
                             android:textSize="10sp"
-                            android:text="TMT"/>
+                            android:text="TMT" />
 
                         <EditText
                             android:id="@+id/tmt"
@@ -139,7 +139,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorBlack"
                             android:textSize="10sp"
-                            android:text="Jabatan"/>
+                            android:text="Jabatan" />
 
                         <EditText
                             android:id="@+id/jabatan"
@@ -157,7 +157,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorBlack"
                             android:textSize="10sp"
-                            android:text="Alamat Tinggal"/>
+                            android:text="Alamat Tinggal" />
 
                         <EditText
                             android:id="@+id/alamat_tinggal"
@@ -175,7 +175,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorBlack"
                             android:textSize="10sp"
-                            android:text="Nomor HP"/>
+                            android:text="Nomor HP" />
 
                         <EditText
                             android:id="@+id/noHP"
@@ -194,7 +194,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorBlack"
                             android:textSize="10sp"
-                            android:text="Password"/>
+                            android:text="Password" />
 
                         <EditText
                             android:id="@+id/password"
@@ -227,6 +227,7 @@
                                 android:textColor="@color/colorWhite"
                                 android:background="@drawable/button_effect"
                                 android:text="SIMPAN" />
+
                             <Button
                                 android:id="@+id/btn_batal"
                                 android:layout_width="match_parent"

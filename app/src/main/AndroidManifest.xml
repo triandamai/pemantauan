@@ -24,7 +24,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="UnusedAttribute">
         <activity android:name=".auth.LoginAdmin" />
-        <activity android:name=".admin.Admin" />
+        <activity android:name=".admin.AdminActivity" />
         <activity android:name=".auth.LoginUser" />
         <activity android:name=".SplashScreen" />
         <activity android:name=".SlideShow">
