@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.kejaksaan.pemantauan.HomeAdminFragment"
+        android:name="com.kejaksaan.pemantauan.admin.ui.home.HomeAdminFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home_admin" />
 
     <fragment
         android:id="@+id/nav_pegawai"
-        android:name="com.kejaksaan.pemantauan.TambahPegawaiFragment"
+        android:name="com.kejaksaan.pemantauan.admin.ui.tambah.TambahPegawaiFragment"
         android:label="@string/menu_lokasi"
         tools:layout="@layout/fragment_tambah_pegawai" />
 
     <fragment
         android:id="@+id/nav_lokasi_admin"
-        android:name="com.kejaksaan.pemantauan.PantauFragment"
+        android:name="com.kejaksaan.pemantauan.admin.ui.pantau.PantauFragment"
         android:label="Riwayat Presensi"
         tools:layout="@layout/fragment_pantau" />
 
     <fragment
         android:id="@+id/nav_tentang_admin"
-        android:name="com.kejaksaan.pemantauan.TentangFragment"
+        android:name="com.kejaksaan.pemantauan.admin.ui.tentang.TentangFragment"
         android:label="@string/menu_tentang"
         tools:layout="@layout/fragment_tentang" />
 </navigation>

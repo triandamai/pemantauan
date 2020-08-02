@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.kejaksaan.pemantauan.Pegawai.LoginUser;
+import com.kejaksaan.pemantauan.auth.LoginUser;
 
 public class SlideShow extends AppCompatActivity {
 

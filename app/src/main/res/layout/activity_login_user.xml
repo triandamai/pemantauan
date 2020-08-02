@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:background="@color/colorWhite"
-    tools:context=".Pegawai.LoginUser">
+    tools:context=".auth.LoginUser">
 
     <TextView
         android:id="@+id/cardLogin"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:text="Pindah Login"
-        android:textColor="@color/colorWhite"/>
+        android:textColor="@color/colorWhite" />
 
     <LinearLayout
         android:id="@+id/bricase"
@@ -26,7 +26,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/logo" />
 
     </LinearLayout>
 
@@ -98,7 +98,6 @@
             android:background="@drawable/button_effect" />
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

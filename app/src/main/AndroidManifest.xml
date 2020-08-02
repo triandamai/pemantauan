@@ -23,9 +23,9 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".LoginAdmin" />
-        <activity android:name=".Admin" />
-        <activity android:name=".Pegawai.LoginUser" />
+        <activity android:name=".auth.LoginAdmin" />
+        <activity android:name=".admin.Admin" />
+        <activity android:name=".auth.LoginUser" />
         <activity android:name=".SplashScreen" />
         <activity android:name=".SlideShow">
             <intent-filter>

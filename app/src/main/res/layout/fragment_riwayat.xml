@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.riwayat.Riwayat">
+    tools:context=".Pegawai.ui.riwayat.Riwayat">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,8 +28,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
@@ -37,7 +36,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="24dp"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"/>
+                    app:civ_border_color="#FF000000" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -46,77 +45,77 @@
                     android:layout_gravity="center"
                     android:padding="16dp"
                     android:textColor="@color/colorBlack"
-                    android:layout_marginTop="16dp"/>
+                    android:layout_marginTop="16dp" />
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:padding="16dp"-->
-<!--                    android:orientation="vertical">-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_marginTop="16dp"-->
+                <!--                    android:padding="16dp"-->
+                <!--                    android:orientation="vertical">-->
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textColor="@color/colorBlack"-->
-<!--                        android:text="Nama Pegawai"-->
-<!--                        android:textSize="10sp"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:textColor="@color/colorBlack"-->
+                <!--                        android:text="Nama Pegawai"-->
+                <!--                        android:textSize="10sp"/>-->
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="8dp"-->
-<!--                        android:layout_marginBottom="8dp"-->
-<!--                        android:textColor="@color/colorBlack"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:text="Steve Rogers"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textColor="@color/colorBlack"-->
-<!--                        android:textSize="10sp"-->
-<!--                        android:text="Jabatan"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="8dp"-->
+                <!--                        android:layout_marginBottom="8dp"-->
+                <!--                        android:textColor="@color/colorBlack"-->
+                <!--                        android:textSize="14sp"-->
+                <!--                        android:text="Steve Rogers"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:textColor="@color/colorBlack"-->
+                <!--                        android:textSize="10sp"-->
+                <!--                        android:text="Jabatan"/>-->
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textColor="@color/colorBlack"-->
-<!--                        android:layout_marginTop="8dp"-->
-<!--                        android:layout_marginBottom="8dp"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:text="Captain America"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textColor="@color/colorBlack"-->
-<!--                        android:textSize="10sp"-->
-<!--                        android:text="ID Pegawai"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:textColor="@color/colorBlack"-->
+                <!--                        android:layout_marginTop="8dp"-->
+                <!--                        android:layout_marginBottom="8dp"-->
+                <!--                        android:textSize="14sp"-->
+                <!--                        android:text="Captain America"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:textColor="@color/colorBlack"-->
+                <!--                        android:textSize="10sp"-->
+                <!--                        android:text="ID Pegawai"/>-->
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textColor="@color/colorBlack"-->
-<!--                        android:layout_marginTop="8dp"-->
-<!--                        android:layout_marginBottom="8dp"-->
-<!--                        android:textSize="16sp"-->
-<!--                        android:text="00196392"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:textColor="@color/colorBlack"-->
+                <!--                        android:layout_marginTop="8dp"-->
+                <!--                        android:layout_marginBottom="8dp"-->
+                <!--                        android:textSize="16sp"-->
+                <!--                        android:text="00196392"/>-->
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textColor="@color/colorBlack"-->
-<!--                        android:textSize="10sp"-->
-<!--                        android:text="Unit Kerja"/>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:textColor="@color/colorBlack"-->
+                <!--                        android:textSize="10sp"-->
+                <!--                        android:text="Unit Kerja"/>-->
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textColor="@color/colorBlack"-->
-<!--                        android:layout_marginTop="8dp"-->
-<!--                        android:layout_marginBottom="8dp"-->
-<!--                        android:textSize="16sp"-->
-<!--                        android:text="America"/>-->
-<!--                </LinearLayout>-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:textColor="@color/colorBlack"-->
+                <!--                        android:layout_marginTop="8dp"-->
+                <!--                        android:layout_marginBottom="8dp"-->
+                <!--                        android:textSize="16sp"-->
+                <!--                        android:text="America"/>-->
+                <!--                </LinearLayout>-->
             </LinearLayout>
             <!--        </ScrollView>-->
         </androidx.cardview.widget.CardView>

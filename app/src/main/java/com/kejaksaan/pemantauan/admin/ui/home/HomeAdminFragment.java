@@ -1,4 +1,4 @@
-package com.kejaksaan.pemantauan;
+package com.kejaksaan.pemantauan.admin.ui.home;
 
 import android.os.Bundle;
 
@@ -8,13 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kejaksaan.pemantauan.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TentangFragment extends Fragment {
+public class HomeAdminFragment extends Fragment {
 
-    public TentangFragment() {
+    public HomeAdminFragment() {
         // Required empty public constructor
     }
 
@@ -23,6 +25,6 @@ public class TentangFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tentang, container, false);
+        return inflater.inflate(R.layout.fragment_home_admin, container, false);
     }
 }

@@ -1,21 +1,18 @@
-package com.kejaksaan.pemantauan;
+package com.kejaksaan.pemantauan.admin;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.LinearLayout;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.ActivityAdminBinding;
 
 public class Admin extends AppCompatActivity {

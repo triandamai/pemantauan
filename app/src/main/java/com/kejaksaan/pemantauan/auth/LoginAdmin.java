@@ -1,4 +1,4 @@
-package com.kejaksaan.pemantauan;
+package com.kejaksaan.pemantauan.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.kejaksaan.pemantauan.R;
+import com.kejaksaan.pemantauan.admin.Admin;
 
 public class LoginAdmin extends AppCompatActivity {
     Button login;
