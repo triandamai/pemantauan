@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_tambah_pegawai"
+            android:icon="@drawable/ic_add_box_black_24dp"
+            android:title="Tambah Data" />
+        <item
+            android:id="@+id/nav_lokasi_admin"
+            android:icon="@drawable/ic_location_on_black_24dp"
+            android:title="Pemantauan" />
+        <item
+            android:id="@+id/nav_tentang_admin"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="Tentang" />
+
+</menu>
