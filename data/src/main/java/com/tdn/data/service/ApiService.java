@@ -26,7 +26,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
- 
+
     String BASE = "http://kadede-farma.000webhostapp.com/";
     String BASE_URL = BASE + "api/v1/";
     String BASE_URL_IMAGE = BASE + "assets/pengaduan/";
@@ -41,6 +41,10 @@ public interface ApiService {
     @Headers({accept_json, content_type, api_key})
     @GET("user/users")
     Call<Response> getUserById(@Query("id") String id);
+
+    @Headers({accept_json, content_type, api_key})
+    @POST("user/users")
+    Call<ResponseAction> updateLocation(@Query("id") String loc);
 
     class Factory {
         public static ApiService create() {
