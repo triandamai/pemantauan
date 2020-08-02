@@ -3,6 +3,7 @@ package com.tdn.data.service;
 
 import com.tdn.domain.serialize.req.RequestPostUpdateLocation;
 import com.tdn.domain.serialize.res.ResponseAction;
+import com.tdn.domain.serialize.res.ResponseGetLokasi;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -27,8 +28,8 @@ public interface ApiService {
 
 
     @Headers({accept_json, content_type, api_key})
-    @GET("user/users")
-    Call<Response> getUserById(@Query("id") String id);
+    @GET("lokasi/user")
+    Call<ResponseGetLokasi> getAllLokasi();
 
     @Headers({accept_json, content_type, api_key})
     @POST("user/location")
