@@ -2,57 +2,51 @@ package com.kejaksaan.pemantauan;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kejaksaan.pemantauan.databinding.ActivityAdminBinding;
 
-public class Admin extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class Admin extends AppCompatActivity {
 
-    LinearLayout datapenduduk, tambahdata, tentang, delete, logout;
+
     private Context context = Admin.this;
+    private ActivityAdminBinding binding;
+    BottomNavigationView navView;
+    AppBarConfiguration appBarConfiguration;
+    NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
-        loadFragment(new HomeAdminFragment());
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_menu);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_admin);
+        navView = binding.navView;
+        appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_pegawai, R.id.nav_lokasi_admin, R.id.nav_tentang_admin
+        ).build();
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(navView, navController);
 
 
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment fragment = null;
-
-        switch (item.getItemId()){
-            case R.id.nav_home:
-                fragment = new HomeAdminFragment();
-                break;
-            case R.id.nav_tambah_pegawai:
-                fragment = new TambahPegawaiFragment();
-                break;
-            case R.id.nav_lokasi_admin:
-                fragment = new PantauFragment();
-                break;
-            case R.id.nav_tentang_admin:
-                fragment = new TentangFragment();
-                break;
-        }
-        return loadFragment(fragment);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        //getMenuInflater().inflate(R.menu.menu_inventory, menu);
+        return true;
     }
 
-    private boolean loadFragment(Fragment fragment) {
-        if (fragment != null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, fragment).commit();
-            return true;
-        }
-        return false;
-    }
 }

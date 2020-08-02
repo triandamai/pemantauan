@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.kejaksaan.pemantauan.HomeAdminFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home_admin">
+
+    <fragment
+        android:id="@+id/nav_pegawai"
+        android:name="com.kejaksaan.pemantauan.TambahPegawaiFragment"
+        android:label="@string/menu_lokasi"
+        tools:layout="@layout/fragment_tambah_pegawai" />
+
+    <fragment
+        android:id="@+id/nav_lokasi_admin"
+        android:name="com.kejaksaan.pemantauan.PantauFragment"
+        android:label="Riwayat Presensi"
+        tools:layout="@layout/fragment_pantau" />
+
+    <fragment
+        android:id="@+id/nav_tentang_admin"
+        android:name="com.kejaksaan.pemantauan.TentangFragment"
+        android:label="@string/menu_tentang"
+        tools:layout="@layout/fragment_tentang" />
+</navigation>
