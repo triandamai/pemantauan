@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.tdn.domain.model.PenjualanModel;
 import com.tdn.domain.model.UserModel;
 
 public class MyUser {

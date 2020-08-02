@@ -4,24 +4,6 @@ import android.content.Context;
 import android.util.Log;
 
 import com.tdn.data.service.ApiService;
-import com.tdn.domain.model.HomeModel;
-import com.tdn.domain.model.NotifikasiModel;
-import com.tdn.domain.model.ObatModel;
-import com.tdn.domain.model.PenjualanDetailModel;
-import com.tdn.domain.model.PenjualanModel;
-import com.tdn.domain.model.PenjualanTempModel;
-import com.tdn.domain.object.HomeObject;
-import com.tdn.domain.object.NotifikasiObject;
-import com.tdn.domain.object.ObatObject;
-import com.tdn.domain.object.PenjualanDetailObject;
-import com.tdn.domain.object.PenjualanObject;
-import com.tdn.domain.object.PenjualanTempObject;
-import com.tdn.domain.serialize.res.ResponseGetHome;
-import com.tdn.domain.serialize.res.ResponseGetNotifikasi;
-import com.tdn.domain.serialize.res.ResponseGetObat;
-import com.tdn.domain.serialize.res.ResponseGetPenjualan;
-import com.tdn.domain.serialize.res.ResponseGetPenjualanTemp;
-import com.tdn.domain.serialize.res.ResponsePenjualanDetail;
 
 
 import io.realm.Realm;

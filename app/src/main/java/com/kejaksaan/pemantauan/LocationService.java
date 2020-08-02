@@ -8,10 +8,8 @@ import androidx.annotation.Nullable;
 
 import com.tdn.data.LocationInterval;
 
-import java.security.Provider;
-
 public class LocationService extends Service {
-    LocationInterval locationInterval = new LocationInterval();
+    private LocationInterval locationInterval = new LocationInterval();
 
     @Nullable
     @Override
@@ -21,7 +19,6 @@ public class LocationService extends Service {
 
     @Override
     public void onCreate() {
-        super.onCreate();
         locationInterval.start();
     }
 
