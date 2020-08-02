@@ -1,248 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Pegawai.ui.gallery.GalleryFragment">
+<layout>
 
-    <RelativeLayout
+    <data></data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:padding="8dp">
+        android:orientation="vertical"
+        tools:context=".Pegawai.ui.gallery.GalleryFragment">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="320dp"
-            android:layout_height="540dp"
-            app:cardElevation="16dp"
-            app:cardCornerRadius="24dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="8dp">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:layout_width="320dp"
+                android:layout_height="540dp"
+                app:cardElevation="16dp"
+                app:cardCornerRadius="24dp">
 
-                <LinearLayout
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/profile_image"
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        android:src="@drawable/logo"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="24dp"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="#FF000000" />
+                    android:layout_height="match_parent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="16dp"
-                        android:padding="16dp"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:text="NIP"
-                            android:textSize="10sp" />
-
-                        <TextView
-                            android:id="@+id/nip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:text="33012209078070"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:textSize="10sp" />
-
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="10sp"
-                            android:text="NRP" />
-
-                        <TextView
-                            android:id="@+id/nrp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:text="1080799"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:textSize="10sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="10sp"
-                            android:text="Nama Lengkap" />
-
-                        <EditText
-                            android:id="@+id/nama_pegawai"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Masukan Nama Lengkap Anda"
-                            android:inputType="textPersonName"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="10sp"
-                            android:text="Golongan Pangkat" />
-
-                        <EditText
-                            android:id="@+id/golongan"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="cth : Pengatur/IIC"
-                            android:inputType="textPersonName"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="10sp"
-                            android:text="TMT" />
-
-                        <EditText
-                            android:id="@+id/tmt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="cth : Pengatur/IIC"
-                            android:inputType="textPersonName"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="10sp"
-                            android:text="Jabatan" />
-
-                        <EditText
-                            android:id="@+id/jabatan"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="cth : Staff"
-                            android:inputType="textPersonName"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="10sp"
-                            android:text="Alamat Tinggal" />
-
-                        <EditText
-                            android:id="@+id/alamat_tinggal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Masukan Alamat sesuai KTP"
-                            android:inputType="textPersonName"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="10sp"
-                            android:text="Nomor HP" />
-
-                        <EditText
-                            android:id="@+id/noHP"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="cth : 08888668657"
-                            android:maxLength="13"
-                            android:inputType="number"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="10sp"
-                            android:text="Password" />
-
-                        <EditText
-                            android:id="@+id/password"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Masukan Password"
-                            android:inputType="textPersonName"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="14sp" />
+                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/profile_image"
+                            android:layout_width="96dp"
+                            android:layout_height="96dp"
+                            android:src="@drawable/logo"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="24dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:orientation="horizontal">
-                            <!--        <Button-->
-                            <!--            android:layout_width="match_parent"-->
-                            <!--            android:layout_height="wrap_content"-->
-                            <!--            android:layout_weight="1"-->
-                            <!--            android:text="BATAL"-->
-                            <!--            android:id="@+id/btn_cancel"-->
-                            <!--            android:background="@color/colorAccent"/>-->
-                            <Button
-                                android:id="@+id/btn_simpan"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="16dp"
+                            android:padding="16dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:text="NIP"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:id="@+id/nip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:text="33012209078070"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:textSize="10sp" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="10sp"
+                                android:text="NRP" />
+
+                            <TextView
+                                android:id="@+id/nrp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:text="1080799"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="10sp"
+                                android:text="Nama Lengkap" />
+
+                            <EditText
+                                android:id="@+id/nama_pegawai"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorWhite"
-                                android:background="@drawable/button_effect"
-                                android:text="SIMPAN" />
+                                android:hint="Masukan Nama Lengkap Anda"
+                                android:inputType="textPersonName"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
 
-                            <Button
-                                android:id="@+id/btn_batal"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="10sp"
+                                android:text="Golongan Pangkat" />
+
+                            <EditText
+                                android:id="@+id/golongan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorWhite"
-                                android:background="@drawable/button_effect"
-                                android:text="BATAL" />
+                                android:hint="cth : Pengatur/IIC"
+                                android:inputType="textPersonName"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="10sp"
+                                android:text="TMT" />
+
+                            <EditText
+                                android:id="@+id/tmt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="cth : Pengatur/IIC"
+                                android:inputType="textPersonName"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="10sp"
+                                android:text="Jabatan" />
+
+                            <EditText
+                                android:id="@+id/jabatan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="cth : Staff"
+                                android:inputType="textPersonName"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="10sp"
+                                android:text="Alamat Tinggal" />
+
+                            <EditText
+                                android:id="@+id/alamat_tinggal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Masukan Alamat sesuai KTP"
+                                android:inputType="textPersonName"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="10sp"
+                                android:text="Nomor HP" />
+
+                            <EditText
+                                android:id="@+id/noHP"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="cth : 08888668657"
+                                android:maxLength="13"
+                                android:inputType="number"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="10sp"
+                                android:text="Password" />
+
+                            <EditText
+                                android:id="@+id/password"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Masukan Password"
+                                android:inputType="textPersonName"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal">
+                                <!--        <Button-->
+                                <!--            android:layout_width="match_parent"-->
+                                <!--            android:layout_height="wrap_content"-->
+                                <!--            android:layout_weight="1"-->
+                                <!--            android:text="BATAL"-->
+                                <!--            android:id="@+id/btn_cancel"-->
+                                <!--            android:background="@color/colorAccent"/>-->
+                                <Button
+                                    android:id="@+id/btn_simpan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorWhite"
+                                    android:background="@drawable/button_effect"
+                                    android:text="SIMPAN" />
+
+                                <Button
+                                    android:id="@+id/btn_batal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorWhite"
+                                    android:background="@drawable/button_effect"
+                                    android:text="BATAL" />
 
 
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </ScrollView>
-        </androidx.cardview.widget.CardView>
+                </ScrollView>
+            </androidx.cardview.widget.CardView>
 
-    </RelativeLayout>
-</LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>
