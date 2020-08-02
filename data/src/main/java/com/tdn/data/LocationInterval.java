@@ -43,25 +43,26 @@ public class LocationInterval extends Thread {
     public void run() {
         super.run();
 
-//
-//        while (true) {
-//            try {
-//
-//                locationListener = location -> {
-//                    lat = location.getLatitude();
-//                    lng = location.getLongitude();
-//                    sendLocation(lat, lng);
-//                    Log.e("kirim lokasi", "Kirim Lokasi");
-//                };
-//
-//
-//                Thread.sleep(10000);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//    }
+
+        while (true) {
+            try {
+
+                locationListener = location -> {
+                    lat = location.getLatitude();
+                    lng = location.getLongitude();
+                    //  sendLocation(lat, lng);
+                    Log.e("kirim lokasi", "Kirim Lokasi");
+                };
+
+
+                Thread.sleep(10000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
     }
+
 }
+
+
