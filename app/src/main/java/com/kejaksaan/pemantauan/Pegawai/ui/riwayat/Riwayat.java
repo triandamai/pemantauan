@@ -3,7 +3,9 @@ package com.kejaksaan.pemantauan.Pegawai.ui.riwayat;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
@@ -11,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.kejaksaan.pemantauan.R;
+import com.kejaksaan.pemantauan.databinding.FragmentRiwayatBinding;
+import com.kejaksaan.pemantauan.databinding.FragmentSlideshowBinding;
 
 
 /**
@@ -19,19 +23,14 @@ import com.kejaksaan.pemantauan.R;
 public class Riwayat extends Fragment {
 
     private RiwayatViewModel riwayatViewModel;
+    private FragmentRiwayatBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        riwayatViewModel =
-                ViewModelProviders.of(this).get(RiwayatViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-//        final TextView textView = root.findViewById(R.id.text_slideshow);
-//        riwayatViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
-        return root;
+        riwayatViewModel = new
+                ViewModelProvider(this).get(RiwayatViewModel.class);
+        binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.fragment_riwayat, container, false);
+
+        return binding.getRoot();
     }
 }

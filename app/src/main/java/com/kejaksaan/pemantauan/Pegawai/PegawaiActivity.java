@@ -28,21 +28,20 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class PegawaiActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pegawai);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Dexter.withActivity(MainActivity.this).withPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION).withListener(new MultiplePermissionsListener() {
+        Dexter.withActivity(PegawaiActivity.this).withPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION).withListener(new MultiplePermissionsListener() {
             @Override
             public void onPermissionsChecked(MultiplePermissionsReport report) {
                 if (report.areAllPermissionsGranted()) {
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void showSettingsDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(PegawaiActivity.this);
         builder.setTitle("Izin Dibutuhkan");
         builder.setMessage("Aplikasi ingin meminta izin menggunakan kamera");
         builder.setPositiveButton("Pengaturan", (dialog, which) -> {
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     // navigating user to app settings
     protected void openSettings() {
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        Uri uri = Uri.fromParts("package", MainActivity.this.getPackageName(), null);
+        Uri uri = Uri.fromParts("package", PegawaiActivity.this.getPackageName(), null);
         intent.setData(uri);
         startActivityForResult(intent, 101);
     }

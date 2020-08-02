@@ -22,6 +22,7 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
+        android:name=".BaseApp"
         tools:ignore="UnusedAttribute">
         <activity android:name=".auth.LoginAdmin" />
         <activity android:name=".admin.AdminActivity" />
@@ -35,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Pegawai.MainActivity"
+            android:name=".Pegawai.PegawaiActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
