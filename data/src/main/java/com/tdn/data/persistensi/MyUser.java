@@ -60,65 +60,6 @@ public class MyUser {
         }
     }
 
-    public void setLastPenjualan(PenjualanModel user) {
-        try {
-
-            Gson gson = new Gson();
-            editor.putString(KEY_PENJUALAN, gson.toJson(user));
-            editor.apply();
-        } catch (Exception e) {
-            Log.e(TAG, e.getMessage().toString());
-        }
-    }
-
-
-    public PenjualanModel getLastPenjualan() {
-        try {
-            Gson gson = new Gson();
-            String json = sharedPreferences.getString(KEY_PENJUALAN, "");
-            PenjualanModel user = gson.fromJson(json, PenjualanModel.class);
-            return user;
-        } catch (NullPointerException e) {
-            Log.e(TAG, e.getMessage().toString());
-            return null;
-        }
-    }
-
-    public String getid(String id, String val) {
-        return sharedPreferences.getString(id, null);
-    }
-
-    public void setId(String key, String val) {
-        editor.putString(key, val);
-        editor.apply();
-    }
-
-    public void setTotal(String user) {
-        try {
-
-            Gson gson = new Gson();
-            editor.putString(KEY_TOTAL, gson.toJson(user));
-            editor.apply();
-        } catch (Exception e) {
-            Log.e(TAG, e.getMessage().toString());
-        }
-    }
-
-
-    public String getTotal() {
-        try {
-            Gson gson = new Gson();
-            String json = sharedPreferences.getString(KEY_TOTAL, "");
-            return json;
-        } catch (NullPointerException e) {
-            Log.e(TAG, e.getMessage().toString());
-            return null;
-        }
-    }
-
-    public void resetId(String key) {
-        editor.remove(key);
-    }
 
     public void signOut() {
         editor.remove(KEY_USER);

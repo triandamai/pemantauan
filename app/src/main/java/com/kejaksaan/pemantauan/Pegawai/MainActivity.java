@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.Menu;
 
 import com.google.android.material.navigation.NavigationView;
@@ -50,16 +51,15 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Dexter.withActivity(MainActivity.this).withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE).withListener(new MultiplePermissionsListener() {
+        Dexter.withActivity(MainActivity.this).withPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION).withListener(new MultiplePermissionsListener() {
             @Override
             public void onPermissionsChecked(MultiplePermissionsReport report) {
                 if (report.areAllPermissionsGranted()) {
                     start();
 
                 }
-
                 if (report.isAnyPermissionPermanentlyDenied()) {
-
+                    showSettingsDialog();
                 }
             }
 
@@ -69,9 +69,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }).check();
 
+        start();
     }
 
     private void start() {
+        Log.e("mulai", "mulai service");
         Intent service = new Intent(this, LocationService.class);
         this.startService(service);
     }
