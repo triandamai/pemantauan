@@ -26,7 +26,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    //    String BASE = "http://192.168.100.132/apotekk/";
+ 
     String BASE = "http://kadede-farma.000webhostapp.com/";
     String BASE_URL = BASE + "api/v1/";
     String BASE_URL_IMAGE = BASE + "assets/pengaduan/";
@@ -41,54 +41,6 @@ public interface ApiService {
     @Headers({accept_json, content_type, api_key})
     @GET("user/users")
     Call<Response> getUserById(@Query("id") String id);
-
-    @Headers({accept_json, content_type, api_key})
-    @POST("user/auth")
-    Call<ResponseAuth> auth(@Body ReqAuth reqAuth);
-
-    @Headers({accept_json, content_type, api_key})
-    @PUT("user/users")
-    Call<Response> putUser(@Body UserModel userModel);
-
-    @Headers({accept_json, content_type, api_key})
-    @DELETE("user/users")
-    Call<Response> deleteUser(@Body UserModel userModel);
-
-    @Headers({accept_json, content_type, api_key})
-    @GET("obat/obats")
-    Call<ResponseGetObat> getObat();
-
-    @Headers({accept_json, content_type, api_key})
-    @GET("obat/obats")
-    Call<ResponseGetObat> getObatById(@Query("id") String id);
-
-    @Headers({accept_json, content_type, api_key})
-    @POST("penjualan/penjualan_temp")
-    Call<ResponseAction> postTempPenjualan(@Body ReqPenjualanTemp reqPenjualanTemp);
-
-    @Headers({accept_json, content_type, api_key})
-    @GET("penjualan/penjualan_temp")
-    Call<ResponseGetPenjualanTemp> getPenjualanTemp();
-
-    @Headers({accept_json, content_type, api_key})
-    @GET("penjualan/penjualan")
-    Call<ResponseGetPenjualan> getPenjualan();
-
-    @Headers({accept_json, content_type, api_key})
-    @GET("penjualan/penjualan_detail")
-    Call<ResponsePenjualanDetail> getPenjualanDetail();
-
-    @Headers({accept_json, content_type, api_key})
-    @POST("penjualan/penjualan")
-    Call<ResponseAction> postPenjualan(@Body ReqPenjualan reqPenjualanTemp);
-
-    @Headers({accept_json, content_type, api_key})
-    @GET("home")
-    Call<ResponseGetHome> getHome();
-
-    @Headers({accept_json, content_type, api_key})
-    @GET("notifikasi")
-    Call<ResponseGetNotifikasi> getNotifikasi();
 
     class Factory {
         public static ApiService create() {
