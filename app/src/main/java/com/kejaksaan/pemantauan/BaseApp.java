@@ -9,6 +9,7 @@ public class BaseApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Realm.init(this);
         RealmConfiguration configuration = new RealmConfiguration
                 .Builder()
                 .deleteRealmIfMigrationNeeded()
