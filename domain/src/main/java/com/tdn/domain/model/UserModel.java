@@ -1,73 +1,146 @@
 package com.tdn.domain.model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class UserModel {
 
-	@SerializedName("user_nama")
-	private String userNama;
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @SerializedName("nip")
+    @Expose
+    private String nip;
+    @SerializedName("nrp")
+    @Expose
+    private String nrp;
+    @SerializedName("nama_lengkap")
+    @Expose
+    private String namaLengkap;
+    @SerializedName("golongan_pangkat")
+    @Expose
+    private String golonganPangkat;
+    @SerializedName("tmt")
+    @Expose
+    private String tmt;
+    @SerializedName("jabatan")
+    @Expose
+    private String jabatan;
+    @SerializedName("alamat_tinggal")
+    @Expose
+    private String alamatTinggal;
+    @SerializedName("password")
+    @Expose
+    private String password;
+    @SerializedName("level")
+    @Expose
+    private String level;
+    @SerializedName("no_hp")
+    @Expose
+    private String noHp;
 
-	@SerializedName("user_password")
-	private String userPassword;
+    public String getId() {
+        return id;
+    }
 
-	@SerializedName("user_id")
-	private String userId;
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	@SerializedName("user_name")
-	private String userName;
+    public String getNip() {
+        return nip;
+    }
 
-	@SerializedName("user_foto")
-	private String userFoto;
+    public void setNip(String nip) {
+        this.nip = nip;
+    }
 
-	public void setUserNama(String userNama){
-		this.userNama = userNama;
-	}
+    public String getNrp() {
+        return nrp;
+    }
 
-	public String getUserNama(){
-		return userNama;
-	}
+    public void setNrp(String nrp) {
+        this.nrp = nrp;
+    }
 
-	public void setUserPassword(String userPassword){
-		this.userPassword = userPassword;
-	}
+    public String getNamaLengkap() {
+        return namaLengkap;
+    }
 
-	public String getUserPassword(){
-		return userPassword;
-	}
+    public void setNamaLengkap(String namaLengkap) {
+        this.namaLengkap = namaLengkap;
+    }
 
-	public void setUserId(String userId){
-		this.userId = userId;
-	}
+    public String getGolonganPangkat() {
+        return golonganPangkat;
+    }
 
-	public String getUserId(){
-		return userId;
-	}
+    public void setGolonganPangkat(String golonganPangkat) {
+        this.golonganPangkat = golonganPangkat;
+    }
 
-	public void setUserName(String userName){
-		this.userName = userName;
-	}
+    public String getTmt() {
+        return tmt;
+    }
 
-	public String getUserName(){
-		return userName;
-	}
+    public void setTmt(String tmt) {
+        this.tmt = tmt;
+    }
 
-	public void setUserFoto(String userFoto){
-		this.userFoto = userFoto;
-	}
+    public String getJabatan() {
+        return jabatan;
+    }
 
-	public String getUserFoto(){
-		return userFoto;
-	}
+    public void setJabatan(String jabatan) {
+        this.jabatan = jabatan;
+    }
 
-	@Override
- 	public String toString(){
-		return 
-			"UserModel{" +
-			"user_nama = '" + userNama + '\'' + 
-			",user_password = '" + userPassword + '\'' + 
-			",user_id = '" + userId + '\'' + 
-			",user_name = '" + userName + '\'' + 
-			",user_foto = '" + userFoto + '\'' + 
-			"}";
-		}
+    public String getAlamatTinggal() {
+        return alamatTinggal;
+    }
+
+    public void setAlamatTinggal(String alamatTinggal) {
+        this.alamatTinggal = alamatTinggal;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getNoHp() {
+        return noHp;
+    }
+
+    public void setNoHp(String noHp) {
+        this.noHp = noHp;
+    }
+
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "id='" + id + '\'' +
+                ", nip='" + nip + '\'' +
+                ", nrp='" + nrp + '\'' +
+                ", namaLengkap='" + namaLengkap + '\'' +
+                ", golonganPangkat='" + golonganPangkat + '\'' +
+                ", tmt='" + tmt + '\'' +
+                ", jabatan='" + jabatan + '\'' +
+                ", alamatTinggal='" + alamatTinggal + '\'' +
+                ", password='" + password + '\'' +
+                ", level='" + level + '\'' +
+                ", noHp='" + noHp + '\'' +
+                '}';
+    }
 }
