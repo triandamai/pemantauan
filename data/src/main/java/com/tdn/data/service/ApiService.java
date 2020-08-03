@@ -1,8 +1,11 @@
 package com.tdn.data.service;
 
 
+import com.tdn.domain.model.UserModel;
+import com.tdn.domain.serialize.req.RequestPostLogin;
 import com.tdn.domain.serialize.req.RequestPostUpdateLocation;
 import com.tdn.domain.serialize.res.ResponseAction;
+import com.tdn.domain.serialize.res.ResponseAuthLogin;
 import com.tdn.domain.serialize.res.ResponseGetLokasi;
 
 import retrofit2.Call;
@@ -34,6 +37,14 @@ public interface ApiService {
     @Headers({accept_json, content_type, api_key})
     @POST("user/location")
     Call<ResponseAction> updateLocation(@Body RequestPostUpdateLocation req);
+
+    @Headers({accept_json, content_type, api_key})
+    @POST("user/location")
+    Call<ResponseAuthLogin> login(@Body RequestPostLogin req);
+
+    @Headers({accept_json, content_type, api_key})
+    @POST("user/location")
+    Call<ResponseAction> register(@Body UserModel req);
 
     class Factory {
         public static ApiService create() {
