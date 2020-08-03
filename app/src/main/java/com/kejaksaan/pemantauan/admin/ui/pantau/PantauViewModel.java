@@ -22,11 +22,11 @@ public class PantauViewModel extends ViewModel {
         getFromLocal();
     }
 
-    private void getFromApi() {
+    public void getFromApi() {
         Repository.getInstance().getAllLokasi();
     }
 
-    private void getFromLocal() {
+    public void getFromLocal() {
         this.listLiveData = new RealmLiveResult(realm.where(LokasiObject.class).findAll());
     }
 

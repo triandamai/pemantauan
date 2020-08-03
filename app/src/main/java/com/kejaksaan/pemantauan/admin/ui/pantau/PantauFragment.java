@@ -6,7 +6,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,13 @@ public class PantauFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.fragment_pantau, container, false);
         mViewModel = new ViewModelProvider(this).get(PantauViewModel.class);
+        binding.swipe.setOnRefreshListener(() -> {
+            mViewModel.getFromApi();
+            new Handler().postDelayed(() -> {
+                mViewModel.getFromLocal();
+                binding.swipe.setRefreshing(false);
+            }, 1000);
+        });
         binding.mapview.onCreate(savedInstanceState);
         binding.mapview.onResume();
         try {
