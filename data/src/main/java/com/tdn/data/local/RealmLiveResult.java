@@ -10,6 +10,11 @@ import io.realm.OrderedRealmCollectionChangeListener;
 import io.realm.RealmModel;
 import io.realm.RealmResults;
 
+/*
+ * author Trian Damai
+ * 04 august 2020
+ * TODO :: this is service
+ * */
 public class RealmLiveResult<T extends RealmModel> extends LiveData<RealmResults<T>> {
     private final RealmResults<T> results;
 
@@ -17,7 +22,7 @@ public class RealmLiveResult<T extends RealmModel> extends LiveData<RealmResults
     private OrderedRealmCollectionChangeListener<RealmResults<T>> listener = new OrderedRealmCollectionChangeListener<RealmResults<T>>() {
         @Override
         public void onChange(@NonNull RealmResults<T> results, @Nullable OrderedCollectionChangeSet changeSet) {
-           setValue(results);
+            setValue(results);
         }
     };
 

@@ -9,6 +9,11 @@ import io.realm.RealmModel;
 import io.realm.RealmObject;
 import io.realm.RealmObjectChangeListener;
 
+/*
+ * author Trian Damai
+ * 04 august 2020
+ * TODO :: this is service
+ * */
 public class RealmLiveObject<T extends RealmModel> extends LiveData<T> {
 
     private RealmObjectChangeListener<T> listener = new RealmObjectChangeListener<T>() {

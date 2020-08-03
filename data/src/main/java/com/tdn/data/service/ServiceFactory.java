@@ -13,6 +13,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
+/*
+ * author Trian Damai
+ * 04 august 2020
+ * TODO :: this is service
+ * */
 public class ServiceFactory {
     private static Gson gson = new GsonBuilder()
             .setLenient()
@@ -28,7 +33,7 @@ public class ServiceFactory {
     private static Retrofit retrofit = builder.build();
 
     public static <S> S createService(Class<S> serviceClass) {
-        return createService(serviceClass, null );
+        return createService(serviceClass, null);
     }
 
     public static <S> S createService(

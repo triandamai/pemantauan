@@ -16,6 +16,11 @@ import retrofit2.Response;
 
 import static com.tdn.data.service.ApiHandler.cek;
 
+/*
+ * author Trian Damai
+ * 04 august 2020
+ * TODO :: this is service
+ * */
 public class Repository {
     public static final String TAG = "LAPORAN :: ";
     private static ApiService service;

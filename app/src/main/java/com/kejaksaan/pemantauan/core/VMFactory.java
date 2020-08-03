@@ -11,7 +11,11 @@ import com.kejaksaan.pemantauan.auth.LoginViewModel;
 import com.kejaksaan.pemantauan.core.callback.ActionListener;
 import com.kejaksaan.pemantauan.core.callback.AuthListener;
 
-
+/*
+ * author Trian Damai
+ * 04 august 2020
+ * TODO :: this is service
+ * */
 public class VMFactory implements ViewModelProvider.Factory {
     private Context context;
     private String id = "";

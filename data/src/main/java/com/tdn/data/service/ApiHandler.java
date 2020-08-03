@@ -4,7 +4,11 @@ import android.util.Log;
 
 import java.util.Objects;
 
-
+/*
+ * author Trian Damai
+ * 04 august 2020
+ * TODO :: this is service
+ * */
 public class ApiHandler {
     private static final String TAG = "ApiHandler";
 

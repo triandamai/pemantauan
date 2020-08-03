@@ -1,5 +1,10 @@
 package com.tdn;
 
+/*
+ * author Trian Damai
+ * 04 august 2020
+ * TODO :: this is service
+ * */
 public class Static {
     public static final String STATUS_ADA = "ada";
     public static final String STATUS_DIHAPUS = "dihapus";

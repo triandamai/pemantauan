@@ -6,6 +6,11 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/*
+ * author Trian Damai
+ * 04 august 2020
+ * TODO :: this is service
+ * */
 public class AuthenticationInterceptor implements Interceptor {
 
     private String authToken;
