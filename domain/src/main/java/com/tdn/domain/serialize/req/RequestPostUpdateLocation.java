@@ -4,9 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class RequestPostUpdateLocation {
-    @SerializedName("id")
+    @SerializedName("id_pegawai")
     @Expose
-    private String id;
+    private String idPegawai;
     @SerializedName("lat")
     @Expose
     private String lat;
@@ -14,12 +14,12 @@ public class RequestPostUpdateLocation {
     @Expose
     private String lng;
 
-    public String getId() {
-        return id;
+    public String getIdPegawai() {
+        return idPegawai;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdPegawai(String idPegawai) {
+        this.idPegawai = idPegawai;
     }
 
     public String getLat() {
@@ -41,7 +41,7 @@ public class RequestPostUpdateLocation {
     @Override
     public String toString() {
         return "RequestPostUpdateLocation{" +
-                "id='" + id + '\'' +
+                "idPegawai='" + idPegawai + '\'' +
                 ", lat='" + lat + '\'' +
                 ", lng='" + lng + '\'' +
                 '}';

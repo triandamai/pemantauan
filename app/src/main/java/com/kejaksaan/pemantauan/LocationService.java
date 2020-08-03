@@ -21,6 +21,10 @@ import com.tdn.data.service.ApiService;
 import com.tdn.domain.serialize.req.RequestPostUpdateLocation;
 import com.tdn.domain.serialize.res.ResponseAction;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -176,13 +180,14 @@ public class LocationService extends Service {
         private void sendLocation(double lat, double lng) {
             try {
                 RequestPostUpdateLocation requestPostUpdateLocation = new RequestPostUpdateLocation();
-                requestPostUpdateLocation.setId("1");
+                requestPostUpdateLocation.setIdPegawai("1");
                 requestPostUpdateLocation.setLat(String.valueOf(lat));
                 requestPostUpdateLocation.setLng(String.valueOf(lng));
                 apiService.updateLocation(requestPostUpdateLocation).enqueue(new Callback<ResponseAction>() {
                     @Override
-                    public void onResponse(Call<ResponseAction> call, Response<ResponseAction> response) {
+                    public void onResponse(@NotNull Call<ResponseAction> call, @NotNull Response<ResponseAction> response) {
                         if (cek(response.code())) {
+                            assert response.body() != null;
                             if (cek(response.body().getResponseCode())) {
                                 Log.e("yee", response.body().getResponseMessage());
                             } else {
@@ -194,12 +199,12 @@ public class LocationService extends Service {
                     }
 
                     @Override
-                    public void onFailure(Call<ResponseAction> call, Throwable t) {
-                        Log.e("yee", t.getMessage());
+                    public void onFailure(@NotNull Call<ResponseAction> call, @NotNull Throwable t) {
+                        Log.e("yee", Objects.requireNonNull(t.getMessage()));
                     }
                 });
             } catch (Exception e) {
-                Log.e("yee", e.getMessage());
+                Log.e("yee", Objects.requireNonNull(e.getMessage()));
             }
         }
     }
