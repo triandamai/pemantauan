@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.kejaksaan.pemantauan.admin.ui.tambah.TambahPegawaiViewModel;
 import com.kejaksaan.pemantauan.auth.LoginViewModel;
 import com.kejaksaan.pemantauan.core.callback.ActionListener;
 import com.kejaksaan.pemantauan.core.callback.AuthListener;
@@ -52,6 +53,8 @@ public class VMFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(LoginViewModel.class)) {
             return (T) new LoginViewModel(authListener);
+        } else if (modelClass.isAssignableFrom(TambahPegawaiViewModel.class)) {
+            return (T) new TambahPegawaiViewModel(actionListener);
         } else {
             throw new IllegalArgumentException("Unknown ViewModel class");
         }
