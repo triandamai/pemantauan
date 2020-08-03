@@ -22,7 +22,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:background="@color/white"
-            app:itemIconTint="@color/bottom_nav_color"
+            app:itemIconTint="@color/colorPrimary"
+            app:itemTextColor="@color/colorPrimary"
             app:menu="@menu/activity_admin_bottomnav" />
 
         <fragment

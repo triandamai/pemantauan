@@ -84,7 +84,7 @@ public class PegawaiActivity extends AppCompatActivity {
     protected void showSettingsDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(PegawaiActivity.this);
         builder.setTitle("Izin Dibutuhkan");
-        builder.setMessage("Aplikasi ingin meminta izin menggunakan kamera");
+        builder.setMessage("Aplikasi ingin meminta izin akses lokasi");
         builder.setPositiveButton("Pengaturan", (dialog, which) -> {
             dialog.cancel();
             openSettings();
