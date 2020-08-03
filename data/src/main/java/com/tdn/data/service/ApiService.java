@@ -16,10 +16,16 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
+/*
+ * author Trian Damai
+ * 04 august 2020
+ * TODO :: this is service
+ * */
 public interface ApiService {
 
 
-    String BASE = "http://192.168.100.5/pemantauan/";
+    // String BASE = "http://192.168.100.5/pemantauan/";
+    String BASE = "https://gatsu109.id/lokasi/";
     String BASE_URL = BASE + "api/v1/";
     String BASE_URL_IMAGE = BASE + "assets/pengaduan/";
     String USER_KEY = "";
@@ -43,7 +49,7 @@ public interface ApiService {
     Call<ResponseAuthLogin> login(@Body RequestPostLogin req);
 
     @Headers({accept_json, content_type, api_key})
-    @POST("user/location")
+    @POST("user/register")
     Call<ResponseAction> register(@Body UserModel req);
 
     class Factory {

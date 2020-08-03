@@ -7,6 +7,11 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.tdn.domain.model.UserModel;
 
+/*
+ * author Trian Damai
+ * 04 august 2020
+ * TODO :: this is for persistence data
+ * */
 public class MyUser {
     private static String TAG = "PERSISTENSI ::";
     private static String NAME = "data_pengaduan";

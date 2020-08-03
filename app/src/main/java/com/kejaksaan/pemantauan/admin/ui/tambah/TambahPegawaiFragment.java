@@ -80,14 +80,14 @@ public class TambahPegawaiFragment extends Fragment {
     };
 
     private boolean validasi() {
-        return !TextUtils.isEmpty(binding.alamatTinggal.getText().toString()) ||
-                !TextUtils.isEmpty(binding.golongan.getText().toString()) ||
-                !TextUtils.isEmpty(binding.jabatan.getText().toString()) ||
-                !TextUtils.isEmpty(binding.namaPegawai.getText().toString()) ||
-                !TextUtils.isEmpty(binding.nip.getText().toString()) ||
-                !TextUtils.isEmpty(binding.noHP.getText().toString()) ||
-                !TextUtils.isEmpty(binding.nrp.getText().toString()) ||
-                !TextUtils.isEmpty(binding.password.getText().toString()) ||
+        return !TextUtils.isEmpty(binding.alamatTinggal.getText().toString()) &&
+                !TextUtils.isEmpty(binding.golongan.getText().toString()) &&
+                !TextUtils.isEmpty(binding.jabatan.getText().toString()) &&
+                !TextUtils.isEmpty(binding.namaPegawai.getText().toString()) &&
+                !TextUtils.isEmpty(binding.nip.getText().toString()) &&
+                !TextUtils.isEmpty(binding.noHP.getText().toString()) &&
+                !TextUtils.isEmpty(binding.nrp.getText().toString()) &&
+                !TextUtils.isEmpty(binding.password.getText().toString()) &&
                 !TextUtils.isEmpty(binding.tmt.getText().toString());
     }
 }

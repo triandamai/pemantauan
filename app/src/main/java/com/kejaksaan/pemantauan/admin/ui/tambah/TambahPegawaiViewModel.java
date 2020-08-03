@@ -19,6 +19,7 @@ public class TambahPegawaiViewModel extends ViewModel {
 
     public TambahPegawaiViewModel(ActionListener actionListener) {
         this.actionListener = actionListener;
+        this.apiService = ApiService.Factory.create();
     }
 
     public void simpan(UserModel u) {
