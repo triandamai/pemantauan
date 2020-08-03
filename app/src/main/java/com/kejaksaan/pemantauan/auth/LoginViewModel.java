@@ -28,6 +28,7 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void login(RequestPostLogin login) {
+        authListener.onStart();
         apiService.login(login).enqueue(new Callback<ResponseAuthLogin>() {
             @Override
             public void onResponse(Call<ResponseAuthLogin> call, Response<ResponseAuthLogin> response) {

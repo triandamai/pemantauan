@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -18,6 +19,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.FragmentPantauBinding;
+import com.tdn.domain.object.LokasiObject;
+
+import java.util.List;
 
 
 /**
@@ -46,13 +50,7 @@ public class PantauFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        binding.mapview.getMapAsync(googleMap -> {
-            gmaps = googleMap;
-            //   LatLng latLng = new LatLng(Double.parseDouble(laporanHarianObject.getLatitudeLaporanharian()), Double.parseDouble(laporanHarianObject.getLongitudeLaporanharian()));
-            // gmaps.addMarker(new MarkerOptions().position(latLng).title("Lokasi Laporan").snippet(laporanHarianObject.getAlamatLaporanharian()));
-            //  CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(12).build();
-            //  googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-        });
+
         return binding.getRoot();
     }
 
@@ -64,6 +62,28 @@ public class PantauFragment extends Fragment {
     }
 
     private void observe(PantauViewModel mViewModel) {
+        mViewModel.getListLiveData().observe(getViewLifecycleOwner(), lokasiObjects -> {
+            if (lokasiObjects != null) {
+                if (lokasiObjects.size() > 0) {
 
+                    binding.mapview.getMapAsync(googleMap -> {
+                        gmaps = googleMap;
+                        for (LokasiObject o : lokasiObjects) {
+                            MarkerOptions options = new MarkerOptions();
+                            options.position(new LatLng(
+                                    Double.parseDouble(o.getLat()),
+                                    Double.parseDouble(o.getLng()))).anchor(0.5f, 0.5f)
+                                    .title("Lokasi " + o.getNamaLengkap())
+                                    .snippet(o.getNip());
+                            gmaps.addMarker(options);
+
+                        }
+                        LatLng latLng = new LatLng(Double.parseDouble(lokasiObjects.get(0).getLat()), Double.parseDouble(lokasiObjects.get(0).getLng()));
+                        CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(12).build();
+                        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                    });
+                }
+            }
+        });
     }
 }

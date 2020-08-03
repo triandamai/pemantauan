@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.karumi.dexter.Dexter;
@@ -16,7 +17,10 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.kejaksaan.pemantauan.LocationService;
 import com.kejaksaan.pemantauan.R;
+import com.kejaksaan.pemantauan.auth.LoginUser;
+import com.tdn.data.persistensi.MyUser;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -101,8 +105,22 @@ public class PegawaiActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.option_menu_user, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                MyUser.getInstance(PegawaiActivity.this).signOut();
+                startActivity(new Intent(PegawaiActivity.this, LoginUser.class));
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
     @Override

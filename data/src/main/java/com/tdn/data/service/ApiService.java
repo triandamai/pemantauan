@@ -39,7 +39,7 @@ public interface ApiService {
     Call<ResponseAction> updateLocation(@Body RequestPostUpdateLocation req);
 
     @Headers({accept_json, content_type, api_key})
-    @POST("user/location")
+    @POST("user/auth")
     Call<ResponseAuthLogin> login(@Body RequestPostLogin req);
 
     @Headers({accept_json, content_type, api_key})

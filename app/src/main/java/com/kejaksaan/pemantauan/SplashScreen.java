@@ -5,7 +5,11 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.kejaksaan.pemantauan.Pegawai.PegawaiActivity;
+import com.kejaksaan.pemantauan.admin.AdminActivity;
 import com.kejaksaan.pemantauan.auth.LoginAdmin;
+import com.kejaksaan.pemantauan.auth.LoginUser;
+import com.tdn.data.persistensi.MyUser;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -13,19 +17,17 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        Thread timerThread = new Thread() {
-            public void run() {
-                try {
-                    sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    Intent intent = new Intent(SplashScreen.this, LoginAdmin.class);
-                    startActivity(intent);
-                    finish();
-                }
+        if (MyUser.getInstance(SplashScreen.this).getUser() == null) {
+            startActivity(new Intent(SplashScreen.this, LoginUser.class));
+            finish();
+        } else {
+            if (MyUser.getInstance(SplashScreen.this).getUser().getLevel().equals("ADMIN")) {
+                startActivity(new Intent(SplashScreen.this, AdminActivity.class));
+                finish();
+            } else {
+                startActivity(new Intent(SplashScreen.this, PegawaiActivity.class));
+                finish();
             }
-        };
-        timerThread.start();
+        }
     }
 }
