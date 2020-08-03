@@ -1,9 +1,12 @@
 package com.kejaksaan.pemantauan.admin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
@@ -12,8 +15,11 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kejaksaan.pemantauan.Pegawai.PegawaiActivity;
 import com.kejaksaan.pemantauan.R;
+import com.kejaksaan.pemantauan.auth.LoginUser;
 import com.kejaksaan.pemantauan.databinding.ActivityAdminBinding;
+import com.tdn.data.persistensi.MyUser;
 
 public class AdminActivity extends AppCompatActivity {
 
@@ -41,9 +47,24 @@ public class AdminActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_inventory, menu);
+
+        getMenuInflater().inflate(R.menu.option_menu_user, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                MyUser.getInstance(AdminActivity.this).signOut();
+                startActivity(new Intent(AdminActivity.this, LoginUser.class));
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
 
 }

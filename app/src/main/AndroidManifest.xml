@@ -39,7 +39,7 @@
         <activity android:name=".auth.LoginAdmin" />
         <activity
             android:name=".admin.AdminActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".auth.LoginUser" />
         <activity android:name=".SplashScreen">
             <intent-filter>

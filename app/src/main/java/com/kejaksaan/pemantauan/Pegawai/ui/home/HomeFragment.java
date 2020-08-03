@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.FragmentHomeBinding;
+import com.tdn.data.persistensi.MyUser;
+import com.tdn.domain.model.UserModel;
 
 public class HomeFragment extends Fragment {
 
@@ -24,7 +26,15 @@ public class HomeFragment extends Fragment {
         homeViewModel = new
                 ViewModelProvider(this).get(HomeViewModel.class);
         binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.fragment_home, container, false);
-
+        UserModel userModel = MyUser.getInstance(getContext()).getUser();
+        binding.nip.setText(userModel.getNip());
+        binding.alamatTinggal.setText(userModel.getAlamatTinggal());
+        binding.golongan.setText(userModel.getGolonganPangkat());
+        binding.jabatan.setText(userModel.getJabatan());
+        binding.namaPegawai.setText(userModel.getNamaLengkap());
+        binding.noHP.setText(userModel.getNoHp());
+        binding.nrp.setText(userModel.getNrp());
+        binding.tmt.setText(userModel.getTmt());
         return binding.getRoot();
     }
 }

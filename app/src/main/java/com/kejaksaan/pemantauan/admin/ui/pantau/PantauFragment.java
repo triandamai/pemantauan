@@ -88,7 +88,7 @@ public class PantauFragment extends Fragment {
 
                         }
                         LatLng latLng = new LatLng(Double.parseDouble(lokasiObjects.get(0).getLat()), Double.parseDouble(lokasiObjects.get(0).getLng()));
-                        CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(12).build();
+                        CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(9).build();
                         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                     });
                 }
