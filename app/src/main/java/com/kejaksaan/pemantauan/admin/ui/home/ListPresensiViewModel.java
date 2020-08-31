@@ -27,7 +27,7 @@ public class ListPresensiViewModel extends ViewModel {
         getPresensi();
     }
 
-    private LiveData<List<AbsensiNama>> getPresensi() {
+    public LiveData<List<AbsensiNama>> getPresensi() {
         final MutableLiveData<List<AbsensiNama>> data = new MutableLiveData<>();
         apiService.getNama().enqueue(new Callback<ResponseGetAbsensiNama>() {
             @Override

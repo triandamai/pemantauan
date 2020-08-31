@@ -11,6 +11,7 @@ import com.tdn.domain.serialize.res.ResponseGetJumlahBelumMasuk;
 import com.tdn.domain.serialize.res.ResponseGetJumlahMasuk;
 import com.tdn.domain.serialize.res.ResponseGetJumlahPegawai;
 import com.tdn.domain.serialize.res.ResponseGetLokasi;
+import com.tdn.domain.serialize.res.ResponseGetPegawai;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -58,6 +59,10 @@ public interface ApiService {
     Call<ResponseGetAbsensiNama> getNama();
 
     //beda
+    @Headers({accept_json, content_type, api_key})
+    @GET("user/user")
+    Call<ResponseGetPegawai> getPegawai();
+
     @Headers({accept_json, content_type, api_key})
     @POST("lokasi/location")
     Call<ResponseAction> updateLocation(@Body RequestPostUpdateLocation req);

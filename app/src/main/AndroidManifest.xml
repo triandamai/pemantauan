@@ -25,7 +25,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".admin.ui.home.ListPresensi"></activity>
+        <activity android:name=".admin.ui.home.DaftarPegawai"></activity>
+        <activity android:name=".admin.ui.home.ListPresensi" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -43,7 +44,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SlideShow"></activity>
+        <activity android:name=".SlideShow" />
         <activity
             android:name=".Pegawai.PegawaiActivity"
             android:label="@string/app_name"

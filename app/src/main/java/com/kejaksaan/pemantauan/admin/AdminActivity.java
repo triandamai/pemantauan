@@ -17,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kejaksaan.pemantauan.Pegawai.PegawaiActivity;
 import com.kejaksaan.pemantauan.R;
+import com.kejaksaan.pemantauan.admin.ui.home.ListPresensi;
 import com.kejaksaan.pemantauan.auth.LoginUser;
 import com.kejaksaan.pemantauan.databinding.ActivityAdminBinding;
 import com.tdn.data.persistensi.MyUser;
@@ -48,7 +49,7 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.option_menu_user, menu);
+        getMenuInflater().inflate(R.menu.option_menu_admin, menu);
         return true;
     }
 
@@ -59,6 +60,9 @@ public class AdminActivity extends AppCompatActivity {
                 MyUser.getInstance(AdminActivity.this).signOut();
                 startActivity(new Intent(AdminActivity.this, LoginUser.class));
                 finish();
+                return true;
+            case R.id.daftar_presensi:
+                startActivity(new Intent(AdminActivity.this, ListPresensi.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
