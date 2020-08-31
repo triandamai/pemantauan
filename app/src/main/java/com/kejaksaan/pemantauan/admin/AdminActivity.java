@@ -18,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kejaksaan.pemantauan.Pegawai.PegawaiActivity;
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.admin.ui.home.DaftarPegawai;
+import com.kejaksaan.pemantauan.admin.ui.home.ListLaporanActivity;
 import com.kejaksaan.pemantauan.admin.ui.home.ListPresensi;
 import com.kejaksaan.pemantauan.auth.LoginUser;
 import com.kejaksaan.pemantauan.databinding.ActivityAdminBinding;
@@ -67,6 +68,9 @@ public class AdminActivity extends AppCompatActivity {
                 return true;
             case R.id.daftar_pegawai:
                 startActivity(new Intent(AdminActivity.this, DaftarPegawai.class));
+                return true;
+            case R.id.daftar_laporan:
+                startActivity(new Intent(AdminActivity.this, ListLaporanActivity.class));
                 return true;
 
             default:

@@ -11,6 +11,12 @@
         android:orderInCategory="100"
         android:title="Daftar Pegawai"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/daftar_laporan"
+        android:orderInCategory="100"
+        android:title="Daftar Laporan"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"
