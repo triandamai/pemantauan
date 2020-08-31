@@ -24,8 +24,9 @@ import retrofit2.http.Query;
 public interface ApiService {
 
 
-    // String BASE = "http://192.168.100.5/pemantauan/";
-    String BASE = "https://gatsu109.id/lokasi/";
+    String BASE = " https://gatsu109.id/e-presensi/api/";
+    String BASEGATSU = "http://192.168.100.170/pemantauan_api/";
+    //String BASE = "https://gatsu109.id/lokasi/";
     String BASE_URL = BASE + "api/v1/";
     String BASE_URL_IMAGE = BASE + "assets/pengaduan/";
     String USER_KEY = "";
@@ -37,9 +38,22 @@ public interface ApiService {
 
 
     @Headers({accept_json, content_type, api_key})
-    @GET("lokasi/user")
-    Call<ResponseGetLokasi> getAllLokasi();
+    @GET("jumlah_pegawai")
+    Call<ResponseGetLokasi> getJumlahPegawai();
 
+    @Headers({accept_json, content_type, api_key})
+    @GET("jumlah_masuk")
+    Call<ResponseGetLokasi> getJumlahMasuk();
+
+    @Headers({accept_json, content_type, api_key})
+    @GET("jumlah_belummasuk")
+    Call<ResponseGetLokasi> getBelumMasuk();
+
+    @Headers({accept_json, content_type, api_key})
+    @GET("nama")
+    Call<ResponseGetLokasi> getNama();
+
+    //beda
     @Headers({accept_json, content_type, api_key})
     @POST("lokasi/location")
     Call<ResponseAction> updateLocation(@Body RequestPostUpdateLocation req);
@@ -55,6 +69,12 @@ public interface ApiService {
     class Factory {
         public static ApiService create() {
             return ServiceFactory.createService(ApiService.class);
+        }
+    }
+
+    class GatsuFactory {
+        public static ApiService create() {
+            return ServiceGatsuFactory.createService(ApiService.class);
         }
     }
 }
