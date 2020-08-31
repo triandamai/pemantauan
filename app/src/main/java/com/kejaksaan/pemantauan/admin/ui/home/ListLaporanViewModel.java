@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.android.gms.common.api.Api;
 import com.tdn.data.service.ApiService;
-import com.tdn.domain.model.PegawaiModel;
-import com.tdn.domain.model.UserModel;
-import com.tdn.domain.serialize.res.ResponseGetPegawai;
+import com.tdn.domain.model.LaporanModel;
+import com.tdn.domain.serialize.res.ResponseGetLaporan;
 
 import java.util.List;
 
@@ -17,23 +17,23 @@ import retrofit2.Response;
 
 import static com.tdn.data.service.ApiHandler.cek;
 
-public class DaftarPegawaiViewModel extends ViewModel {
+public class ListLaporanViewModel extends ViewModel {
     private ApiService apiService;
 
-    public DaftarPegawaiViewModel() {
+    public ListLaporanViewModel() {
         this.apiService = ApiService.Factory.create();
-        getPegawai();
+        getLaporan();
     }
 
-    public LiveData<List<PegawaiModel>> getPegawai() {
-        final MutableLiveData<List<PegawaiModel>> data = new MutableLiveData<>();
-        apiService.getPegawai().enqueue(new Callback<ResponseGetPegawai>() {
+    public LiveData<List<LaporanModel>> getLaporan() {
+        final MutableLiveData<List<LaporanModel>> data = new MutableLiveData<>();
+        apiService.getLaporan().enqueue(new Callback<ResponseGetLaporan>() {
             @Override
-            public void onResponse(Call<ResponseGetPegawai> call, Response<ResponseGetPegawai> response) {
+            public void onResponse(Call<ResponseGetLaporan> call, Response<ResponseGetLaporan> response) {
                 if (cek(response.code())) {
                     if (cek(response.body().getResponseCode())) {
                         if (response.body().getData() != null) {
-                            List<PegawaiModel> list = response.body().getData();
+                            List<LaporanModel> list = response.body().getData();
                             data.setValue(list);
                         } else {
                             data.setValue(null);
@@ -47,7 +47,7 @@ public class DaftarPegawaiViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<ResponseGetPegawai> call, Throwable t) {
+            public void onFailure(Call<ResponseGetLaporan> call, Throwable t) {
                 data.setValue(null);
             }
         });

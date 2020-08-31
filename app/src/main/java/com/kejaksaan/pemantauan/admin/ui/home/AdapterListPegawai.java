@@ -11,13 +11,14 @@ import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.ItemListPresensiBinding;
 import com.kejaksaan.pemantauan.databinding.ItemPegawaiBinding;
 import com.tdn.domain.model.AbsensiNama;
+import com.tdn.domain.model.PegawaiModel;
 import com.tdn.domain.model.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterListPegawai extends RecyclerView.Adapter<AdapterListPegawai.MyViewHolder> {
-    private List<UserModel> data = new ArrayList<>();
+    private List<PegawaiModel> data = new ArrayList<>();
 
     @NonNull
     @Override
@@ -33,7 +34,7 @@ public class AdapterListPegawai extends RecyclerView.Adapter<AdapterListPegawai.
         holder.binding.tvLevel.setText("" + data.get(position).getLevel());
     }
 
-    public void setdata(List<UserModel> namaList) {
+    public void setdata(List<PegawaiModel> namaList) {
         if (this.data == null) {
             this.data = namaList;
         } else {

@@ -2,6 +2,7 @@ package com.tdn.data.service;
 
 
 import com.tdn.domain.model.UserModel;
+import com.tdn.domain.serialize.req.RequestPostLaporan;
 import com.tdn.domain.serialize.req.RequestPostLogin;
 import com.tdn.domain.serialize.req.RequestPostUpdateLocation;
 import com.tdn.domain.serialize.res.ResponseAction;
@@ -10,6 +11,7 @@ import com.tdn.domain.serialize.res.ResponseGetAbsensiNama;
 import com.tdn.domain.serialize.res.ResponseGetJumlahBelumMasuk;
 import com.tdn.domain.serialize.res.ResponseGetJumlahMasuk;
 import com.tdn.domain.serialize.res.ResponseGetJumlahPegawai;
+import com.tdn.domain.serialize.res.ResponseGetLaporan;
 import com.tdn.domain.serialize.res.ResponseGetLokasi;
 import com.tdn.domain.serialize.res.ResponseGetPegawai;
 
@@ -64,8 +66,16 @@ public interface ApiService {
     Call<ResponseGetPegawai> getPegawai();
 
     @Headers({accept_json, content_type, api_key})
+    @GET("laporan/laporan")
+    Call<ResponseGetLaporan> getLaporan();
+
+    @Headers({accept_json, content_type, api_key})
     @POST("lokasi/location")
     Call<ResponseAction> updateLocation(@Body RequestPostUpdateLocation req);
+
+    @Headers({accept_json, content_type, api_key})
+    @POST("laporan/laporan")
+    Call<ResponseAction> saveLaporan(@Body RequestPostLaporan req);
 
     @Headers({accept_json, content_type, api_key})
     @POST("user/auth")

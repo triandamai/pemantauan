@@ -2,12 +2,16 @@ package com.kejaksaan.pemantauan.admin.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.ActivityDaftarPegawaiBinding;
+import com.tdn.domain.model.PegawaiModel;
+
+import java.util.List;
 
 public class DaftarPegawai extends AppCompatActivity {
     private AdapterListPegawai adapterListPegawai;
@@ -25,6 +29,10 @@ public class DaftarPegawai extends AppCompatActivity {
     }
 
     private void observe(DaftarPegawaiViewModel viewModel) {
-
+        viewModel.getPegawai().observe(this, pegawaiModels -> {
+            if (pegawaiModels != null) {
+                adapterListPegawai.setdata(pegawaiModels);
+            }
+        });
     }
 }

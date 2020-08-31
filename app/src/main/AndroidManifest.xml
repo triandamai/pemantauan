@@ -25,7 +25,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
-        <activity android:name=".admin.ui.home.DaftarPegawai"></activity>
+        <activity android:name=".admin.ui.home.ListLaporanActivity"></activity>
+        <activity android:name=".admin.ui.home.DaftarPegawai" />
         <activity android:name=".admin.ui.home.ListPresensi" />
 
         <meta-data
