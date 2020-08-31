@@ -2,7 +2,7 @@ package com.tdn.domain.serialize.res;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.tdn.domain.model.JumlahhBelumMasukModel;
+import com.tdn.domain.model.JumlahBelumMasukModel;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class ResponseGetJumlahBelumMasuk {
     private String message;
     @SerializedName("data")
     @Expose
-    private List<JumlahhBelumMasukModel> data = null;
+    private List<JumlahBelumMasukModel> data = null;
 
     public Integer getStatus() {
         return status;
@@ -33,11 +33,11 @@ public class ResponseGetJumlahBelumMasuk {
         this.message = message;
     }
 
-    public List<JumlahhBelumMasukModel> getData() {
+    public List<JumlahBelumMasukModel> getData() {
         return data;
     }
 
-    public void setData(List<JumlahhBelumMasukModel> data) {
+    public void setData(List<JumlahBelumMasukModel> data) {
         this.data = data;
     }
 

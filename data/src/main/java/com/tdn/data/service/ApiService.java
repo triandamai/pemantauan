@@ -6,6 +6,10 @@ import com.tdn.domain.serialize.req.RequestPostLogin;
 import com.tdn.domain.serialize.req.RequestPostUpdateLocation;
 import com.tdn.domain.serialize.res.ResponseAction;
 import com.tdn.domain.serialize.res.ResponseAuthLogin;
+import com.tdn.domain.serialize.res.ResponseGetAbsensiNama;
+import com.tdn.domain.serialize.res.ResponseGetJumlahBelumMasuk;
+import com.tdn.domain.serialize.res.ResponseGetJumlahMasuk;
+import com.tdn.domain.serialize.res.ResponseGetJumlahPegawai;
 import com.tdn.domain.serialize.res.ResponseGetLokasi;
 
 import retrofit2.Call;
@@ -39,19 +43,19 @@ public interface ApiService {
 
     @Headers({accept_json, content_type, api_key})
     @GET("jumlah_pegawai")
-    Call<ResponseGetLokasi> getJumlahPegawai();
+    Call<ResponseGetJumlahPegawai> getJumlahPegawai();
 
     @Headers({accept_json, content_type, api_key})
     @GET("jumlah_masuk")
-    Call<ResponseGetLokasi> getJumlahMasuk();
+    Call<ResponseGetJumlahMasuk> getJumlahMasuk();
 
     @Headers({accept_json, content_type, api_key})
     @GET("jumlah_belummasuk")
-    Call<ResponseGetLokasi> getBelumMasuk();
+    Call<ResponseGetJumlahBelumMasuk> getBelumMasuk();
 
     @Headers({accept_json, content_type, api_key})
     @GET("nama")
-    Call<ResponseGetLokasi> getNama();
+    Call<ResponseGetAbsensiNama> getNama();
 
     //beda
     @Headers({accept_json, content_type, api_key})

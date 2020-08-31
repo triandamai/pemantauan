@@ -40,4 +40,13 @@ public class ResponseGetJumlahMasuk {
     public void setData(List<JumlahMasukModel> data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "ResponseGetJumlahMasuk{" +
+                "status=" + status +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

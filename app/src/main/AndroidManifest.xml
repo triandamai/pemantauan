@@ -7,27 +7,26 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <application
+        android:name=".BaseApp"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
-        android:name=".BaseApp"
+        android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
+        <activity android:name=".admin.ui.home.ListPresensi"></activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -44,16 +43,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SlideShow">
-
-        </activity>
+        <activity android:name=".SlideShow"></activity>
         <activity
             android:name=".Pegawai.PegawaiActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service android:name=".LocationService" />
-
     </application>
 
 </manifest>

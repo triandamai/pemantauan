@@ -29,9 +29,6 @@
                     app:cardCornerRadius="24dp"
                     android:outlineAmbientShadowColor="@color/colorBlack">
 
-                    <!--        <ScrollView-->
-                    <!--            android:layout_width="match_parent"-->
-                    <!--            android:layout_height="match_parent">-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -44,7 +41,6 @@
                             android:layout_height="96dp"
                             android:src="@drawable/logo"
                             android:layout_gravity="center"
-                            android:layout_marginTop="24dp"
                             app:civ_border_width="2dp"
                             app:civ_border_color="#FF000000" />
 
@@ -72,113 +68,46 @@
                             android:layout_marginTop="16dp"
                             android:layout_alignParentBottom="true" />
 
-                        <!--                <TextView-->
-                        <!--                    android:id="@+id/tanggal_absen"-->
-                        <!--                    android:layout_width="wrap_content"-->
-                        <!--                    android:layout_height="wrap_content"-->
-                        <!--                    android:text="Senin, 27 Juli 2020"-->
-                        <!--                    android:textStyle="bold"-->
-                        <!--                    android:padding="16dp"-->
-                        <!--                    android:textColor="@color/colorBlack"-->
-                        <!--                    android:layout_marginTop="24dp"/>-->
+                        <TextView
+                            android:id="@+id/tv_jumlah_pegawai"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jumlah Pegawai : 0"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorBlack"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginTop="16dp"
+                            android:layout_alignParentBottom="true" />
 
-                        <!--                <TextView-->
-                        <!--                    android:layout_width="wrap_content"-->
-                        <!--                    android:layout_height="wrap_content"-->
-                        <!--                    android:text="Total Pegawai"-->
-                        <!--                    android:textStyle="bold"-->
-                        <!--                    android:layout_gravity="center"-->
-                        <!--                    android:padding="16dp"-->
-                        <!--                    android:textColor="@color/colorBlack"/>-->
+                        <TextView
+                            android:id="@+id/tv_presensi_masuk"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Presensi Masuk : 0"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorBlack"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginTop="16dp"
+                            android:layout_alignParentBottom="true" />
 
-                        <!--                <LinearLayout-->
-                        <!--                    android:layout_width="match_parent"-->
-                        <!--                    android:layout_height="match_parent"-->
-                        <!--                    android:orientation="vertical">-->
+                        <TextView
+                            android:id="@+id/tv_belumpresennsi"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Belum Melakukan Presensi : 0"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorBlack"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginTop="16dp"
+                            android:layout_alignParentBottom="true" />
 
-                        <!--                <Button-->
-                        <!--                    android:id="@+id/total_absen"-->
-                        <!--                    android:layout_width="wrap_content"-->
-                        <!--                    android:layout_height="wrap_content"-->
-                        <!--                    android:text="100"-->
-                        <!--                    android:textSize="80dp"-->
-                        <!--                    android:textStyle="bold"-->
-                        <!--                    android:layout_gravity="center"-->
-                        <!--                    android:padding="16dp"-->
-                        <!--                    android:background="@drawable/button_effect"-->
-                        <!--                    android:textColor="@color/colorWhite"/>-->
-                        <!--                </LinearLayout>-->
-                        <!--                <LinearLayout-->
-                        <!--                    android:layout_width="match_parent"-->
-                        <!--                    android:layout_height="match_parent"-->
-                        <!--                    android:layout_marginTop="16dp"-->
-                        <!--                    android:padding="16dp"-->
-                        <!--                    android:orientation="vertical">-->
-
-                        <!--                    <TextView-->
-                        <!--                        android:layout_width="wrap_content"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:textColor="@color/colorBlack"-->
-                        <!--                        android:text="Nama Pegawai"-->
-                        <!--                        android:textSize="10sp"/>-->
-
-                        <!--                    <TextView-->
-                        <!--                        android:layout_width="wrap_content"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:layout_marginTop="8dp"-->
-                        <!--                        android:layout_marginBottom="8dp"-->
-                        <!--                        android:textColor="@color/colorBlack"-->
-                        <!--                        android:textSize="14sp"-->
-                        <!--                        android:text="Steve Rogers"/>-->
-                        <!--                    <TextView-->
-                        <!--                        android:layout_width="wrap_content"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:textColor="@color/colorBlack"-->
-                        <!--                        android:textSize="10sp"-->
-                        <!--                        android:text="Jabatan"/>-->
-
-                        <!--                    <TextView-->
-                        <!--                        android:layout_width="wrap_content"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:textColor="@color/colorBlack"-->
-                        <!--                        android:layout_marginTop="8dp"-->
-                        <!--                        android:layout_marginBottom="8dp"-->
-                        <!--                        android:textSize="14sp"-->
-                        <!--                        android:text="Captain America"/>-->
-                        <!--                    <TextView-->
-                        <!--                        android:layout_width="wrap_content"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:textColor="@color/colorBlack"-->
-                        <!--                        android:textSize="10sp"-->
-                        <!--                        android:text="ID Pegawai"/>-->
-
-                        <!--                    <TextView-->
-                        <!--                        android:layout_width="wrap_content"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:textColor="@color/colorBlack"-->
-                        <!--                        android:layout_marginTop="8dp"-->
-                        <!--                        android:layout_marginBottom="8dp"-->
-                        <!--                        android:textSize="16sp"-->
-                        <!--                        android:text="00196392"/>-->
-
-                        <!--                    <TextView-->
-                        <!--                        android:layout_width="wrap_content"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:textColor="@color/colorBlack"-->
-                        <!--                        android:textSize="10sp"-->
-                        <!--                        android:text="Unit Kerja"/>-->
-
-                        <!--                    <TextView-->
-                        <!--                        android:layout_width="wrap_content"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:textColor="@color/colorBlack"-->
-                        <!--                        android:layout_marginTop="8dp"-->
-                        <!--                        android:layout_marginBottom="8dp"-->
-                        <!--                        android:textSize="16sp"-->
-                        <!--                        android:text="America"/>-->
-                        <!--                </LinearLayout>-->
                     </LinearLayout>
-                    <!--        </ScrollView>-->
                 </androidx.cardview.widget.CardView>
 
             </RelativeLayout>

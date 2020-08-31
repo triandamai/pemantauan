@@ -6,7 +6,7 @@ import com.tdn.domain.model.JumlahPegawaiModel;
 
 import java.util.List;
 
-public class ResponseGetJummlahPegawai {
+public class ResponseGetJumlahPegawai {
     @SerializedName("status")
     @Expose
     private Integer status;
