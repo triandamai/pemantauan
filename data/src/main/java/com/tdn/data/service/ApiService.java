@@ -31,8 +31,8 @@ import retrofit2.http.Query;
 public interface ApiService {
 
 
-    String BASE = " https://gatsu109.id/e-presensi/api/";
-    String BASEGATSU = "http://192.168.100.170/pemantauan_api/";
+    String BASEGATSU = " https://gatsu109.id/e-presensi/api/";
+    String BASE = "http://192.168.100.170/pemantauan_api/";
     //String BASE = "https://gatsu109.id/lokasi/";
     String BASE_URL = BASE + "api/v1/";
     String BASE_URL_IMAGE = BASE + "assets/pengaduan/";
@@ -61,6 +61,11 @@ public interface ApiService {
     Call<ResponseGetAbsensiNama> getNama();
 
     //beda
+
+    @Headers({accept_json, content_type, api_key})
+    @GET("lokasi/user")
+    Call<ResponseGetLokasi> getAllLokasi();
+
     @Headers({accept_json, content_type, api_key})
     @GET("user/user")
     Call<ResponseGetPegawai> getPegawai();

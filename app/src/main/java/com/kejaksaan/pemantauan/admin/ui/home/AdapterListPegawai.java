@@ -30,8 +30,8 @@ public class AdapterListPegawai extends RecyclerView.Adapter<AdapterListPegawai.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.binding.tvNama.setText("" + data.get(position).getNamaLengkap());
-        holder.binding.tvNrp.setText("" + data.get(position).getNrp());
-        holder.binding.tvLevel.setText("" + data.get(position).getLevel());
+        holder.binding.tvNrp.setText("NRP : " + data.get(position).getNrp());
+        holder.binding.tvLevel.setText("Sebagai : " + data.get(position).getLevel());
     }
 
     public void setdata(List<PegawaiModel> namaList) {

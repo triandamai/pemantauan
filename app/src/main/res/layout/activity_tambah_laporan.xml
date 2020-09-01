@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Pegawai.ui.home.TambahLaporan">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="8dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="320dp"
+                android:layout_height="540dp"
+                app:cardElevation="16dp"
+                app:cardCornerRadius="24dp">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/profile_image"
+                            android:layout_width="96dp"
+                            android:layout_height="96dp"
+                            android:src="@drawable/logo"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="24dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="#FF000000" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="16dp"
+                            android:padding="16dp"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="10sp"
+                                android:text="Keterangan" />
+
+                            <EditText
+                                android:id="@+id/et_ket"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="cth : Pengatur/IIC"
+                                android:inputType="textPersonName"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/iv_prev"
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp" />
+
+                            <TextView
+                                android:id="@+id/pickImage"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:text="Ambil Gambar" />
+
+                            <com.google.android.gms.maps.MapView
+                                android:id="@+id/mapview"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/btn_simpan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorWhite"
+                                    android:background="@drawable/button_effect"
+                                    android:text="SIMPAN" />
+
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </ScrollView>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

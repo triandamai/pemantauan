@@ -1,5 +1,6 @@
 package com.kejaksaan.pemantauan.auth;
 
+import android.util.Log;
 import android.widget.Adapter;
 
 import androidx.lifecycle.ViewModel;
@@ -8,6 +9,8 @@ import com.kejaksaan.pemantauan.core.callback.AuthListener;
 import com.tdn.data.service.ApiService;
 import com.tdn.domain.serialize.req.RequestPostLogin;
 import com.tdn.domain.serialize.res.ResponseAuthLogin;
+
+import java.io.IOException;
 
 import io.realm.Realm;
 import retrofit2.Call;
@@ -32,6 +35,11 @@ public class LoginViewModel extends ViewModel {
         apiService.login(login).enqueue(new Callback<ResponseAuthLogin>() {
             @Override
             public void onResponse(Call<ResponseAuthLogin> call, Response<ResponseAuthLogin> response) {
+                try {
+                    Log.e("err", response.errorBody().string());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 if (cek(response.code())) {
                     if (cek(response.body().getResponseCode())) {
                         if (response.body().getData() != null) {
@@ -49,7 +57,7 @@ public class LoginViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<ResponseAuthLogin> call, Throwable t) {
-                authListener.onError(t.getMessage());
+                authListener.onError("y" + t.getMessage());
             }
         });
     }

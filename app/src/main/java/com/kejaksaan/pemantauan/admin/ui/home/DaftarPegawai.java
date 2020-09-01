@@ -22,6 +22,8 @@ public class DaftarPegawai extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_daftar_pegawai);
+        setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setTitle("Daftar Nama Pegawai");
         viewModel = new ViewModelProvider(this).get(DaftarPegawaiViewModel.class);
         adapterListPegawai = new AdapterListPegawai();
         binding.rv.setAdapter(adapterListPegawai);
