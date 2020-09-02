@@ -7,11 +7,9 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.Settings;
 import android.util.Base64;
-import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -21,15 +19,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class MyFragment extends Fragment {
+public class MyActivity extends AppCompatActivity {
     protected MaterialAlertDialogBuilder builder;
     public static final int REQUEST_IMAGE = 100;
     private ProgressDialog progressDialog;
 
 
-
     protected void launchCameraIntent() {
-        Intent intent = new Intent(getActivity(), ImagePickerActivity.class);
+        Intent intent = new Intent(this, ImagePickerActivity.class);
         intent.putExtra(ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION, ImagePickerActivity.REQUEST_IMAGE_CAPTURE);
 
         // setting aspect ratio
@@ -46,7 +43,7 @@ public class MyFragment extends Fragment {
     }
 
     protected void launchGalleryIntent() {
-        Intent intent = new Intent(getActivity(), ImagePickerActivity.class);
+        Intent intent = new Intent(this, ImagePickerActivity.class);
         intent.putExtra(ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION, ImagePickerActivity.REQUEST_GALLERY_IMAGE);
 
         // setting aspect ratio
@@ -59,7 +56,7 @@ public class MyFragment extends Fragment {
     // navigating user to app settings
     protected void openSettings() {
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        Uri uri = Uri.fromParts("package", getContext().getPackageName(), null);
+        Uri uri = Uri.fromParts("package", this.getPackageName(), null);
         intent.setData(uri);
         startActivityForResult(intent, 101);
     }
@@ -70,7 +67,7 @@ public class MyFragment extends Fragment {
      * NOTE: Keep proper title and message depending on your app
      */
     protected void showSettingsDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Izin Dibutuhkan");
         builder.setMessage("Iuran Qurban ingin meminta izin menggunakan kamera");
         builder.setPositiveButton("Pengaturan", (dialog, which) -> {

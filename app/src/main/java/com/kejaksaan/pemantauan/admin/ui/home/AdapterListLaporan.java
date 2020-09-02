@@ -1,6 +1,9 @@
 package com.kejaksaan.pemantauan.admin.ui.home;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -10,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.ItemLaporanBinding;
 import com.kejaksaan.pemantauan.databinding.ItemListPresensiBinding;
+import com.tdn.data.persistensi.MyUser;
 import com.tdn.domain.model.AbsensiNama;
 import com.tdn.domain.model.LaporanModel;
 
@@ -18,17 +22,26 @@ import java.util.List;
 
 public class AdapterListLaporan extends RecyclerView.Adapter<AdapterListLaporan.MyViewHolder> {
     private List<LaporanModel> data = new ArrayList<>();
+    private Context context;
+
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemLaporanBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_laporan, parent, false);
+        context = parent.getContext();
         return new MyViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.binding.tvNama.setText(data.get(position).getAlamatTinggal());
+        holder.binding.tvNama.setText(data.get(position).getNamaLengkap());
+        holder.binding.tvKet.setText("" + data.get(position).getDeskripsi());
+        holder.binding.tvNrp.setText("NRP : " + data.get(position).getNrp());
+        holder.binding.parent.setOnClickListener(v -> {
+            MyUser.getInstance(context).setKeyLastLaporan(data.get(position));
+            context.startActivity(new Intent(context, DetailLaporanActivity.class));
+        });
     }
 
     public void setdata(List<LaporanModel> namaList) {

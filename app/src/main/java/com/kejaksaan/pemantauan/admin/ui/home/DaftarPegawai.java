@@ -28,6 +28,7 @@ public class DaftarPegawai extends AppCompatActivity {
         adapterListPegawai = new AdapterListPegawai();
         binding.rv.setAdapter(adapterListPegawai);
         observe(viewModel);
+
     }
 
     private void observe(DaftarPegawaiViewModel viewModel) {

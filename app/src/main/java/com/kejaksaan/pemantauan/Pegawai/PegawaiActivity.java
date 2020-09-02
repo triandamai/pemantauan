@@ -16,6 +16,7 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.kejaksaan.pemantauan.LocationService;
+import com.kejaksaan.pemantauan.Pegawai.ui.home.TambahLaporan;
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.auth.LoginUser;
 import com.tdn.data.persistensi.MyUser;
@@ -54,7 +55,12 @@ public class PegawaiActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Dexter.withActivity(PegawaiActivity.this).withPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION).withListener(new MultiplePermissionsListener() {
+        Dexter.withActivity(PegawaiActivity.this).withPermissions(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE).withListener(new MultiplePermissionsListener() {
             @Override
             public void onPermissionsChecked(MultiplePermissionsReport report) {
                 if (report.areAllPermissionsGranted()) {
@@ -62,7 +68,8 @@ public class PegawaiActivity extends AppCompatActivity {
 
                 }
                 if (report.isAnyPermissionPermanentlyDenied()) {
-                    showSettingsDialog();
+                    //
+                    // showSettingsDialog();
                 }
             }
 
@@ -84,7 +91,7 @@ public class PegawaiActivity extends AppCompatActivity {
     protected void showSettingsDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(PegawaiActivity.this);
         builder.setTitle("Izin Dibutuhkan");
-        builder.setMessage("Aplikasi ingin meminta izin akses lokasi");
+        builder.setMessage("Aplikasi ingin meminta beberapa izin akses");
         builder.setPositiveButton("Pengaturan", (dialog, which) -> {
             dialog.cancel();
             openSettings();
@@ -116,6 +123,9 @@ public class PegawaiActivity extends AppCompatActivity {
                 MyUser.getInstance(PegawaiActivity.this).signOut();
                 startActivity(new Intent(PegawaiActivity.this, LoginUser.class));
                 finish();
+                return true;
+            case R.id.action_tambahlaporan:
+                startActivity(new Intent(PegawaiActivity.this, TambahLaporan.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

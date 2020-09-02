@@ -15,8 +15,8 @@
             android:padding="8dp">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="320dp"
-                android:layout_height="540dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:cardElevation="16dp"
                 app:cardCornerRadius="24dp">
 
@@ -68,7 +68,9 @@
                             <ImageView
                                 android:id="@+id/iv_prev"
                                 android:layout_width="match_parent"
-                                android:layout_height="200dp" />
+                                android:scaleType="fitXY"
+                                android:visibility="gone"
+                                android:layout_height="150dp" />
 
                             <TextView
                                 android:id="@+id/pickImage"
@@ -84,7 +86,7 @@
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
                                 android:layout_width="match_parent"
-                                android:layout_height="100dp" />
+                                android:layout_height="200dp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"

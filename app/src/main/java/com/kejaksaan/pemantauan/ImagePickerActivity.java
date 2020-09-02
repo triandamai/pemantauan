@@ -45,7 +45,7 @@ public class ImagePickerActivity extends AppCompatActivity {
     public static final int REQUEST_GALLERY_IMAGE = 1;
 
     private boolean lockAspectRatio = false, setBitmapMaxWidthHeight = false;
-    private int ASPECT_RATIO_X = 16, ASPECT_RATIO_Y = 9, bitmapMaxWidth = 1000, bitmapMaxHeight = 1000;
+    private int ASPECT_RATIO_X = 9, ASPECT_RATIO_Y = 16, bitmapMaxWidth = 1000, bitmapMaxHeight = 1000;
     private int IMAGE_COMPRESSION = 80;
     public static String fileName;
 

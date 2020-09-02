@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/nav_lokasi_admin"
         android:name="com.kejaksaan.pemantauan.admin.ui.pantau.PantauFragment"
-        android:label="Riwayat Presensi"
+        android:label="Halaman Pemantauan Pegawai"
         tools:layout="@layout/fragment_pantau" />
 
     <fragment

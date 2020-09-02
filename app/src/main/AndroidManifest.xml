@@ -33,6 +33,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
+        <activity android:name=".admin.ui.home.DetailLaporanActivity"></activity>
         <activity android:name=".Pegawai.ui.home.TambahLaporan" />
         <activity android:name=".admin.ui.home.ListLaporanActivity" />
         <activity android:name=".admin.ui.home.DaftarPegawai" />
@@ -62,6 +63,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service android:name=".LocationService" />
+
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"

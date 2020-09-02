@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.tdn.domain.model.LaporanModel;
 import com.tdn.domain.model.UserModel;
 
 /*
@@ -19,6 +20,7 @@ public class MyUser {
             KEY_KOMENTAR = "komentar",
             KEY_LAPORAN = "laporan",
             KEY_USER = "userdata",
+            KEY_LAST_ID_LAPORAN = "idlaporan",
             KEY_PENJUALAN = "transaksi",
             KEY_TOTAL = "total",
             KEY_CHAT = "chat";
@@ -40,6 +42,53 @@ public class MyUser {
         return myUser;
     }
 
+    public void setKeyLastLaporan(LaporanModel user) {
+        try {
+
+            Gson gson = new Gson();
+            editor.putString(KEY_LAST_ID_LAPORAN, gson.toJson(user));
+            editor.apply();
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage().toString());
+        }
+    }
+
+
+    public LaporanModel getLastLaporan() {
+        try {
+            Gson gson = new Gson();
+            String json = sharedPreferences.getString(KEY_LAST_ID_LAPORAN, "");
+            LaporanModel user = gson.fromJson(json, LaporanModel.class);
+            return user;
+        } catch (NullPointerException e) {
+            Log.e(TAG, e.getMessage().toString());
+            return null;
+        }
+    }
+
+    public void setKeyLastegawai(LaporanModel user) {
+        try {
+
+            Gson gson = new Gson();
+            editor.putString(KEY_LAST_ID_LAPORAN, gson.toJson(user));
+            editor.apply();
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage().toString());
+        }
+    }
+
+
+    public LaporanModel getLastegawai() {
+        try {
+            Gson gson = new Gson();
+            String json = sharedPreferences.getString(KEY_LAST_ID_LAPORAN, "");
+            LaporanModel user = gson.fromJson(json, LaporanModel.class);
+            return user;
+        } catch (NullPointerException e) {
+            Log.e(TAG, e.getMessage().toString());
+            return null;
+        }
+    }
 
     public void setUser(UserModel user) {
         try {

@@ -35,7 +35,7 @@ public interface ApiService {
     String BASE = "http://192.168.100.170/pemantauan_api/";
     //String BASE = "https://gatsu109.id/lokasi/";
     String BASE_URL = BASE + "api/v1/";
-    String BASE_URL_IMAGE = BASE + "assets/pengaduan/";
+    String BASE_URL_IMAGE = BASE + "public/";
     String USER_KEY = "";
 
     String accept_urlencoded = "Content-Type: application/x-www-form-urlencoded";
