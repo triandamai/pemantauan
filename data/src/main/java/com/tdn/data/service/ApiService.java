@@ -1,6 +1,7 @@
 package com.tdn.data.service;
 
 
+import com.tdn.domain.model.PegawaiModel;
 import com.tdn.domain.model.UserModel;
 import com.tdn.domain.serialize.req.RequestPostLaporan;
 import com.tdn.domain.serialize.req.RequestPostLogin;
@@ -89,6 +90,10 @@ public interface ApiService {
     @Headers({accept_json, content_type, api_key})
     @POST("user/register")
     Call<ResponseAction> register(@Body UserModel req);
+
+    @Headers({accept_json, content_type, api_key})
+    @POST("change_level")
+    Call<ResponseAction> ubahlevel(@Body PegawaiModel req);
 
     class Factory {
         public static ApiService create() {
