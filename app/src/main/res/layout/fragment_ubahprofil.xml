@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".Pegawai.ui.gallery.GalleryFragment">
+        tools:context=".Pegawai.ui.profil.UbahProfilFragment">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                                 android:textSize="10sp" />
 
                             <TextView
-                                android:id="@+id/nip"
+                                android:id="@+id/tv_nip"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -75,7 +75,7 @@
                                 android:text="NRP" />
 
                             <TextView
-                                android:id="@+id/nrp"
+                                android:id="@+id/tv_nrp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorBlack"
@@ -92,7 +92,7 @@
                                 android:text="Nama Lengkap" />
 
                             <EditText
-                                android:id="@+id/nama_pegawai"
+                                android:id="@+id/tv_nama_pegawai"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Masukan Nama Lengkap Anda"
@@ -110,7 +110,7 @@
                                 android:text="Golongan Pangkat" />
 
                             <EditText
-                                android:id="@+id/golongan"
+                                android:id="@+id/tv_golongan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="cth : Pengatur/IIC"
@@ -128,7 +128,7 @@
                                 android:text="TMT" />
 
                             <EditText
-                                android:id="@+id/tmt"
+                                android:id="@+id/tv_tmt"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="cth : Pengatur/IIC"
@@ -146,7 +146,7 @@
                                 android:text="Jabatan" />
 
                             <EditText
-                                android:id="@+id/jabatan"
+                                android:id="@+id/tv_jabatan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="cth : Staff"
@@ -164,7 +164,7 @@
                                 android:text="Alamat Tinggal" />
 
                             <EditText
-                                android:id="@+id/alamat_tinggal"
+                                android:id="@+id/tv_alamat_tinggal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="Masukan Alamat sesuai KTP"
@@ -182,7 +182,7 @@
                                 android:text="Nomor HP" />
 
                             <EditText
-                                android:id="@+id/noHP"
+                                android:id="@+id/tv_noHP"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="cth : 08888668657"
@@ -193,36 +193,13 @@
                                 android:textColor="@color/colorBlack"
                                 android:textSize="14sp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="10sp"
-                                android:text="Password" />
-
-                            <EditText
-                                android:id="@+id/password"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Masukan Password"
-                                android:inputType="textPersonName"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="14sp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
-                                <!--        <Button-->
-                                <!--            android:layout_width="match_parent"-->
-                                <!--            android:layout_height="wrap_content"-->
-                                <!--            android:layout_weight="1"-->
-                                <!--            android:text="BATAL"-->
-                                <!--            android:id="@+id/btn_cancel"-->
-                                <!--            android:background="@color/colorAccent"/>-->
+
                                 <Button
                                     android:id="@+id/btn_simpan"
                                     android:layout_width="match_parent"
@@ -231,15 +208,6 @@
                                     android:textColor="@color/colorWhite"
                                     android:background="@drawable/button_effect"
                                     android:text="SIMPAN" />
-
-                                <Button
-                                    android:id="@+id/btn_batal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/colorWhite"
-                                    android:background="@drawable/button_effect"
-                                    android:text="BATAL" />
 
 
                             </LinearLayout>

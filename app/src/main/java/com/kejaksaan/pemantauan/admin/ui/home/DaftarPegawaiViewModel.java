@@ -1,5 +1,7 @@
 package com.kejaksaan.pemantauan.admin.ui.home;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -11,6 +13,7 @@ import com.tdn.domain.model.UserModel;
 import com.tdn.domain.serialize.res.ResponseAction;
 import com.tdn.domain.serialize.res.ResponseGetPegawai;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -65,18 +68,23 @@ public class DaftarPegawaiViewModel extends ViewModel {
             public void onResponse(Call<ResponseAction> call, Response<ResponseAction> response) {
                 if (cek(response.code())) {
                     if (cek(response.body().getResponseCode())) {
-                        actionListener.onSuccess(response.body().getResponseMessage());
+                        actionListener.onSuccess("Y:" + response.body().getResponseMessage());
                     } else {
-                        actionListener.onError(response.body().getResponseMessage());
+                        actionListener.onError("N1:" + response.body().getResponseMessage());
                     }
                 } else {
-                    actionListener.onError(response.message());
+                    try {
+                        Log.e("N2", response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    actionListener.onError("N2:" + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseAction> call, Throwable t) {
-                actionListener.onError(t.getMessage());
+                actionListener.onError("N2:" + t.getMessage());
             }
         });
     }

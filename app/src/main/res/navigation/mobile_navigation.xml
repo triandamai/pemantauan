@@ -11,29 +11,14 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
 
-        <!--        <action-->
-        <!--            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"-->
-        <!--            app:destination="@id/nav_home_second" />-->
     </fragment>
-    <!--    <fragment-->
-    <!--        android:id="@+id/nav_home_second"-->
-    <!--        android:name="com.kejaksaan.pemantauan.ui.home.HomeSecondFragment"-->
-    <!--        android:label="@string/home_second"-->
-    <!--        tools:layout="@layout/fragment_home_second">-->
-    <!--        <action-->
-    <!--            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"-->
-    <!--            app:destination="@id/nav_home" />-->
 
-    <!--        <argument-->
-    <!--            android:name="myArg"-->
-    <!--            app:argType="string" />-->
-    <!--    </fragment>-->
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.kejaksaan.pemantauan.Pegawai.ui.gallery.GalleryFragment"
+        android:name="com.kejaksaan.pemantauan.Pegawai.ui.profil.UbahProfilFragment"
         android:label="@string/menu_lokasi"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_ubahprofil" />
 
     <fragment
         android:id="@+id/nav_riwayat"
@@ -43,7 +28,7 @@
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.kejaksaan.pemantauan.Pegawai.ui.slideshow.SlideshowFragment"
+        android:name="com.kejaksaan.pemantauan.Pegawai.ui.tentang.TentangAplikasiFragment"
         android:label="@string/menu_tentang"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

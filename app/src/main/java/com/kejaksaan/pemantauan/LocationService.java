@@ -183,6 +183,7 @@ public class LocationService extends Service {
                 requestPostUpdateLocation.setIdPegawai("1");
                 requestPostUpdateLocation.setLat(String.valueOf(lat));
                 requestPostUpdateLocation.setLng(String.valueOf(lng));
+
                 apiService.updateLocation(requestPostUpdateLocation).enqueue(new Callback<ResponseAction>() {
                     @Override
                     public void onResponse(@NotNull Call<ResponseAction> call, @NotNull Response<ResponseAction> response) {

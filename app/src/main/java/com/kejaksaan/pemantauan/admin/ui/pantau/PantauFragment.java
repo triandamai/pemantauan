@@ -45,17 +45,18 @@ public class PantauFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.fragment_pantau, container, false);
         mViewModel = new ViewModelProvider(this).get(PantauViewModel.class);
-        binding.swipe.setOnRefreshListener(() -> {
+
+        binding.fab.setOnClickListener(v -> {
             mViewModel.getFromApi();
             new Handler().postDelayed(() -> {
                 mViewModel.getFromLocal();
-                binding.swipe.setRefreshing(false);
+
             }, 1000);
         });
         binding.mapview.onCreate(savedInstanceState);
         binding.mapview.onResume();
         try {
-            MapsInitializer.initialize(getActivity().getApplicationContext());
+            MapsInitializer.initialize(getContext());
         } catch (Exception e) {
             e.printStackTrace();
         }

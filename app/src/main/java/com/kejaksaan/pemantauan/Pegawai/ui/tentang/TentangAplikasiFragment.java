@@ -1,4 +1,4 @@
-package com.kejaksaan.pemantauan.Pegawai.ui.slideshow;
+package com.kejaksaan.pemantauan.Pegawai.ui.tentang;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,20 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.FragmentSlideshowBinding;
 
-public class SlideshowFragment extends Fragment {
+public class TentangAplikasiFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private TentangAplikasiViewModel tentangAplikasiViewModel;
     private FragmentSlideshowBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel = new
-                ViewModelProvider(this).get(SlideshowViewModel.class);
+        tentangAplikasiViewModel = new
+                ViewModelProvider(this).get(TentangAplikasiViewModel.class);
         binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.fragment_slideshow, container, false);
 
         return binding.getRoot();

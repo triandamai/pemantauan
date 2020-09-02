@@ -6,6 +6,8 @@ import com.tdn.domain.model.UserModel;
 import com.tdn.domain.serialize.req.RequestPostLaporan;
 import com.tdn.domain.serialize.req.RequestPostLogin;
 import com.tdn.domain.serialize.req.RequestPostUpdateLocation;
+import com.tdn.domain.serialize.req.RequestPostUpdateProfil;
+import com.tdn.domain.serialize.req.RequestPostUpdatepassword;
 import com.tdn.domain.serialize.res.ResponseAction;
 import com.tdn.domain.serialize.res.ResponseAuthLogin;
 import com.tdn.domain.serialize.res.ResponseGetAbsensiNama;
@@ -33,8 +35,8 @@ public interface ApiService {
 
 
     String BASEGATSU = " https://gatsu109.id/e-presensi/api/";
-    String BASE = "http://192.168.100.170/pemantauan_api/";
-    //String BASE = "https://gatsu109.id/lokasi/";
+    //String BASE = "http://192.168.100.170/pemantauan_api/";
+    String BASE = "https://gatsu109.id/lokasi/";
     String BASE_URL = BASE + "api/v1/";
     String BASE_URL_IMAGE = BASE + "public/";
     String USER_KEY = "";
@@ -92,8 +94,16 @@ public interface ApiService {
     Call<ResponseAction> register(@Body UserModel req);
 
     @Headers({accept_json, content_type, api_key})
-    @POST("change_level")
+    @POST("user/change_level")
     Call<ResponseAction> ubahlevel(@Body PegawaiModel req);
+
+    @Headers({accept_json, content_type, api_key})
+    @POST("user/change_password")
+    Call<ResponseAction> ubahpassword(@Body RequestPostUpdatepassword req);
+
+    @Headers({accept_json, content_type, api_key})
+    @POST("user/change_profil")
+    Call<ResponseAction> ubahprofil(@Body RequestPostUpdateProfil req);
 
     class Factory {
         public static ApiService create() {

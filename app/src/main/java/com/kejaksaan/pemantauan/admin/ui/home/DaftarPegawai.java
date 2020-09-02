@@ -27,7 +27,7 @@ public class DaftarPegawai extends AppCompatActivity {
     private AdapterListPegawai adapterListPegawai;
     private ActivityDaftarPegawaiBinding binding;
     private DaftarPegawaiViewModel viewModel;
-    private String[] items;
+    private String[] items = {""};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,19 +61,21 @@ public class DaftarPegawai extends AppCompatActivity {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
             alertDialog.create();
             alertDialog.setTitle("Pegawai " + adapterListPegawai.getfromPos(posisi).getNamaLengkap());
-            if (MyUser.getInstance(this).getUser().getLevel().equalsIgnoreCase(adapterListPegawai.getfromPos(posisi).getLevel())) {
+            if (MyUser.getInstance(this).getUser().getId().equalsIgnoreCase(adapterListPegawai.getfromPos(posisi).getId())) {
                 alertDialog.setMessage("Golongan : " + adapterListPegawai.getfromPos(posisi).getGolonganPangkat());
             } else {
+
                 if (adapterListPegawai.getfromPos(posisi).getLevel().equalsIgnoreCase("USER")) {
-                    ArrayUtils.appendToArray(items, "Ubah Menjadi Admin");
+                    items[0] = "Ubah Menjadi Admin";
                 } else {
 
-                    ArrayUtils.appendToArray(items, "Ubah Menjadi User");
+                    items[0] = "Ubah Menjadi User";
                 }
             }
 
             alertDialog.setItems(items, (dialog, which) -> {
                 viewModel.ubah(adapterListPegawai.getfromPos(posisi));
+
                 dialog.dismiss();
             });
             alertDialog.setNegativeButton("BATAL", (dialog, which) -> {

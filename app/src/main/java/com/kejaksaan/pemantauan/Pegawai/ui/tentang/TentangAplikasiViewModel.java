@@ -1,16 +1,16 @@
-package com.kejaksaan.pemantauan.Pegawai.ui.gallery;
+package com.kejaksaan.pemantauan.Pegawai.ui.tentang;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class TentangAplikasiViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public TentangAplikasiViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is location fragment");
+        mText.setValue("This is about fragment");
     }
 
     public LiveData<String> getText() {
