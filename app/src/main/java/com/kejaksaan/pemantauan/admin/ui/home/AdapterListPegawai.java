@@ -1,6 +1,7 @@
 package com.kejaksaan.pemantauan.admin.ui.home;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kejaksaan.pemantauan.R;
+import com.kejaksaan.pemantauan.core.callback.AdapterClicked;
 import com.kejaksaan.pemantauan.databinding.ItemListPresensiBinding;
 import com.kejaksaan.pemantauan.databinding.ItemPegawaiBinding;
 import com.tdn.domain.model.AbsensiNama;
@@ -19,6 +21,11 @@ import java.util.List;
 
 public class AdapterListPegawai extends RecyclerView.Adapter<AdapterListPegawai.MyViewHolder> {
     private List<PegawaiModel> data = new ArrayList<>();
+    private AdapterClicked adapterClicked;
+
+    public AdapterListPegawai(AdapterClicked a) {
+        this.adapterClicked = a;
+    }
 
     @NonNull
     @Override
@@ -32,6 +39,13 @@ public class AdapterListPegawai extends RecyclerView.Adapter<AdapterListPegawai.
         holder.binding.tvNama.setText("" + data.get(position).getNamaLengkap());
         holder.binding.tvNrp.setText("NRP : " + data.get(position).getNrp());
         holder.binding.tvLevel.setText("Sebagai : " + data.get(position).getLevel());
+        holder.binding.lyParent.setOnClickListener(v -> {
+            adapterClicked.onClick(position);
+        });
+    }
+
+    public PegawaiModel getfromPos(int po) {
+        return data.get(po);
     }
 
     public void setdata(List<PegawaiModel> namaList) {

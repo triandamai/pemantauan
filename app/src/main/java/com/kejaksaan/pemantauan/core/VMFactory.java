@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.kejaksaan.pemantauan.Pegawai.ui.home.TambahLaporanViewModel;
+import com.kejaksaan.pemantauan.admin.ui.home.DaftarPegawai;
+import com.kejaksaan.pemantauan.admin.ui.home.DaftarPegawaiViewModel;
 import com.kejaksaan.pemantauan.admin.ui.tambah.TambahPegawaiViewModel;
 import com.kejaksaan.pemantauan.auth.LoginViewModel;
 import com.kejaksaan.pemantauan.core.callback.ActionListener;
@@ -60,6 +62,8 @@ public class VMFactory implements ViewModelProvider.Factory {
             return (T) new LoginViewModel(authListener);
         } else if (modelClass.isAssignableFrom(TambahPegawaiViewModel.class)) {
             return (T) new TambahPegawaiViewModel(actionListener);
+        } else if (modelClass.isAssignableFrom(DaftarPegawaiViewModel.class)) {
+            return (T) new DaftarPegawaiViewModel(actionListener);
         } else if (modelClass.isAssignableFrom(TambahLaporanViewModel.class)) {
             return (T) new TambahLaporanViewModel(context, actionListener);
         } else {

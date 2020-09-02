@@ -4,9 +4,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.kejaksaan.pemantauan.core.callback.ActionListener;
 import com.tdn.data.service.ApiService;
 import com.tdn.domain.model.PegawaiModel;
 import com.tdn.domain.model.UserModel;
+import com.tdn.domain.serialize.res.ResponseAction;
 import com.tdn.domain.serialize.res.ResponseGetPegawai;
 
 import java.util.List;
@@ -19,9 +21,11 @@ import static com.tdn.data.service.ApiHandler.cek;
 
 public class DaftarPegawaiViewModel extends ViewModel {
     private ApiService apiService;
+    private ActionListener actionListener;
 
-    public DaftarPegawaiViewModel() {
+    public DaftarPegawaiViewModel(ActionListener actionListener) {
         this.apiService = ApiService.Factory.create();
+        this.actionListener = actionListener;
         getPegawai();
     }
 
@@ -52,5 +56,28 @@ public class DaftarPegawaiViewModel extends ViewModel {
             }
         });
         return data;
+    }
+
+    public void ubah(PegawaiModel item) {
+        actionListener.onStart();
+        apiService.ubahlevel(item).enqueue(new Callback<ResponseAction>() {
+            @Override
+            public void onResponse(Call<ResponseAction> call, Response<ResponseAction> response) {
+                if (cek(response.code())) {
+                    if (cek(response.body().getResponseCode())) {
+                        actionListener.onSuccess(response.body().getResponseMessage());
+                    } else {
+                        actionListener.onError(response.body().getResponseMessage());
+                    }
+                } else {
+                    actionListener.onError(response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAction> call, Throwable t) {
+                actionListener.onError(t.getMessage());
+            }
+        });
     }
 }
