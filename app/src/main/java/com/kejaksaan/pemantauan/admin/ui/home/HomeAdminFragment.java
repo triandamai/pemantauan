@@ -1,5 +1,6 @@
 package com.kejaksaan.pemantauan.admin.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.kejaksaan.pemantauan.R;
+import com.kejaksaan.pemantauan.admin.AdminActivity;
 import com.kejaksaan.pemantauan.databinding.FragmentHomeAdminBinding;
 import com.tdn.domain.model.JumlahBelumMasukModel;
 import com.tdn.domain.model.JumlahMasukModel;
@@ -36,8 +38,14 @@ public class HomeAdminFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.fragment_home_admin, container, false);
         viewModel = new ViewModelProvider(requireActivity()).get(HomeAdminViewModel.class);
-
+        onClick();
         return binding.getRoot();
+    }
+
+    private void onClick() {
+        binding.btnJumlahpegawai.setOnClickListener(v -> startActivity(new Intent(requireContext(), DaftarPegawai.class)));
+        binding.btnJumlahlaporan.setOnClickListener(v -> startActivity(new Intent(requireContext(), ListLaporanActivity.class)));
+        binding.btnJumlahabsensi.setOnClickListener(v -> startActivity(new Intent(requireContext(), ListPresensi.class)));
     }
 
     @Override
@@ -49,17 +57,17 @@ public class HomeAdminFragment extends Fragment {
     private void observe(HomeAdminViewModel viewModel) {
         viewModel.getJumlahPegawai().observe(getViewLifecycleOwner(), jumlahPegawaiModel -> {
             if (jumlahPegawaiModel != null) {
-                binding.tvJumlahPegawai.setText("Jumlah Pegawai : " + jumlahPegawaiModel.getJumlah());
+                binding.tvJumlahPegawai.setText("Jumlah  : " + jumlahPegawaiModel.getJumlah());
             }
         });
         viewModel.getJumlahMasuk().observe(getViewLifecycleOwner(), jumlahMasukModel -> {
             if (jumlahMasukModel != null) {
-                binding.tvPresensiMasuk.setText("Presensi Masuk : " + jumlahMasukModel.getJumlah());
+                binding.tvJumlahabsensi.setText("Jumlah : " + jumlahMasukModel.getJumlah());
             }
         });
         viewModel.getJumlahBelumMasuk().observe(getViewLifecycleOwner(), jumlahBelumMasukModel -> {
             if (jumlahBelumMasukModel != null) {
-                binding.tvBelumpresennsi.setText("Belum Melakukan Presensi : " + jumlahBelumMasukModel.getJumlah());
+                binding.tvJumlahbelumpresensi.setText("Jumlah : " + jumlahBelumMasukModel.getJumlah());
             }
 
         });

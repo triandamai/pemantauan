@@ -2,22 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/daftar_presensi"
-        android:orderInCategory="100"
-        android:title="Daftar Presensi"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/daftar_pegawai"
-        android:orderInCategory="100"
-        android:title="Daftar Pegawai"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/daftar_laporan"
-        android:orderInCategory="100"
-        android:title="Daftar Laporan"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"
         android:title="Log out"

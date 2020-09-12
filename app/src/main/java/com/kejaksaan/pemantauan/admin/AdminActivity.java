@@ -63,16 +63,6 @@ public class AdminActivity extends AppCompatActivity {
                 startActivity(new Intent(AdminActivity.this, LoginUser.class));
                 finish();
                 return true;
-            case R.id.daftar_presensi:
-                startActivity(new Intent(AdminActivity.this, ListPresensi.class));
-                return true;
-            case R.id.daftar_pegawai:
-                startActivity(new Intent(AdminActivity.this, DaftarPegawai.class));
-                return true;
-            case R.id.daftar_laporan:
-                startActivity(new Intent(AdminActivity.this, ListLaporanActivity.class));
-                return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -33,8 +33,8 @@ public class DaftarPegawai extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_daftar_pegawai);
-        setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle("Daftar Nama Pegawai");
+        // setSupportActionBar(binding.toolbar);
+        //getSupportActionBar().setTitle("Daftar Nama Pegawai");
         viewModel = new ViewModelProvider(this, new VMFactory(new ActionListener() {
             @Override
             public void onStart() {

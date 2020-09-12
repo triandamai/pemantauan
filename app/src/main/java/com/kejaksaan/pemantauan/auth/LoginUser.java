@@ -35,9 +35,10 @@ public class LoginUser extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login_user);
         loginViewModel = new ViewModelProvider(this, new VMFactory(authListener)).get(LoginViewModel.class);
 
+        getSupportActionBar().setTitle("Masuk ");
         binding.btnLogin.setOnClickListener(v -> {
             RequestPostLogin req = new RequestPostLogin();
-            req.setNrp(binding.etUsernama.getText().toString());
+            req.setNrp(binding.etUsername.getText().toString());
             req.setPassword(binding.etPassword.getText().toString());
             loginViewModel.login(req);
         });
@@ -58,9 +59,11 @@ public class LoginUser extends AppCompatActivity {
                 if (data.getLevel().equals("ADMIN")) {
                     Intent i = new Intent(LoginUser.this, AdminActivity.class);
                     startActivity(i);
+                    finish();
                 } else {
                     Intent i = new Intent(LoginUser.this, PegawaiActivity.class);
                     startActivity(i);
+                    finish();
                 }
             }, 1000);
 

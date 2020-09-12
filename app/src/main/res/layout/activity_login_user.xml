@@ -1,110 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
     </data>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:background="@color/colorWhite"
-        tools:context=".auth.LoginUser">
+        android:background="@color/putih"
+        tools:context="com.kejaksaan.pemantauan.auth.LoginUser">
 
-        <TextView
-            android:id="@+id/cardLogin"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="Pindah Login"
-            android:textColor="@color/colorWhite" />
-
-        <LinearLayout
-            android:id="@+id/bricase"
-            android:orientation="vertical"
-            android:background="@color/colorWhite"
-            android:gravity="center"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/logo" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/login"
-            android:layout_below="@id/bricase"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NRP"
-                android:textColor="@color/colorBlack"
-                android:textSize="12sp"
-                tools:ignore="SmallSp" />
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/etUsernama"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:hint="Masukkan NRP"
-                android:inputType="textPersonName"
-                android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
+                <ImageView
+                    android:id="@+id/iv_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="100dp"
+                    android:src="@drawable/logo" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Password"
-                android:textColor="@color/colorBlack"
-                android:textSize="12sp"
-                tools:ignore="SmallSp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="Aplikasi Kepegawaian"
+                    android:textAlignment="center"
+                    android:textSize="24sp" />
 
-            <EditText
-                android:id="@+id/etPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:hint="Masukkan Password"
-                android:inputType="textPassword"
-                android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="KEJAKSAAN NEGERI PURWOKERTO"
+                    android:textAlignment="center" />
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_below="@id/login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:textColor="@color/colorWhite"
-                android:text="Login"
-                android:background="@drawable/button_effect" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Username/email"
+                        app:endIconMode="custom">
 
-        </LinearLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_username"
+                            android:layout_width="match_parent"
+                            android:layout_height="?actionBarSize"
+                            android:singleLine="true" />
 
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp" />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/custom_end_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Password"
+                        app:endIconCheckable="true"
+                        app:endIconMode="password_toggle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="?actionBarSize"
+                            android:singleLine="true"
+                            android:inputType="textPassword" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp">
+
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="1dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:background="#CCCCCC" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="2"
+                        android:text="MASUK" />
+
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="1dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:background="#CCCCCC" />
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/btn_login"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:elevation="0dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:shadowRadius="0"
+                    android:text="Proses Masuk" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="Dengan masuk anda telah menyetujui kebijakan privasi dan ketentuan layanan" />
+            </LinearLayout>
+
+
+        </ScrollView>
 
     </RelativeLayout>
 </layout>

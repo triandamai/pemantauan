@@ -25,8 +25,8 @@ public class ListLaporanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_list_laporan);
-        setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle("Daftar Laporan");
+//        setSupportActionBar(binding.toolbar);
+//        getSupportActionBar().setTitle("Daftar Laporan");
         viewModel = new ViewModelProvider(this).get(ListLaporanViewModel.class);
         adapterListLaporan = new AdapterListLaporan();
         binding.rv.setAdapter(adapterListLaporan);
