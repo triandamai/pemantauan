@@ -1,8 +1,11 @@
 package com.kejaksaan.pemantauan.admin.ui.home;
 
+import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -10,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.core.callback.AdapterClicked;
+import com.kejaksaan.pemantauan.core.callback.AdapterMenuClicked;
 import com.kejaksaan.pemantauan.databinding.ItemListPresensiBinding;
 import com.kejaksaan.pemantauan.databinding.ItemPegawaiBinding;
 import com.tdn.domain.model.AbsensiNama;
@@ -21,9 +25,10 @@ import java.util.List;
 
 public class AdapterListPegawai extends RecyclerView.Adapter<AdapterListPegawai.MyViewHolder> {
     private List<PegawaiModel> data = new ArrayList<>();
-    private AdapterClicked adapterClicked;
+    private AdapterMenuClicked adapterClicked;
+    private Context context;
 
-    public AdapterListPegawai(AdapterClicked a) {
+    public AdapterListPegawai(AdapterMenuClicked a) {
         this.adapterClicked = a;
     }
 
@@ -31,6 +36,7 @@ public class AdapterListPegawai extends RecyclerView.Adapter<AdapterListPegawai.
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemPegawaiBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_pegawai, parent, false);
+        this.context = parent.getContext();
         return new MyViewHolder(binding);
     }
 
@@ -39,8 +45,30 @@ public class AdapterListPegawai extends RecyclerView.Adapter<AdapterListPegawai.
         holder.binding.tvNama.setText("" + data.get(position).getNamaLengkap());
         holder.binding.tvNrp.setText("NRP : " + data.get(position).getNrp());
         holder.binding.tvLevel.setText("Sebagai : " + data.get(position).getLevel());
-        holder.binding.lyParent.setOnClickListener(v -> {
-            adapterClicked.onClick(position);
+        holder.binding.textViewOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popupMenu = new PopupMenu(context, holder.binding.textViewOptions);
+                popupMenu.inflate(R.menu.menu_item_pegawai);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.edit:
+                                adapterClicked.onEdit(position);
+                                break;
+                            case R.id.hapus:
+                                adapterClicked.onDelete(position);
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+        holder.binding.detail.setOnClickListener(v -> {
+            adapterClicked.onDetail(position);
         });
     }
 

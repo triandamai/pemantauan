@@ -36,7 +36,9 @@
         <activity android:name=".admin.ui.home.DetailLaporanActivity" />
         <activity android:name=".Pegawai.ui.home.TambahLaporan" />
         <activity android:name=".admin.ui.home.ListLaporanActivity" />
-        <activity android:name=".admin.ui.home.DaftarPegawai" />
+        <activity
+            android:name=".admin.ui.home.DaftarPegawai"
+            android:theme="@style/AppTheme" />
         <activity android:name=".admin.ui.home.ListPresensi" />
         <activity android:name=".ImagePickerActivity" />
 

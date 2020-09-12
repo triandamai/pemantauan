@@ -17,6 +17,7 @@ import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.core.VMFactory;
 import com.kejaksaan.pemantauan.core.callback.ActionListener;
 import com.kejaksaan.pemantauan.core.callback.AdapterClicked;
+import com.kejaksaan.pemantauan.core.callback.AdapterMenuClicked;
 import com.kejaksaan.pemantauan.databinding.ActivityDaftarPegawaiBinding;
 import com.tdn.data.persistensi.MyUser;
 import com.tdn.domain.model.PegawaiModel;
@@ -57,31 +58,23 @@ public class DaftarPegawai extends AppCompatActivity {
             }
         })).get(DaftarPegawaiViewModel.class);
 
-        adapterListPegawai = new AdapterListPegawai(posisi -> {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-            alertDialog.create();
-            alertDialog.setTitle("Pegawai " + adapterListPegawai.getfromPos(posisi).getNamaLengkap());
-            if (MyUser.getInstance(this).getUser().getId().equalsIgnoreCase(adapterListPegawai.getfromPos(posisi).getId())) {
-                alertDialog.setMessage("Golongan : " + adapterListPegawai.getfromPos(posisi).getGolonganPangkat());
-            } else {
-
-                if (adapterListPegawai.getfromPos(posisi).getLevel().equalsIgnoreCase("USER")) {
-                    items[0] = "Ubah Menjadi Admin";
-                } else {
-
-                    items[0] = "Ubah Menjadi User";
-                }
+        adapterListPegawai = new AdapterListPegawai(new AdapterMenuClicked() {
+            @Override
+            public void onEdit(int posisi) {
+                PegawaiModel pegawaiModel = adapterListPegawai.getfromPos(posisi);
+                MyUser.getInstance(DaftarPegawai.this).setLastPegawai(pegawaiModel);
             }
 
-            alertDialog.setItems(items, (dialog, which) -> {
-                viewModel.ubah(adapterListPegawai.getfromPos(posisi));
+            @Override
+            public void onDelete(int posisi) {
+                PegawaiModel pegawaiModel = adapterListPegawai.getfromPos(posisi);
+            }
 
-                dialog.dismiss();
-            });
-            alertDialog.setNegativeButton("BATAL", (dialog, which) -> {
-                dialog.dismiss();
-            });
-            alertDialog.show();
+            @Override
+            public void onDetail(int posisi) {
+                PegawaiModel pegawaiModel = adapterListPegawai.getfromPos(posisi);
+                MyUser.getInstance(DaftarPegawai.this).setLastPegawai(pegawaiModel);
+            }
         });
         binding.rv.setAdapter(adapterListPegawai);
         observe(viewModel);

@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.tdn.domain.model.LaporanModel;
+import com.tdn.domain.model.PegawaiModel;
 import com.tdn.domain.model.UserModel;
 
 /*
@@ -66,7 +67,7 @@ public class MyUser {
         }
     }
 
-    public void setKeyLastegawai(LaporanModel user) {
+    public void setLastPegawai(PegawaiModel user) {
         try {
 
             Gson gson = new Gson();
@@ -78,11 +79,11 @@ public class MyUser {
     }
 
 
-    public LaporanModel getLastegawai() {
+    public PegawaiModel getLastegawai() {
         try {
             Gson gson = new Gson();
             String json = sharedPreferences.getString(KEY_LAST_ID_LAPORAN, "");
-            LaporanModel user = gson.fromJson(json, LaporanModel.class);
+            PegawaiModel user = gson.fromJson(json, PegawaiModel.class);
             return user;
         } catch (NullPointerException e) {
             Log.e(TAG, e.getMessage().toString());
