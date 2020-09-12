@@ -55,6 +55,7 @@ public class DaftarPegawai extends AppCompatActivity {
                 viewModel.getPegawai();
                 observe(viewModel);
 
+
             }
 
             @Override
@@ -92,6 +93,7 @@ public class DaftarPegawai extends AppCompatActivity {
             public void onDetail(int posisi) {
                 PegawaiModel pegawaiModel = adapterListPegawai.getfromPos(posisi);
                 MyUser.getInstance(DaftarPegawai.this).setLastPegawai(pegawaiModel);
+                startActivity(new Intent(DaftarPegawai.this, TambahPegawaiActivity.class));
             }
         });
         binding.add.setOnClickListener(v -> {
@@ -105,8 +107,9 @@ public class DaftarPegawai extends AppCompatActivity {
             a.show();
 
         });
-        binding.rv.setAdapter(adapterListPegawai);
 
+        binding.rv.setAdapter(adapterListPegawai);
+        viewModel.getPegawai();
         observe(viewModel);
 
     }

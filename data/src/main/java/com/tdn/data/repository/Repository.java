@@ -7,6 +7,7 @@ import com.tdn.data.service.ApiService;
 import com.tdn.domain.model.LokasiModel;
 import com.tdn.domain.object.LokasiObject;
 import com.tdn.domain.serialize.res.ResponseGetLokasi;
+import com.tdn.domain.serialize.res.ResponseGetTitik;
 
 
 import io.realm.Realm;
@@ -78,6 +79,43 @@ public class Repository {
 
             @Override
             public void onFailure(Call<ResponseGetLokasi> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void getAllTitik() {
+        service.getTitik().enqueue(new Callback<ResponseGetTitik>() {
+            @Override
+            public void onResponse(Call<ResponseGetTitik> call, Response<ResponseGetTitik> response) {
+                if (cek(response.code())) {
+                    if (cek(response.body().getResponseCode())) {
+                        if (response.body().getData() != null) {
+                            realm.beginTransaction();
+                            realm.delete(LokasiObject.class);
+                            realm.commitTransaction();
+                            if (response.body().getData().size() > 0) {
+                                for (LokasiModel m : response.body().getData()) {
+                                    LokasiObject o = (LokasiObject) m.ToObject();
+                                    realm.executeTransaction(realm -> realm.copyToRealmOrUpdate(o));
+
+                                }
+                            }
+                        } else {
+                            realm.beginTransaction();
+                            realm.delete(LokasiObject.class);
+                            realm.commitTransaction();
+                        }
+                    } else {
+                        realm.beginTransaction();
+                        realm.delete(LokasiObject.class);
+                        realm.commitTransaction();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseGetTitik> call, Throwable t) {
 
             }
         });

@@ -80,6 +80,7 @@ public class AdapterListPegawai extends RecyclerView.Adapter<AdapterListPegawai.
         if (this.data == null) {
             this.data = namaList;
         } else {
+            this.data.clear();
             this.data.addAll(namaList);
         }
         notifyDataSetChanged();

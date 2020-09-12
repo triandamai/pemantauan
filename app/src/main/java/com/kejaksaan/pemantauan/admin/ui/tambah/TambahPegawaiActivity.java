@@ -43,7 +43,10 @@ public class TambahPegawaiActivity extends AppCompatActivity {
             @Override
             public void onSuccess(@NonNull String message) {
                 Snackbar.make(binding.getRoot(), message, BaseTransientBottomBar.LENGTH_LONG).show();
-                new Handler().postDelayed(() -> finish(), 600);
+                RESET();
+
+                onBackPressed();
+                finish();
             }
 
             @Override
@@ -62,6 +65,18 @@ public class TambahPegawaiActivity extends AppCompatActivity {
 
     }
 
+    private void RESET() {
+        binding.etNRP.setText("");
+        binding.etNIP.setText("");
+        binding.etTmt.setText("");
+        binding.etPassword.setText("");
+        binding.etNohp.setText("");
+        binding.etNama.setText("");
+        binding.etJabatan.setText("");
+        binding.etGolongan.setText("");
+        binding.etAlamat.setText("");
+    }
+
 
     private void onClick() {
         binding.btnBatal.setOnClickListener(v -> {
@@ -78,35 +93,39 @@ public class TambahPegawaiActivity extends AppCompatActivity {
         });
         binding.btnSimpan.setOnClickListener(v -> {
             if (validasi()) {
-                RadioButton level = findViewById(binding.radioGroup.getCheckedRadioButtonId());
-                builder.setTitle("Info");
-                builder.setMessage("Pastikan data sudah sesuai , Lanjutkan simpan ?");
-                builder.setPositiveButton("Batal", (dialog, which) -> dialog.cancel());
-                builder.setNegativeButton("Simpan", (dialog, which) -> {
-                    UserModel u = new UserModel();
-                    u.setAlamatTinggal(binding.etAlamat.getText().toString());
-                    u.setGolonganPangkat(binding.etGolongan.getText().toString());
-                    u.setJabatan(binding.etJabatan.getText().toString());
-                    u.setLevel(level.getTag().toString());
-                    u.setNamaLengkap(binding.etNama.getText().toString());
-                    u.setNip(binding.etNIP.getText().toString());
-                    u.setNoHp(binding.etNohp.getText().toString());
-                    u.setNrp(binding.etNRP.getText().toString());
-                    u.setPassword(binding.etPassword.getText().toString());
-                    u.setTmt(binding.etTmt.getText().toString());
+                if (binding.etNIP.getText().length() < 8 || binding.etNRP.getText().length() < 8) {
+                    Snackbar.make(binding.getRoot(), "NIP / NRP haru lebih dari 8 karakter !", BaseTransientBottomBar.LENGTH_LONG).show();
+                } else {
+                    RadioButton level = findViewById(binding.radioGroup.getCheckedRadioButtonId());
+                    builder.setTitle("Info");
+                    builder.setMessage("Pastikan data sudah sesuai , Lanjutkan simpan ?");
+                    builder.setNegativeButton("Batal", (dialog, which) -> dialog.cancel());
+                    builder.setPositiveButton("Simpan", (dialog, which) -> {
+                        UserModel u = new UserModel();
+                        u.setAlamatTinggal(binding.etAlamat.getText().toString());
+                        u.setGolonganPangkat(binding.etGolongan.getText().toString());
+                        u.setJabatan(binding.etJabatan.getText().toString());
+                        u.setLevel(level.getTag().toString());
+                        u.setNamaLengkap(binding.etNama.getText().toString());
+                        u.setNip(binding.etNIP.getText().toString());
+                        u.setNoHp(binding.etNohp.getText().toString());
+                        u.setNrp(binding.etNRP.getText().toString());
+                        u.setPassword(binding.etPassword.getText().toString());
+                        u.setTmt(binding.etTmt.getText().toString());
 
-                    if (this.isEdit) {
-                        RequestPostUpdateProfil up = new RequestPostUpdateProfil();
-                        u.setId(MyUser.getInstance(this).getLastegawai().getId());
+                        if (this.isEdit) {
+                            RequestPostUpdateProfil up = new RequestPostUpdateProfil();
+                            u.setId(MyUser.getInstance(this).getLastegawai().getId());
 
-                        viewModel.ubah(u);
-                    } else {
-                        u.setId("");
-                        viewModel.simpan(u);
-                    }
+                            viewModel.ubah(u);
+                        } else {
+                            u.setId("");
+                            viewModel.simpan(u);
+                        }
 
-                });
-                builder.show();
+                    });
+                    builder.show();
+                }
             } else {
                 builder.setTitle("Info");
                 builder.setMessage("Mohon isi semua data !");
@@ -115,6 +134,7 @@ public class TambahPegawaiActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void setView() {
         binding.etNIP.setEnabled(false);
@@ -186,5 +206,22 @@ public class TambahPegawaiActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         MyUser.getInstance(this).setLastPegawai(null);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (masihEdit()) {
+            builder.setTitle("Info");
+            builder.setMessage("Perubahan belum disimpan, Tetap Batal ?");
+            builder.setPositiveButton("Keluar", (dialog, which) -> {
+                onBackPressed();
+                finish();
+            });
+            builder.setNegativeButton("Lanjutkan", (dialog, which) -> dialog.cancel());
+            builder.show();
+        } else {
+            super.onBackPressed();
+        }
+
     }
 }

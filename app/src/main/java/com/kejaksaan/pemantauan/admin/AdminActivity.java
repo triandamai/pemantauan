@@ -39,7 +39,7 @@ public class AdminActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_admin);
         navView = binding.navView;
         appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_pegawai, R.id.nav_lokasi_admin, R.id.nav_tentang_admin
+                R.id.nav_home, R.id.nav_lokasi_admin, R.id.nav_tentang_admin
         ).build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

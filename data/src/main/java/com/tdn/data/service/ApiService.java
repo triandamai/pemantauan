@@ -17,6 +17,7 @@ import com.tdn.domain.serialize.res.ResponseGetJumlahPegawai;
 import com.tdn.domain.serialize.res.ResponseGetLaporan;
 import com.tdn.domain.serialize.res.ResponseGetLokasi;
 import com.tdn.domain.serialize.res.ResponseGetPegawai;
+import com.tdn.domain.serialize.res.ResponseGetTitik;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -46,6 +47,7 @@ public interface ApiService {
     String accept_urlencoded = "Content-Type: application/x-www-form-urlencoded";
     String accept_json = "Accept: application/json;charset=utf-8";
     String content_type = "Content-Type: application/json;charset=utf-8";
+    String content_type_url = "Content-Type: application/x-www-form-urlencoded";
     String api_key = "X-API-KEY: your api key";
 
 
@@ -70,6 +72,10 @@ public interface ApiService {
     @Headers({accept_json, content_type, api_key})
     @GET("lokasi/user")
     Call<ResponseGetLokasi> getAllLokasi();
+
+    @Headers({accept_json, content_type, api_key})
+    @GET("lokasi/titil")
+    Call<ResponseGetTitik> getTitik();
 
     @Headers({accept_json, content_type, api_key})
     @GET("user/user")
@@ -108,10 +114,10 @@ public interface ApiService {
     Call<ResponseAction> ubahprofil(@Body RequestPostUpdateProfil req);
 
     @Headers({accept_json, content_type, api_key})
-    @POST("user/change_user")
+    @POST("user/edit_user")
     Call<ResponseAction> ubahpegawai(@Body UserModel req);
 
-    @Headers({accept_json, content_type, api_key})
+    @Headers({accept_urlencoded, content_type_url, api_key})
     @FormUrlEncoded
     @POST("user/delete_user")
     Call<ResponseAction> hapuspegawai(@Field("id") String req);

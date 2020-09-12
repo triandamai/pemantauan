@@ -7,10 +7,6 @@
             android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_pegawai"
-            android:icon="@drawable/ic_tambah"
-            android:title="Tambah Data" />
-        <item
             android:id="@+id/nav_lokasi_admin"
             android:icon="@drawable/ic_lokasi"
             android:title="Pemantauan" />
