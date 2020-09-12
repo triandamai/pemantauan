@@ -105,6 +105,10 @@ public interface ApiService {
     @POST("user/change_profil")
     Call<ResponseAction> ubahprofil(@Body RequestPostUpdateProfil req);
 
+    @Headers({accept_json, content_type, api_key})
+    @POST("user/change_user")
+    Call<ResponseAction> ubahpegawai(@Body UserModel req);
+
     class Factory {
         public static ApiService create() {
             return ServiceFactory.createService(ApiService.class);

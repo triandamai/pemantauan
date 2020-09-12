@@ -1,18 +1,28 @@
 package com.kejaksaan.pemantauan.admin.ui.tambah;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.RadioButton;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.kejaksaan.pemantauan.R;
+import com.kejaksaan.pemantauan.core.VMFactory;
+import com.kejaksaan.pemantauan.core.callback.ActionListener;
 import com.kejaksaan.pemantauan.databinding.ActivityTambahPegawaiBinding;
 import com.tdn.data.persistensi.MyUser;
 import com.tdn.domain.model.PegawaiModel;
+import com.tdn.domain.model.UserModel;
+import com.tdn.domain.serialize.req.RequestPostUpdateProfil;
 
 public class TambahPegawaiActivity extends AppCompatActivity {
     private ActivityTambahPegawaiBinding binding;
@@ -24,6 +34,23 @@ public class TambahPegawaiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tambah_pegawai);
+        viewModel = new ViewModelProvider(this, new VMFactory(new ActionListener() {
+            @Override
+            public void onStart() {
+                Snackbar.make(binding.getRoot(), "Proses..", BaseTransientBottomBar.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onSuccess(@NonNull String message) {
+                Snackbar.make(binding.getRoot(), message, BaseTransientBottomBar.LENGTH_LONG).show();
+                new Handler().postDelayed(() -> finish(), 600);
+            }
+
+            @Override
+            public void onError(@NonNull String message) {
+                Snackbar.make(binding.getRoot(), message, BaseTransientBottomBar.LENGTH_LONG).show();
+            }
+        })).get(TambahPegawaiViewModel.class);
         builder = new AlertDialog.Builder(this);
         builder.create();
 
@@ -41,8 +68,8 @@ public class TambahPegawaiActivity extends AppCompatActivity {
             if (masihEdit()) {
                 builder.setTitle("Info");
                 builder.setMessage("Perubahan belum disimpan, Tetap Batal ?");
-                builder.setPositiveButton("Batalkan", (dialog, which) -> finish());
-                builder.setNegativeButton("Teruskan", (dialog, which) -> dialog.cancel());
+                builder.setPositiveButton("Keluar", (dialog, which) -> finish());
+                builder.setNegativeButton("Lanjutkan", (dialog, which) -> dialog.cancel());
                 builder.show();
 
             } else {
@@ -51,15 +78,38 @@ public class TambahPegawaiActivity extends AppCompatActivity {
         });
         binding.btnSimpan.setOnClickListener(v -> {
             if (validasi()) {
+                RadioButton level = findViewById(binding.radioGroup.getCheckedRadioButtonId());
                 builder.setTitle("Info");
-                builder.setMessage("Pastikan data sudah sesuai !, Lanjutkan simpan ?");
-                builder.setPositiveButton("Batal", (dialog, which) -> finish());
-                builder.setNegativeButton("Simpan", (dialog, which) -> dialog.cancel());
+                builder.setMessage("Pastikan data sudah sesuai , Lanjutkan simpan ?");
+                builder.setPositiveButton("Batal", (dialog, which) -> dialog.cancel());
+                builder.setNegativeButton("Simpan", (dialog, which) -> {
+                    UserModel u = new UserModel();
+                    u.setAlamatTinggal(binding.etAlamat.getText().toString());
+                    u.setGolonganPangkat(binding.etGolongan.getText().toString());
+                    u.setJabatan(binding.etJabatan.getText().toString());
+                    u.setLevel(level.getTag().toString());
+                    u.setNamaLengkap(binding.etNama.getText().toString());
+                    u.setNip(binding.etNIP.getText().toString());
+                    u.setNoHp(binding.etNohp.getText().toString());
+                    u.setNrp(binding.etNRP.getText().toString());
+                    u.setPassword(binding.etPassword.getText().toString());
+                    u.setTmt(binding.etTmt.getText().toString());
+
+                    if (this.isEdit) {
+                        RequestPostUpdateProfil up = new RequestPostUpdateProfil();
+                        u.setId(MyUser.getInstance(this).getLastegawai().getId());
+
+                        viewModel.ubah(u);
+                    } else {
+                        u.setId("");
+                        viewModel.simpan(u);
+                    }
+
+                });
                 builder.show();
             } else {
                 builder.setTitle("Info");
                 builder.setMessage("Mohon isi semua data !");
-                ;
                 builder.setNegativeButton("Oke", (dialog, which) -> dialog.cancel());
                 builder.show();
             }
@@ -79,6 +129,11 @@ public class TambahPegawaiActivity extends AppCompatActivity {
         binding.etNama.setText(model.getNamaLengkap());
         binding.etNohp.setText(model.getNoHp());
         binding.etTmt.setText(model.getTmt());
+        if (model.getLevel().equalsIgnoreCase("ADMIN")) {
+            binding.radioButton2.setChecked(true);
+        } else {
+            binding.radioButton1.setChecked(true);
+        }
     }
 
     private boolean validasi() {
