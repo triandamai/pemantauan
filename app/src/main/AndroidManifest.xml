@@ -33,6 +33,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
+        <activity android:name=".admin.ui.tambah.TambahPegawaiActivity"></activity>
         <activity android:name=".admin.ui.home.DetailLaporanActivity" />
         <activity android:name=".Pegawai.ui.home.TambahLaporan" />
         <activity android:name=".admin.ui.home.ListLaporanActivity" />
@@ -50,7 +51,6 @@
             android:name=".admin.AdminActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".auth.LoginUser" />
-
         <activity
             android:name=".SplashScreen"
             android:theme="@style/AppThemeNoAppbar">

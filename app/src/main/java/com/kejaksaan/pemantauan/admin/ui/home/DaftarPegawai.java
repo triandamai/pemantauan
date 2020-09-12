@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -28,14 +29,16 @@ public class DaftarPegawai extends AppCompatActivity {
     private AdapterListPegawai adapterListPegawai;
     private ActivityDaftarPegawaiBinding binding;
     private DaftarPegawaiViewModel viewModel;
-    private String[] items = {""};
+    private AlertDialog.Builder a;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_daftar_pegawai);
-        // setSupportActionBar(binding.toolbar);
-        //getSupportActionBar().setTitle("Daftar Nama Pegawai");
+        getSupportActionBar().setTitle("Daftar Pegawai");
+        a = new AlertDialog.Builder(DaftarPegawai.this).setTitle("Info!");
+        a.create();
         viewModel = new ViewModelProvider(this, new VMFactory(new ActionListener() {
             @Override
             public void onStart() {
@@ -63,11 +66,23 @@ public class DaftarPegawai extends AppCompatActivity {
             public void onEdit(int posisi) {
                 PegawaiModel pegawaiModel = adapterListPegawai.getfromPos(posisi);
                 MyUser.getInstance(DaftarPegawai.this).setLastPegawai(pegawaiModel);
+                a.setMessage("Apakah anda yakin merubah pegawai " + pegawaiModel.getNamaLengkap() + " ?");
+                a.setNegativeButton("Batal", (dialog, which) -> dialog.cancel());
+                a.setPositiveButton("Yakin", (dialog, which) -> {
+
+                });
+                a.show();
             }
 
             @Override
             public void onDelete(int posisi) {
                 PegawaiModel pegawaiModel = adapterListPegawai.getfromPos(posisi);
+                a.setMessage("Apakah anda yakin menghapus pegawai " + pegawaiModel.getNamaLengkap() + " ?");
+                a.setNegativeButton("Batal", (dialog, which) -> dialog.cancel());
+                a.setPositiveButton("Yakin", (dialog, which) -> {
+
+                });
+                a.show();
             }
 
             @Override
@@ -76,7 +91,21 @@ public class DaftarPegawai extends AppCompatActivity {
                 MyUser.getInstance(DaftarPegawai.this).setLastPegawai(pegawaiModel);
             }
         });
+        binding.add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                a.setMessage("Tambah Pegawai baru ?");
+                a.setNegativeButton("Batal", (dialog, which) -> {
+                    dialog.cancel();
+                });
+                a.setPositiveButton("Tambah", (dialog, which) -> {
+                });
+                a.show();
+
+            }
+        });
         binding.rv.setAdapter(adapterListPegawai);
+
         observe(viewModel);
 
     }
