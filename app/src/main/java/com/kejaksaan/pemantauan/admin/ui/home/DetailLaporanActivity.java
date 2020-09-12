@@ -31,8 +31,7 @@ public class DetailLaporanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_laporan);
-        setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle("Detail Laporan Pegawai");
+
         if (MyUser.getInstance(this).getLastLaporan() != null) {
             LaporanModel l = MyUser.getInstance(this).getLastLaporan();
             Picasso.get().load(ApiService.BASE_URL_IMAGE + l.getMedia()).into(binding.ivBukti);

@@ -1,7 +1,12 @@
 package com.tdn.domain.model;
 
+import android.annotation.SuppressLint;
+import android.util.Log;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.text.SimpleDateFormat;
 
 public class LaporanModel {
     @SerializedName("id_laporan")
@@ -212,5 +217,11 @@ public class LaporanModel {
 
     public void setNoHp(String noHp) {
         this.noHp = noHp;
+    }
+
+    public String created_at_to_date() {
+
+
+        return String.valueOf(createdAt);
     }
 }

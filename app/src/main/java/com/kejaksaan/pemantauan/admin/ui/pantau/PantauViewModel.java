@@ -8,6 +8,7 @@ import com.tdn.data.local.RealmLiveResult;
 import com.tdn.data.repository.Repository;
 import com.tdn.domain.model.TitikModel;
 import com.tdn.domain.object.LokasiObject;
+import com.tdn.domain.object.TitikObject;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ import io.realm.Realm;
 public class PantauViewModel extends ViewModel {
     private Realm realm;
     private LiveData<List<LokasiObject>> listLiveData;
-    private LiveData<List<TitikModel>> listtitikData;
+    private LiveData<List<TitikObject>> listtitikData;
 
     public PantauViewModel() {
         this.realm = Realm.getDefaultInstance();
@@ -26,10 +27,12 @@ public class PantauViewModel extends ViewModel {
 
     public void getFromApi() {
         Repository.getInstance().getAllLokasi();
+        Repository.getInstance().getAllTitik();
     }
 
     public void getFromLocal() {
         this.listLiveData = new RealmLiveResult(realm.where(LokasiObject.class).findAll());
+        this.listtitikData = new RealmLiveResult(realm.where(TitikObject.class).findAll());
     }
 
     public LiveData<List<LokasiObject>> getListLiveData() {
@@ -37,5 +40,12 @@ public class PantauViewModel extends ViewModel {
             listLiveData = new MutableLiveData<>();
         }
         return listLiveData;
+    }
+
+    public LiveData<List<TitikObject>> getListtitikData() {
+        if (listtitikData == null) {
+            listtitikData = new MutableLiveData<>();
+        }
+        return listtitikData;
     }
 }

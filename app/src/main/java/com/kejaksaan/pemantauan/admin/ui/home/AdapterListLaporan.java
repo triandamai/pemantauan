@@ -18,6 +18,7 @@ import com.tdn.domain.model.AbsensiNama;
 import com.tdn.domain.model.LaporanModel;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AdapterListLaporan extends RecyclerView.Adapter<AdapterListLaporan.MyViewHolder> {
@@ -36,9 +37,9 @@ public class AdapterListLaporan extends RecyclerView.Adapter<AdapterListLaporan.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.binding.tvNama.setText(data.get(position).getNamaLengkap());
-        holder.binding.tvKet.setText("" + data.get(position).getDeskripsi());
-        holder.binding.tvNrp.setText("NRP : " + data.get(position).getNrp());
-        holder.binding.parent.setOnClickListener(v -> {
+        holder.binding.tvKetnrp.setText("NRP : " + data.get(position).getNrp() + "\nKet : " + data.get(position).getDeskripsi());
+        holder.binding.tvTanggal.setText(data.get(position).created_at_to_date());
+        holder.binding.btnDetail.setOnClickListener(v -> {
             MyUser.getInstance(context).setKeyLastLaporan(data.get(position));
             context.startActivity(new Intent(context, DetailLaporanActivity.class));
         });
@@ -52,6 +53,7 @@ public class AdapterListLaporan extends RecyclerView.Adapter<AdapterListLaporan.
         }
         notifyDataSetChanged();
     }
+
 
     @Override
     public int getItemCount() {

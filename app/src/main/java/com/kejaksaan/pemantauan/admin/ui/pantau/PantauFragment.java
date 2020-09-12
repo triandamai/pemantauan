@@ -21,7 +21,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.FragmentPantauBinding;
+import com.tdn.domain.model.TitikModel;
 import com.tdn.domain.object.LokasiObject;
+import com.tdn.domain.object.TitikObject;
 
 import java.util.List;
 
@@ -89,6 +91,29 @@ public class PantauFragment extends Fragment {
 
                         }
                         LatLng latLng = new LatLng(Double.parseDouble(lokasiObjects.get(0).getLat()), Double.parseDouble(lokasiObjects.get(0).getLng()));
+                        CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(9).build();
+                        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                    });
+                }
+            }
+        });
+        mViewModel.getListtitikData().observe(getViewLifecycleOwner(), titikModels -> {
+            if (titikModels != null) {
+                if (titikModels.size() > 0) {
+
+                    binding.mapview.getMapAsync(googleMap -> {
+                        gmaps = googleMap;
+                        for (TitikObject o : titikModels) {
+                            MarkerOptions options = new MarkerOptions();
+                            options.position(new LatLng(
+                                    Double.parseDouble(o.getLat()),
+                                    Double.parseDouble(o.getLng()))).anchor(0.5f, 0.5f)
+                                    .title("Lokasi " + o.getNama())
+                                    .snippet(o.getDetail());
+                            gmaps.addMarker(options);
+
+                        }
+                        LatLng latLng = new LatLng(Double.parseDouble(titikModels.get(0).getLat()), Double.parseDouble(titikModels.get(0).getLng()));
                         CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(9).build();
                         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                     });

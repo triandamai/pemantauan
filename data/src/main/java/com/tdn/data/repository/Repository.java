@@ -5,7 +5,9 @@ import android.util.Log;
 
 import com.tdn.data.service.ApiService;
 import com.tdn.domain.model.LokasiModel;
+import com.tdn.domain.model.TitikModel;
 import com.tdn.domain.object.LokasiObject;
+import com.tdn.domain.object.TitikObject;
 import com.tdn.domain.serialize.res.ResponseGetLokasi;
 import com.tdn.domain.serialize.res.ResponseGetTitik;
 
@@ -92,12 +94,14 @@ public class Repository {
                     if (cek(response.body().getResponseCode())) {
                         if (response.body().getData() != null) {
                             realm.beginTransaction();
-                            realm.delete(LokasiObject.class);
+                            realm.delete(TitikObject.class);
                             realm.commitTransaction();
                             if (response.body().getData().size() > 0) {
-                                for (LokasiModel m : response.body().getData()) {
-                                    LokasiObject o = (LokasiObject) m.ToObject();
-                                    realm.executeTransaction(realm -> realm.copyToRealmOrUpdate(o));
+                                for (TitikModel m : response.body().getData()) {
+                                    TitikObject o = (TitikObject) m.ToObject();
+                                    realm.executeTransaction(realm -> {
+                                        realm.copyToRealmOrUpdate(o);
+                                    });
 
                                 }
                             }

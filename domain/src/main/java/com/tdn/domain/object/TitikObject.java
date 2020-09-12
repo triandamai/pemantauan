@@ -5,7 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import com.tdn.domain.model.LokasiModel;
 import com.tdn.domain.model.TitikModel;
 
-public class TitikObject {
+import io.realm.RealmObject;
+
+public class TitikObject extends RealmObject {
     @SerializedName("id")
     @Expose
     private String id;

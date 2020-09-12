@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/colorGreenDark"
         tools:context=".admin.ui.tentang.TentangFragment">
 
         <RelativeLayout
@@ -33,6 +32,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:padding="16dp"
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -46,104 +46,37 @@
                         app:civ_border_color="#FF000000" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="E-KEPEGAWAIAN adalah aplikasi milik Kejaksaan Negeri Purwokerto"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
                         android:gravity="center"
+                        android:textAlignment="center"
                         android:textColor="@color/colorBlack"
                         android:layout_marginTop="24dp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="yang digunakan sebagai data profil kepegawaian"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
                         android:gravity="center"
+                        android:textAlignment="center"
                         android:textColor="@color/colorBlack" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="serta berfungsi sebagai media pelaporan kegiatan."
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
+                        android:textAlignment="center"
                         android:gravity="center"
                         android:textColor="@color/colorBlack" />
 
-                    <!--                <LinearLayout-->
-                    <!--                    android:layout_width="match_parent"-->
-                    <!--                    android:layout_height="match_parent"-->
-                    <!--                    android:layout_marginTop="16dp"-->
-                    <!--                    android:padding="16dp"-->
-                    <!--                    android:orientation="vertical">-->
-
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:textColor="@color/colorBlack"-->
-                    <!--                        android:text="Nama Pegawai"-->
-                    <!--                        android:textSize="10sp"/>-->
-
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_marginTop="8dp"-->
-                    <!--                        android:layout_marginBottom="8dp"-->
-                    <!--                        android:textColor="@color/colorBlack"-->
-                    <!--                        android:textSize="14sp"-->
-                    <!--                        android:text="Steve Rogers"/>-->
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:textColor="@color/colorBlack"-->
-                    <!--                        android:textSize="10sp"-->
-                    <!--                        android:text="Jabatan"/>-->
-
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:textColor="@color/colorBlack"-->
-                    <!--                        android:layout_marginTop="8dp"-->
-                    <!--                        android:layout_marginBottom="8dp"-->
-                    <!--                        android:textSize="14sp"-->
-                    <!--                        android:text="Captain America"/>-->
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:textColor="@color/colorBlack"-->
-                    <!--                        android:textSize="10sp"-->
-                    <!--                        android:text="ID Pegawai"/>-->
-
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:textColor="@color/colorBlack"-->
-                    <!--                        android:layout_marginTop="8dp"-->
-                    <!--                        android:layout_marginBottom="8dp"-->
-                    <!--                        android:textSize="16sp"-->
-                    <!--                        android:text="00196392"/>-->
-
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:textColor="@color/colorBlack"-->
-                    <!--                        android:textSize="10sp"-->
-                    <!--                        android:text="Unit Kerja"/>-->
-
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:textColor="@color/colorBlack"-->
-                    <!--                        android:layout_marginTop="8dp"-->
-                    <!--                        android:layout_marginBottom="8dp"-->
-                    <!--                        android:textSize="16sp"-->
-                    <!--                        android:text="America"/>-->
-                    <!--                </LinearLayout>-->
                 </LinearLayout>
-                <!--        </ScrollView>-->
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
