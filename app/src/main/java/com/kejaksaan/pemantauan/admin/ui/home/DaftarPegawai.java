@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -15,6 +16,7 @@ import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.kejaksaan.pemantauan.R;
+import com.kejaksaan.pemantauan.admin.ui.tambah.TambahPegawaiActivity;
 import com.kejaksaan.pemantauan.core.VMFactory;
 import com.kejaksaan.pemantauan.core.callback.ActionListener;
 import com.kejaksaan.pemantauan.core.callback.AdapterClicked;
@@ -69,7 +71,7 @@ public class DaftarPegawai extends AppCompatActivity {
                 a.setMessage("Apakah anda yakin merubah pegawai " + pegawaiModel.getNamaLengkap() + " ?");
                 a.setNegativeButton("Batal", (dialog, which) -> dialog.cancel());
                 a.setPositiveButton("Yakin", (dialog, which) -> {
-
+                    startActivity(new Intent(DaftarPegawai.this, TambahPegawaiActivity.class));
                 });
                 a.show();
             }
@@ -91,18 +93,16 @@ public class DaftarPegawai extends AppCompatActivity {
                 MyUser.getInstance(DaftarPegawai.this).setLastPegawai(pegawaiModel);
             }
         });
-        binding.add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                a.setMessage("Tambah Pegawai baru ?");
-                a.setNegativeButton("Batal", (dialog, which) -> {
-                    dialog.cancel();
-                });
-                a.setPositiveButton("Tambah", (dialog, which) -> {
-                });
-                a.show();
+        binding.add.setOnClickListener(v -> {
+            a.setMessage("Tambah Pegawai baru ?");
+            a.setNegativeButton("Batal", (dialog, which) -> {
+                dialog.cancel();
+            });
+            a.setPositiveButton("Tambah", (dialog, which) -> {
+                startActivity(new Intent(DaftarPegawai.this, TambahPegawaiActivity.class));
+            });
+            a.show();
 
-            }
         });
         binding.rv.setAdapter(adapterListPegawai);
 
