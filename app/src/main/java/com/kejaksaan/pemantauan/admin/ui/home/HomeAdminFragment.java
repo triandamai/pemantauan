@@ -18,6 +18,10 @@ import com.kejaksaan.pemantauan.databinding.FragmentHomeAdminBinding;
 import com.tdn.domain.model.JumlahBelumMasukModel;
 import com.tdn.domain.model.JumlahMasukModel;
 import com.tdn.domain.model.JumlahPegawaiModel;
+import com.tdn.domain.model.LaporanModel;
+import com.tdn.domain.model.PegawaiModel;
+
+import java.util.List;
 
 
 /**
@@ -26,6 +30,7 @@ import com.tdn.domain.model.JumlahPegawaiModel;
 public class HomeAdminFragment extends Fragment {
     private FragmentHomeAdminBinding binding;
     private HomeAdminViewModel viewModel;
+    int jml = 0;
 
     public HomeAdminFragment() {
         // Required empty public constructor
@@ -55,9 +60,20 @@ public class HomeAdminFragment extends Fragment {
     }
 
     private void observe(HomeAdminViewModel viewModel) {
+        viewModel.getPegawai().observe(getViewLifecycleOwner(), pegawaiModels -> {
+            if (pegawaiModels != null) {
+                binding.tvJumlahPegawai.setText("Jumlah  : " + pegawaiModels.size());
+            }
+        });
+        viewModel.getLaporan().observe(getViewLifecycleOwner(), laporanModels -> {
+            if (laporanModels != null) {
+                binding.tvJumallaporan.setText("Jumlah : " + laporanModels.size());
+            }
+        });
         viewModel.getJumlahPegawai().observe(getViewLifecycleOwner(), jumlahPegawaiModel -> {
             if (jumlahPegawaiModel != null) {
-                binding.tvJumlahPegawai.setText("Jumlah  : " + jumlahPegawaiModel.getJumlah());
+                binding.tvJumlahabsensidari.setText("Dari " + jumlahPegawaiModel.getJumlah() + " Pegawai");
+                binding.tvBelumjumlahabsensidari.setText("Dari " + jumlahPegawaiModel.getJumlah() + " Pegawai");
             }
         });
         viewModel.getJumlahMasuk().observe(getViewLifecycleOwner(), jumlahMasukModel -> {

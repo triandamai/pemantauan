@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -108,6 +109,11 @@ public class DaftarPegawai extends AppCompatActivity {
 
         });
 
+        binding.swipe.setOnRefreshListener(() -> {
+            viewModel.getPegawai();
+            observe(viewModel);
+            binding.swipe.setRefreshing(false);
+        });
         binding.rv.setAdapter(adapterListPegawai);
         viewModel.getPegawai();
         observe(viewModel);

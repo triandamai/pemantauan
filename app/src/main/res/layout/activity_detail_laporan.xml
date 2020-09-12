@@ -8,15 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></androidx.appcompat.widget.Toolbar>
-        </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -35,19 +26,48 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     android:text="Detail Laporan" />
 
                 <TextView
                     android:id="@+id/tv_nama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
                     android:text="NAMA" />
+
+                <TextView
+                    android:id="@+id/tv_tanggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="09 " />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="NRP" />
 
                 <TextView
                     android:id="@+id/tv_nrp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="NRP" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Keterangan" />
 
                 <TextView
                     android:id="@+id/tv_deskripsi"
@@ -60,16 +80,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
                     android:text="Lokasi" />
 
                 <com.google.android.gms.maps.MapView
                     android:id="@+id/mapview"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="250dp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"
                     android:text="Gambar Laporan" />
 
                 <ImageView

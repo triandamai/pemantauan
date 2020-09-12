@@ -35,9 +35,10 @@ public class DetailLaporanActivity extends AppCompatActivity {
         if (MyUser.getInstance(this).getLastLaporan() != null) {
             LaporanModel l = MyUser.getInstance(this).getLastLaporan();
             Picasso.get().load(ApiService.BASE_URL_IMAGE + l.getMedia()).into(binding.ivBukti);
-            binding.tvNama.setText("Nama : " + l.getNamaLengkap());
-            binding.tvNrp.setText("NRP : " + l.getNrp());
-            binding.tvDeskripsi.setText("Ket : \n" + l.getDeskripsi());
+            binding.tvNama.setText(l.getNamaLengkap());
+            binding.tvNrp.setText(l.getNrp());
+            binding.tvDeskripsi.setText(l.getDeskripsi());
+            binding.tvTanggal.setText(l.getCreatedAt());
             binding.mapview.onCreate(savedInstanceState);
             binding.mapview.onResume();
             try {

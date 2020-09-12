@@ -1,5 +1,7 @@
 package com.kejaksaan.pemantauan.admin.ui.home;
 
+import android.app.Application;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -8,10 +10,16 @@ import com.tdn.data.service.ApiService;
 import com.tdn.domain.model.JumlahMasukModel;
 import com.tdn.domain.model.JumlahBelumMasukModel;
 import com.tdn.domain.model.JumlahPegawaiModel;
+import com.tdn.domain.model.LaporanModel;
+import com.tdn.domain.model.PegawaiModel;
 import com.tdn.domain.serialize.res.ResponseGetJumlahBelumMasuk;
 import com.tdn.domain.serialize.res.ResponseGetJumlahMasuk;
 import com.tdn.domain.serialize.res.ResponseGetJumlahPegawai;
+import com.tdn.domain.serialize.res.ResponseGetLaporan;
 import com.tdn.domain.serialize.res.ResponseGetLokasi;
+import com.tdn.domain.serialize.res.ResponseGetPegawai;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,13 +29,16 @@ import static com.tdn.data.service.ApiHandler.cek;
 
 public class HomeAdminViewModel extends ViewModel {
     private ApiService apiService;
-
+    private ApiService service2;
 
     public HomeAdminViewModel() {
         this.apiService = ApiService.GatsuFactory.create();
+        this.service2 = ApiService.Factory.create();
         getJumlahMasuk();
         getJumlahPegawai();
         getJumlahBelumMasuk();
+        getLaporan();
+        getPegawai();
     }
 
     public LiveData<JumlahMasukModel> getJumlahMasuk() {
@@ -117,4 +128,61 @@ public class HomeAdminViewModel extends ViewModel {
         return pegawai;
     }
 
+    public LiveData<List<LaporanModel>> getLaporan() {
+        final MutableLiveData<List<LaporanModel>> data = new MutableLiveData<>();
+        service2.getLaporan().enqueue(new Callback<ResponseGetLaporan>() {
+            @Override
+            public void onResponse(Call<ResponseGetLaporan> call, Response<ResponseGetLaporan> response) {
+                if (cek(response.code())) {
+                    if (cek(response.body().getResponseCode())) {
+                        if (response.body().getData() != null) {
+                            List<LaporanModel> list = response.body().getData();
+                            data.setValue(list);
+                        } else {
+                            data.setValue(null);
+                        }
+                    } else {
+                        data.setValue(null);
+                    }
+                } else {
+                    data.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseGetLaporan> call, Throwable t) {
+                data.setValue(null);
+            }
+        });
+        return data;
+    }
+
+    public LiveData<List<PegawaiModel>> getPegawai() {
+        final MutableLiveData<List<PegawaiModel>> data = new MutableLiveData<>();
+        service2.getPegawai().enqueue(new Callback<ResponseGetPegawai>() {
+            @Override
+            public void onResponse(Call<ResponseGetPegawai> call, Response<ResponseGetPegawai> response) {
+                if (cek(response.code())) {
+                    if (cek(response.body().getResponseCode())) {
+                        if (response.body().getData() != null) {
+                            List<PegawaiModel> list = response.body().getData();
+                            data.setValue(list);
+                        } else {
+                            data.setValue(null);
+                        }
+                    } else {
+                        data.setValue(null);
+                    }
+                } else {
+                    data.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseGetPegawai> call, Throwable t) {
+                data.setValue(null);
+            }
+        });
+        return data;
+    }
 }

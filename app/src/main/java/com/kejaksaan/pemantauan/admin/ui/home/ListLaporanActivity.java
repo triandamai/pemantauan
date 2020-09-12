@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -25,12 +26,16 @@ public class ListLaporanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_list_laporan);
-//        setSupportActionBar(binding.toolbar);
-//        getSupportActionBar().setTitle("Daftar Laporan");
+
         viewModel = new ViewModelProvider(this).get(ListLaporanViewModel.class);
         adapterListLaporan = new AdapterListLaporan();
         binding.rv.setAdapter(adapterListLaporan);
-
+        binding.swipe.setOnRefreshListener(() -> {
+            viewModel.getLaporan();
+            observe(viewModel);
+            binding.swipe.setRefreshing(false);
+        });
+        viewModel.getLaporan();
         observe(viewModel);
     }
 
