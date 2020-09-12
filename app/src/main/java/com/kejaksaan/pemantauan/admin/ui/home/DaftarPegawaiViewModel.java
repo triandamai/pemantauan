@@ -88,4 +88,33 @@ public class DaftarPegawaiViewModel extends ViewModel {
             }
         });
     }
+
+    public void delete(String id) {
+        actionListener.onStart();
+        apiService.hapuspegawai(id).enqueue(new Callback<ResponseAction>() {
+            @Override
+            public void onResponse(Call<ResponseAction> call, Response<ResponseAction> response) {
+                if (cek(response.code())) {
+                    if (cek(response.body().getResponseCode())) {
+                        actionListener.onSuccess("Y:" + response.body().getResponseMessage());
+                    } else {
+                        actionListener.onError("N1:" + response.body().getResponseMessage());
+                    }
+                } else {
+                    try {
+                        Log.e("N2", response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    actionListener.onError("N2:" + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAction> call, Throwable t) {
+                actionListener.onError("N2:" + t.getMessage());
+            }
+        });
+    }
+
 }

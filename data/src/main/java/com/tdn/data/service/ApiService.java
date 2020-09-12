@@ -21,6 +21,8 @@ import com.tdn.domain.serialize.res.ResponseGetPegawai;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -108,6 +110,11 @@ public interface ApiService {
     @Headers({accept_json, content_type, api_key})
     @POST("user/change_user")
     Call<ResponseAction> ubahpegawai(@Body UserModel req);
+
+    @Headers({accept_json, content_type, api_key})
+    @FormUrlEncoded
+    @POST("user/delete_user")
+    Call<ResponseAction> hapuspegawai(@Field("id") String req);
 
     class Factory {
         public static ApiService create() {

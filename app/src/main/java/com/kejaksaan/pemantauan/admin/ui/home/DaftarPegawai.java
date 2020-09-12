@@ -53,6 +53,7 @@ public class DaftarPegawai extends AppCompatActivity {
                 Snackbar
                         .make(binding.getRoot(), message, BaseTransientBottomBar.LENGTH_LONG).show();
                 viewModel.getPegawai();
+                observe(viewModel);
 
             }
 
@@ -82,7 +83,7 @@ public class DaftarPegawai extends AppCompatActivity {
                 a.setMessage("Apakah anda yakin menghapus pegawai " + pegawaiModel.getNamaLengkap() + " ?");
                 a.setNegativeButton("Batal", (dialog, which) -> dialog.cancel());
                 a.setPositiveButton("Yakin", (dialog, which) -> {
-
+                    viewModel.delete(pegawaiModel.getId());
                 });
                 a.show();
             }
