@@ -44,7 +44,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".auth.LoginAdmin" />
         <activity
             android:name=".admin.AdminActivity"
             android:theme="@style/Theme.AppCompat.Light" />
@@ -60,7 +59,7 @@
         <activity
             android:name=".Pegawai.PegawaiActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppThemeNoAppbar" />
 
         <service android:name=".LocationService" />
 

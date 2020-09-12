@@ -73,4 +73,14 @@
 
     <color name="black_overlay">#66000000</color>
     <color name="bottom_nav_color">#F44336</color>
+
+
+    <color name="putih">#FFFF</color>
+    <color name="bru_panda">#03A9F4</color>
+    <color name="birucyan">#03A9F4</color>
+    <color name="Hijau">#189F1D</color>
+    <color name="Biru">#2196F3</color>
+    <color name="Kuning">#FFC107</color>
+    <color name="Merah">#E32618</color>
+    <color name="Danger">#E53935</color>
 </resources>
