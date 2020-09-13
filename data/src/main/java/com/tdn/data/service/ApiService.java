@@ -83,7 +83,7 @@ public interface ApiService {
 
     @Headers({accept_json, content_type, api_key})
     @GET("laporan/laporan")
-    Call<ResponseGetLaporan> getLaporan();
+    Call<ResponseGetLaporan> getLaporan(@Query("id") String id);
 
     @Headers({accept_json, content_type, api_key})
     @POST("lokasi/location")

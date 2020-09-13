@@ -130,7 +130,7 @@ public class HomeAdminViewModel extends ViewModel {
 
     public LiveData<List<LaporanModel>> getLaporan() {
         final MutableLiveData<List<LaporanModel>> data = new MutableLiveData<>();
-        service2.getLaporan().enqueue(new Callback<ResponseGetLaporan>() {
+        service2.getLaporan("").enqueue(new Callback<ResponseGetLaporan>() {
             @Override
             public void onResponse(Call<ResponseGetLaporan> call, Response<ResponseGetLaporan> response) {
                 if (cek(response.code())) {

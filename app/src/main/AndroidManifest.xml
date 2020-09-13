@@ -36,6 +36,8 @@
         <activity android:name=".admin.ui.home.DetailLaporanActivity" />
         <activity android:name=".Pegawai.ui.home.TambahLaporan" />
         <activity android:name=".admin.ui.home.ListLaporanActivity" />
+        <activity android:name=".Pegawai.ui.laporan.ListLaporanPegawaiActivity" />
+        <activity android:name=".Pegawai.ui.laporan.DetailLaporanPegawaiActivity" />
         <activity
             android:name=".admin.ui.home.DaftarPegawai"
             android:theme="@style/AppTheme" />

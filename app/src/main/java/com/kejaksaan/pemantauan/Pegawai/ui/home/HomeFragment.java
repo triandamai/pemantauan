@@ -1,5 +1,6 @@
 package com.kejaksaan.pemantauan.Pegawai.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
+import com.kejaksaan.pemantauan.Pegawai.ui.laporan.ListLaporanPegawaiActivity;
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.FragmentHomeBinding;
 import com.tdn.data.persistensi.MyUser;
@@ -27,14 +30,22 @@ public class HomeFragment extends Fragment {
                 ViewModelProvider(this).get(HomeViewModel.class);
         binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.fragment_home, container, false);
         UserModel userModel = MyUser.getInstance(getContext()).getUser();
-        binding.nip.setText(userModel.getNip());
-        binding.alamatTinggal.setText(userModel.getAlamatTinggal());
-        binding.golongan.setText(userModel.getGolonganPangkat());
-        binding.jabatan.setText(userModel.getJabatan());
-        binding.namaPegawai.setText(userModel.getNamaLengkap());
-        binding.noHP.setText(userModel.getNoHp());
-        binding.nrp.setText(userModel.getNrp());
-        binding.tmt.setText(userModel.getTmt());
+//        binding.nip.setText(userModel.getNip());
+//        binding.alamatTinggal.setText(userModel.getAlamatTinggal());
+//        binding.golongan.setText(userModel.getGolonganPangkat());
+//        binding.jabatan.setText(userModel.getJabatan());
+//        binding.namaPegawai.setText(userModel.getNamaLengkap());
+//        binding.noHP.setText(userModel.getNoHp());
+//        binding.nrp.setText(userModel.getNrp());
+//        binding.tmt.setText(userModel.getTmt());
+        binding.btnUbahprofil.setOnClickListener(v -> {
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.nav_gallery);
+        });
+        binding.btnLaporan.setOnClickListener(v -> {
+                    getContext().startActivity(new Intent(getContext(), ListLaporanPegawaiActivity.class));
+
+                }
+        );
         return binding.getRoot();
     }
 }

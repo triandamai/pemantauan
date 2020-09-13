@@ -1,10 +1,13 @@
-package com.kejaksaan.pemantauan.admin.ui.home;
+package com.kejaksaan.pemantauan.Pegawai.ui.laporan;
+
+import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.android.gms.common.api.Api;
+import com.tdn.data.persistensi.MyUser;
 import com.tdn.data.service.ApiService;
 import com.tdn.domain.model.LaporanModel;
 import com.tdn.domain.serialize.res.ResponseGetLaporan;
@@ -17,19 +20,23 @@ import retrofit2.Response;
 
 import static com.tdn.data.service.ApiHandler.cek;
 
-public class ListLaporanViewModel extends ViewModel {
+public class ListLaporanPegawaiViewModel extends ViewModel {
     private ApiService apiService;
+    private Context context;
 
-    public ListLaporanViewModel() {
+    public ListLaporanPegawaiViewModel(Context context) {
         this.apiService = ApiService.Factory.create();
+        this.context = context;
         getLaporan();
     }
 
     public LiveData<List<LaporanModel>> getLaporan() {
+
         final MutableLiveData<List<LaporanModel>> data = new MutableLiveData<>();
-        apiService.getLaporan("").enqueue(new Callback<ResponseGetLaporan>() {
+        apiService.getLaporan(MyUser.getInstance(context).getUser().getId()).enqueue(new Callback<ResponseGetLaporan>() {
             @Override
             public void onResponse(Call<ResponseGetLaporan> call, Response<ResponseGetLaporan> response) {
+                Log.e("re", "hadehh" + response.body().toString());
                 if (cek(response.code())) {
                     if (cek(response.body().getResponseCode())) {
                         if (response.body().getData() != null) {
@@ -49,6 +56,7 @@ public class ListLaporanViewModel extends ViewModel {
             @Override
             public void onFailure(Call<ResponseGetLaporan> call, Throwable t) {
                 data.setValue(null);
+                Log.e("re", "hadeeh" + t.getMessage());
             }
         });
         return data;
