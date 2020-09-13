@@ -56,10 +56,11 @@ public class TambahPegawaiActivity extends AppCompatActivity {
         })).get(TambahPegawaiViewModel.class);
         builder = new AlertDialog.Builder(this);
         builder.create();
-
+        getSupportActionBar().setTitle("Tambah Pegawai");
         if (MyUser.getInstance(TambahPegawaiActivity.this).getLastegawai() != null) {
             this.isEdit = true;
             setView();
+            getSupportActionBar().setTitle("Edit Pegawai");
         }
         onClick();
 

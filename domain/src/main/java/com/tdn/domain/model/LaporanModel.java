@@ -15,6 +15,9 @@ public class LaporanModel {
     @SerializedName("id_pegawai")
     @Expose
     private String idPegawai;
+    @SerializedName("kode_laporan")
+    @Expose
+    private String kodeLaporan;
     @SerializedName("deskripsi")
     @Expose
     private String deskripsi;
@@ -81,6 +84,14 @@ public class LaporanModel {
 
     public void setIdPegawai(String idPegawai) {
         this.idPegawai = idPegawai;
+    }
+
+    public String getKodeLaporan() {
+        return kodeLaporan;
+    }
+
+    public void setKodeLaporan(String kodeLaporan) {
+        this.kodeLaporan = kodeLaporan;
     }
 
     public String getDeskripsi() {
@@ -218,6 +229,7 @@ public class LaporanModel {
     public void setNoHp(String noHp) {
         this.noHp = noHp;
     }
+
 
     public String created_at_to_date() {
 

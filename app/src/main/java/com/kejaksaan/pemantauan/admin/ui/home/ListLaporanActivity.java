@@ -28,6 +28,7 @@ public class ListLaporanActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_list_laporan);
 
         viewModel = new ViewModelProvider(this).get(ListLaporanViewModel.class);
+        getSupportActionBar().setTitle("Daftar Laporan");
         adapterListLaporan = new AdapterListLaporan();
         binding.rv.setAdapter(adapterListLaporan);
         binding.swipe.setOnRefreshListener(() -> {

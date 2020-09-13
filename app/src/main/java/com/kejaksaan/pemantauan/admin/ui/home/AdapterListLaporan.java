@@ -37,7 +37,7 @@ public class AdapterListLaporan extends RecyclerView.Adapter<AdapterListLaporan.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.binding.tvNama.setText(data.get(position).getNamaLengkap());
-        holder.binding.tvKetnrp.setText("NRP : " + data.get(position).getNrp() + "\nKet : " + data.get(position).getDeskripsi());
+        holder.binding.tvKetnrp.setText("NRP : " + data.get(position).getNrp() + "\nKet : " + data.get(position).getDeskripsi() + "\nKODE : " + data.get(position).getKodeLaporan());
         holder.binding.tvTanggal.setText(data.get(position).created_at_to_date());
         holder.binding.btnDetail.setOnClickListener(v -> {
             MyUser.getInstance(context).setKeyLastLaporan(data.get(position));

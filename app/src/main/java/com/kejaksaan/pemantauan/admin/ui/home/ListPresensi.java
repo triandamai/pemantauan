@@ -22,6 +22,7 @@ public class ListPresensi extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_list_presensi);
+        getSupportActionBar().setTitle("Daftar Absensi pegawai");
         viewModel = new ViewModelProvider(this).get(ListPresensiViewModel.class);
         adapterListPresensi = new AdapterListPresensi();
         binding.rv.setAdapter(adapterListPresensi);
