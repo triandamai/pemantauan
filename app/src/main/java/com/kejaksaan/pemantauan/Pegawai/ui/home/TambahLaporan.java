@@ -49,6 +49,7 @@ public class TambahLaporan extends MyActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tambah_laporan);
+        getSupportActionBar().setTitle("Tambah Laporan");
         viewModel = new ViewModelProvider(this, new VMFactory(this, new ActionListener() {
             @Override
             public void onStart() {
@@ -111,7 +112,7 @@ public class TambahLaporan extends MyActivity {
     }
 
     private void onclick() {
-        binding.pickImage.setOnClickListener(v -> {
+        binding.btnAmbilgambar.setOnClickListener(v -> {
             showImagePickerOptions(this, new ImagePickerActivity.PickerOptionListener() {
                 @Override
                 public void onTakeCameraSelected() {
