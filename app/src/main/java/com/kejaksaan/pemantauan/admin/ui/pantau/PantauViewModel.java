@@ -27,12 +27,10 @@ public class PantauViewModel extends ViewModel {
 
     public void getFromApi() {
         Repository.getInstance().getAllLokasi();
-        Repository.getInstance().getAllTitik();
     }
 
     public void getFromLocal() {
         this.listLiveData = new RealmLiveResult(realm.where(LokasiObject.class).findAll());
-        this.listtitikData = new RealmLiveResult(realm.where(TitikObject.class).findAll());
     }
 
     public LiveData<List<LokasiObject>> getListLiveData() {
@@ -42,10 +40,4 @@ public class PantauViewModel extends ViewModel {
         return listLiveData;
     }
 
-    public LiveData<List<TitikObject>> getListtitikData() {
-        if (listtitikData == null) {
-            listtitikData = new MutableLiveData<>();
-        }
-        return listtitikData;
-    }
 }

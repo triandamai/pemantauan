@@ -38,8 +38,8 @@ public interface ApiService {
 
 
     String BASEGATSU = " https://gatsu109.id/e-presensi/api/";
-    String BASE = "http://192.168.42.56/pemantauan_api/";
-    //String BASE = "https://gatsu109.id/lokasi/";
+    //String BASE = "http://192.168.42.56/pemantauan_api/";
+    String BASE = "https://gatsu109.id/lokasi/";
     String BASE_URL = BASE + "api/v1/";
     String BASE_URL_IMAGE = BASE + "public/";
     String USER_KEY = "";

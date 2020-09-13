@@ -85,8 +85,8 @@ public class PantauFragment extends Fragment {
                             options.position(new LatLng(
                                     Double.parseDouble(o.getLat()),
                                     Double.parseDouble(o.getLng()))).anchor(0.5f, 0.5f)
-                                    .title("Lokasi " + o.getNamaLengkap())
-                                    .snippet(o.getNip());
+                                    .title("Lokasi " + o.getKet())
+                                    .snippet(o.getDetail());
                             gmaps.addMarker(options);
 
                         }
@@ -97,28 +97,6 @@ public class PantauFragment extends Fragment {
                 }
             }
         });
-        mViewModel.getListtitikData().observe(getViewLifecycleOwner(), titikModels -> {
-            if (titikModels != null) {
-                if (titikModels.size() > 0) {
 
-                    binding.mapview.getMapAsync(googleMap -> {
-                        gmaps = googleMap;
-                        for (TitikObject o : titikModels) {
-                            MarkerOptions options = new MarkerOptions();
-                            options.position(new LatLng(
-                                    Double.parseDouble(o.getLat()),
-                                    Double.parseDouble(o.getLng()))).anchor(0.5f, 0.5f)
-                                    .title("Lokasi " + o.getNama())
-                                    .snippet(o.getDetail());
-                            gmaps.addMarker(options);
-
-                        }
-                        LatLng latLng = new LatLng(Double.parseDouble(titikModels.get(0).getLat()), Double.parseDouble(titikModels.get(0).getLng()));
-                        CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(9).build();
-                        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                    });
-                }
-            }
-        });
     }
 }

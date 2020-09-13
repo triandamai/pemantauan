@@ -43,22 +43,25 @@ public class DetailLaporanActivity extends AppCompatActivity {
             binding.tvTanggal.setText(l.getCreatedAt());
             binding.mapview.onCreate(savedInstanceState);
             binding.mapview.onResume();
+
+
             try {
                 MapsInitializer.initialize(this);
+                binding.mapview.getMapAsync(googleMap -> {
+                    gmaps = googleMap;
+
+
+                    gmaps.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(l.getLat()), Double.parseDouble(l.getLng()))).title("Lokasi Pengambilan Gambar"));
+                    LatLng latLng = new LatLng(Double.parseDouble(l.getLat()), Double.parseDouble(l.getLng()));
+                    CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(9).build();
+                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+
+                });
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            binding.mapview.getMapAsync(googleMap -> {
-                gmaps = googleMap;
 
-
-                gmaps.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(l.getLat()), Double.parseDouble(l.getLng()))).title("Lokasi Pengambilan Gambar"));
-                LatLng latLng = new LatLng(Double.parseDouble(l.getLat()), Double.parseDouble(l.getLng()));
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(9).build();
-                googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-
-            });
         } else {
             Snackbar.make(binding.getRoot(), "Gagal Mengambil Informasi!", BaseTransientBottomBar.LENGTH_INDEFINITE).show();
         }
