@@ -20,6 +20,9 @@ public class LokasiModel extends BaseModel {
     @SerializedName("detail")
     @Expose
     private String detail;
+    @SerializedName("tipe")
+    @Expose
+    private String tipe;
 
     public Integer getId() {
         return id;
@@ -61,6 +64,13 @@ public class LokasiModel extends BaseModel {
         this.detail = detail;
     }
 
+    public String getTipe() {
+        return tipe;
+    }
+
+    public void setTipe(String tipe) {
+        this.tipe = tipe;
+    }
 
     @Override
     public Object ToObject() {
@@ -70,6 +80,7 @@ public class LokasiModel extends BaseModel {
         o.setKet(ket);
         o.setLat(lat);
         o.setLng(lng);
+        o.setTipe(tipe);
         return o;
     }
 }

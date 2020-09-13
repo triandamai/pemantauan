@@ -20,6 +20,8 @@ public class LokasiObject extends RealmObject {
 
     private String detail;
 
+    private String tipe;
+
     public Integer getId() {
         return id;
     }
@@ -60,6 +62,14 @@ public class LokasiObject extends RealmObject {
         this.detail = detail;
     }
 
+    public String getTipe() {
+        return tipe;
+    }
+
+    public void setTipe(String tipe) {
+        this.tipe = tipe;
+    }
+
 
     public Object ToModel() {
         LokasiModel o = new LokasiModel();
@@ -68,6 +78,7 @@ public class LokasiObject extends RealmObject {
         o.setKet(ket);
         o.setLat(lat);
         o.setLng(lng);
+        o.setTipe(tipe);
         return o;
     }
 }
