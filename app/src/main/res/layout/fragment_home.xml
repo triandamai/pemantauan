@@ -274,7 +274,7 @@
                                 android:orientation="horizontal">
 
                                 <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/btn_jumlahabsensi"
+                                    android:id="@+id/btn_catatan"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="8dp"

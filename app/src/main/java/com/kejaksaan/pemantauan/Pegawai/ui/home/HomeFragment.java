@@ -29,15 +29,7 @@ public class HomeFragment extends Fragment {
         homeViewModel = new
                 ViewModelProvider(this).get(HomeViewModel.class);
         binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.fragment_home, container, false);
-        UserModel userModel = MyUser.getInstance(getContext()).getUser();
-//        binding.nip.setText(userModel.getNip());
-//        binding.alamatTinggal.setText(userModel.getAlamatTinggal());
-//        binding.golongan.setText(userModel.getGolonganPangkat());
-//        binding.jabatan.setText(userModel.getJabatan());
-//        binding.namaPegawai.setText(userModel.getNamaLengkap());
-//        binding.noHP.setText(userModel.getNoHp());
-//        binding.nrp.setText(userModel.getNrp());
-//        binding.tmt.setText(userModel.getTmt());
+      
         binding.btnUbahprofil.setOnClickListener(v -> {
             Navigation.findNavController(binding.getRoot()).navigate(R.id.nav_gallery);
         });
@@ -46,6 +38,9 @@ public class HomeFragment extends Fragment {
 
                 }
         );
+        binding.btnCatatan.setOnClickListener(v -> {
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.nav_listcatatan);
+        });
         return binding.getRoot();
     }
 }

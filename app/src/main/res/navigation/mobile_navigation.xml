@@ -31,4 +31,19 @@
         android:name="com.kejaksaan.pemantauan.Pegawai.ui.tentang.TentangAplikasiFragment"
         android:label="@string/menu_tentang"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_listcatatan"
+        android:name="com.kejaksaan.pemantauan.Pegawai.ui.catatan.ListCatatanFragment"
+        android:label="@string/menu_tentang"
+        tools:layout="@layout/list_catatan" />
+    <fragment
+        android:id="@+id/nav_tambahcatatan"
+        android:name="com.kejaksaan.pemantauan.Pegawai.ui.catatan.TambahCatatanFragment"
+        android:label="@string/menu_tentang"
+        tools:layout="@layout/tambah_catatan_fragment" />
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="com.kejaksaan.pemantauan.Pegawai.ui.catatan.DetailCatatanFragment"
+        android:label="@string/menu_tentang"
+        tools:layout="@layout/detail_catatan_fragment" />
 </navigation>
