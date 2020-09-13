@@ -11,6 +11,7 @@ import com.tdn.domain.serialize.req.RequestPostUpdatepassword;
 import com.tdn.domain.serialize.res.ResponseAction;
 import com.tdn.domain.serialize.res.ResponseAuthLogin;
 import com.tdn.domain.serialize.res.ResponseGetAbsensiNama;
+import com.tdn.domain.serialize.res.ResponseGetCatatan;
 import com.tdn.domain.serialize.res.ResponseGetJumlahBelumMasuk;
 import com.tdn.domain.serialize.res.ResponseGetJumlahMasuk;
 import com.tdn.domain.serialize.res.ResponseGetJumlahPegawai;
@@ -84,6 +85,10 @@ public interface ApiService {
     @Headers({accept_json, content_type, api_key})
     @GET("laporan/laporan")
     Call<ResponseGetLaporan> getLaporan(@Query("id") String id);
+
+    @Headers({accept_json, content_type, api_key})
+    @GET("catatan/catatan")
+    Call<ResponseGetCatatan> getCatatan(@Query("id") String id);
 
     @Headers({accept_json, content_type, api_key})
     @POST("lokasi/location")
