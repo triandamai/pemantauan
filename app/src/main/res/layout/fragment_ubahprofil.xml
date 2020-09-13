@@ -17,204 +17,206 @@
             android:gravity="center"
             android:padding="8dp">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="320dp"
-                android:layout_height="540dp"
-                app:cardElevation="16dp"
-                app:cardCornerRadius="24dp">
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:layout_width="320dp"-->
+            <!--                android:layout_height="540dp"-->
+            <!--                app:cardElevation="16dp"-->
+            <!--                app:cardCornerRadius="24dp">-->
 
-                <ScrollView
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/profile_image"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:src="@drawable/logo"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="24dp"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="16dp"
+                        android:padding="16dp"
                         android:orientation="vertical">
 
-                        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/profile_image"
-                            android:layout_width="96dp"
-                            android:layout_height="96dp"
-                            android:src="@drawable/logo"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="24dp"
-                            app:civ_border_width="2dp"
-                            app:civ_border_color="#FF000000" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorBlack"
+                            android:text="NIP"
+                            android:textStyle="bold"
+                            android:textSize="18sp" />
 
-                        <LinearLayout
+                        <TextView
+                            android:id="@+id/tv_nip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorBlack"
+                            android:text="33012209078070"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:textSize="10sp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:text="NRP" />
+
+                        <TextView
+                            android:id="@+id/tv_nrp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorBlack"
+                            android:text="1080799"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:textSize="10sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="Nama Lengkap"
+                            app:endIconMode="custom">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_nama_pegawai"
+                                android:layout_width="match_parent"
+                                android:layout_height="?actionBarSize"
+                                android:inputType="text"
+                                android:singleLine="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="Golongan / Pangkat"
+                            app:endIconMode="custom">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_golongan"
+                                android:layout_width="match_parent"
+                                android:layout_height="?actionBarSize"
+                                android:inputType="text"
+                                android:singleLine="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="TMT"
+                            app:endIconMode="custom">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_tmt"
+                                android:layout_width="match_parent"
+                                android:layout_height="?actionBarSize"
+                                android:inputType="text"
+                                android:singleLine="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="Jabatan"
+                            app:endIconMode="custom">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_jabatan"
+                                android:layout_width="match_parent"
+                                android:layout_height="?actionBarSize"
+                                android:inputType="text"
+                                android:singleLine="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="Alamat Tinggal"
+                            app:endIconMode="custom">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_alamat"
+                                android:layout_width="match_parent"
+                                android:layout_height="?actionBarSize"
+                                android:inputType="text"
+                                android:singleLine="false"
+                                android:maxLines="5" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:hint="Nomor Hp"
+                            app:endIconMode="custom">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_nohp"
+                                android:layout_width="match_parent"
+                                android:layout_height="?actionBarSize"
+                                android:maxLines="15"
+                                android:inputType="numberDecimal"
+                                android:singleLine="true" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <Button
+                            android:id="@+id/btn_simpan"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_marginStart="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginTop="40dp"
+                            android:elevation="0dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:shadowRadius="0"
+                            android:text="Simpan" />
+
+
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="16dp"
-                            android:padding="16dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:text="NIP"
-                                android:textSize="10sp" />
-
-                            <TextView
-                                android:id="@+id/tv_nip"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:text="33012209078070"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:textSize="10sp" />
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="10sp"
-                                android:text="NRP" />
-
-                            <TextView
-                                android:id="@+id/tv_nrp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:text="1080799"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:textSize="10sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="10sp"
-                                android:text="Nama Lengkap" />
-
-                            <EditText
-                                android:id="@+id/tv_nama_pegawai"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Masukan Nama Lengkap Anda"
-                                android:inputType="textPersonName"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="10sp"
-                                android:text="Golongan Pangkat" />
-
-                            <EditText
-                                android:id="@+id/tv_golongan"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="cth : Pengatur/IIC"
-                                android:inputType="textPersonName"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="10sp"
-                                android:text="TMT" />
-
-                            <EditText
-                                android:id="@+id/tv_tmt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="cth : Pengatur/IIC"
-                                android:inputType="textPersonName"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="10sp"
-                                android:text="Jabatan" />
-
-                            <EditText
-                                android:id="@+id/tv_jabatan"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="cth : Staff"
-                                android:inputType="textPersonName"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="10sp"
-                                android:text="Alamat Tinggal" />
-
-                            <EditText
-                                android:id="@+id/tv_alamat_tinggal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Masukan Alamat sesuai KTP"
-                                android:inputType="textPersonName"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="10sp"
-                                android:text="Nomor HP" />
-
-                            <EditText
-                                android:id="@+id/tv_noHP"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="cth : 08888668657"
-                                android:maxLength="13"
-                                android:inputType="number"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="14sp" />
-
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:orientation="horizontal">
-
-                                <Button
-                                    android:id="@+id/btn_simpan"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:textColor="@color/colorWhite"
-                                    android:background="@drawable/button_effect"
-                                    android:text="SIMPAN" />
-
-
-                            </LinearLayout>
-                        </LinearLayout>
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:text="**Pastikan data yang disimpan telah sesuai" />
                     </LinearLayout>
-                </ScrollView>
-            </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </ScrollView>
+            <!--            </androidx.cardview.widget.CardView>-->
 
         </RelativeLayout>
     </LinearLayout>

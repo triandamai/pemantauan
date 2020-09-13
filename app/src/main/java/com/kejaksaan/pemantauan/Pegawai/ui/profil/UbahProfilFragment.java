@@ -36,12 +36,12 @@ public class UbahProfilFragment extends Fragment {
         UserModel u2 = MyUser.getInstance(getContext()).getUser();
         binding.tvNip.setText(u2.getNip());
         binding.tvNrp.setText(u2.getNrp());
-        binding.tvAlamatTinggal.setText(u2.getAlamatTinggal());
-        binding.tvGolongan.setText(u2.getGolonganPangkat());
-        binding.tvJabatan.setText(u2.getJabatan());
-        binding.tvNamaPegawai.setText(u2.getNamaLengkap());
-        binding.tvNoHP.setText(u2.getNoHp());
-        binding.tvTmt.setText(u2.getTmt());
+        binding.etAlamat.setText(u2.getAlamatTinggal());
+        binding.etGolongan.setText(u2.getGolonganPangkat());
+        binding.etJabatan.setText(u2.getJabatan());
+        binding.etNamaPegawai.setText(u2.getNamaLengkap());
+        binding.etNohp.setText(u2.getNoHp());
+        binding.etTmt.setText(u2.getTmt());
 
         ubahProfilViewModel = new ViewModelProvider(this, new VMFactory(getContext(), new ActionListener() {
             @Override
@@ -65,12 +65,12 @@ public class UbahProfilFragment extends Fragment {
                 RequestPostUpdateProfil req = new RequestPostUpdateProfil();
                 UserModel u = MyUser.getInstance(getContext()).getUser();
                 req.setId(u.getId());
-                req.setAlamatTinggal(binding.tvAlamatTinggal.getText().toString());
-                req.setGolonganPangkat(binding.tvGolongan.getText().toString());
-                req.setJabatan(binding.tvJabatan.getText().toString());
-                req.setNamaLengkap(binding.tvNamaPegawai.getText().toString());
-                req.setNoHp(binding.tvNoHP.getText().toString());
-                req.setTmt(binding.tvTmt.getText().toString());
+                req.setAlamatTinggal(binding.etAlamat.getText().toString());
+                req.setGolonganPangkat(binding.etGolongan.getText().toString());
+                req.setJabatan(binding.etJabatan.getText().toString());
+                req.setNamaLengkap(binding.etNamaPegawai.getText().toString());
+                req.setNoHp(binding.etNohp.getText().toString());
+                req.setTmt(binding.etTmt.getText().toString());
                 ubahProfilViewModel.ubah(req);
             }
 
@@ -79,12 +79,12 @@ public class UbahProfilFragment extends Fragment {
     }
 
     private boolean cekValidasi() {
-        boolean cek = !TextUtils.isEmpty(binding.tvAlamatTinggal.getText().toString()) ||
-                !TextUtils.isEmpty(binding.tvGolongan.getText().toString()) ||
-                !TextUtils.isEmpty(binding.tvJabatan.getText().toString()) ||
-                !TextUtils.isEmpty(binding.tvNamaPegawai.getText().toString()) ||
-                !TextUtils.isEmpty(binding.tvNoHP.getText().toString()) ||
-                !TextUtils.isEmpty(binding.tvTmt.getText().toString());
+        boolean cek = !TextUtils.isEmpty(binding.etAlamat.getText().toString()) ||
+                !TextUtils.isEmpty(binding.etGolongan.getText().toString()) ||
+                !TextUtils.isEmpty(binding.etJabatan.getText().toString()) ||
+                !TextUtils.isEmpty(binding.etNamaPegawai.getText().toString()) ||
+                !TextUtils.isEmpty(binding.etNohp.getText().toString()) ||
+                !TextUtils.isEmpty(binding.etTmt.getText().toString());
         if (!cek) {
             Snackbar.make(binding.getRoot(), "Semua tidak boleh kosong!", BaseTransientBottomBar.LENGTH_LONG).show();
         }
