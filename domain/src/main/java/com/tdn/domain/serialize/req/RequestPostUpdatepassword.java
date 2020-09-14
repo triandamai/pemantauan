@@ -7,6 +7,9 @@ public class RequestPostUpdatepassword {
     @SerializedName("id")
     @Expose
     private String id;
+    @SerializedName("newpassword")
+    @Expose
+    private String newpassword;
     @SerializedName("password")
     @Expose
     private String password;
@@ -17,6 +20,14 @@ public class RequestPostUpdatepassword {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getNewpassword() {
+        return newpassword;
+    }
+
+    public void setNewpassword(String newpassword) {
+        this.newpassword = newpassword;
     }
 
     public String getPassword() {

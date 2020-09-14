@@ -56,14 +56,14 @@ public class UbahPasswordFragment extends Fragment {
 
             @Override
             public void onSuccess(@NonNull String message) {
-                builder.setMessage("Berhasil Merubah Password,Silahkan Masuk Kembali");
+                builder.setMessage("Berhasil Merubah Password, Silahkan Masuk Kembali");
                 builder.setCancelable(false);
                 builder.setPositiveButton("Ke Login", (dialog, which) -> {
                     getContext().startActivity(new Intent(getContext(), LoginUser.class));
                     getActivity().finish();
                 });
                 builder.show();
-                Navigation.findNavController(binding.getRoot()).popBackStack();
+
             }
 
             @Override
@@ -76,7 +76,8 @@ public class UbahPasswordFragment extends Fragment {
             if (validasi()) {
                 RequestPostUpdatepassword requestPostUpdatepassword = new RequestPostUpdatepassword();
                 requestPostUpdatepassword.setId(MyUser.getInstance(getContext()).getUser().getId());
-                requestPostUpdatepassword.setPassword(binding.etNnewpass.getText().toString());
+                requestPostUpdatepassword.setPassword(binding.etOldpass.getText().toString());
+                requestPostUpdatepassword.setNewpassword(binding.etNnewpass.getText().toString());
                 mViewModel.proses(requestPostUpdatepassword);
             }
         });
