@@ -10,6 +10,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.ActivityListLaporanBinding;
@@ -43,7 +44,12 @@ public class ListLaporanActivity extends AppCompatActivity {
     private void observe(ListLaporanViewModel viewModel) {
         viewModel.getLaporan().observe(this, laporanModels -> {
             if (laporanModels != null) {
+                binding.rv.setVisibility(View.VISIBLE);
+                binding.lyKosong.setVisibility(View.GONE);
                 adapterListLaporan.setdata(laporanModels);
+            } else {
+                binding.rv.setVisibility(View.GONE);
+                binding.lyKosong.setVisibility(View.VISIBLE);
             }
         });
     }

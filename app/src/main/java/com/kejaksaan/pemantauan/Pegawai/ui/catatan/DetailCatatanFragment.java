@@ -1,5 +1,6 @@
 package com.kejaksaan.pemantauan.Pegawai.ui.catatan;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class DetailCatatanFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(DetailCatatanViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(DetailCatatanViewModel.class);
         // TODO: Use the ViewModel
     }
 

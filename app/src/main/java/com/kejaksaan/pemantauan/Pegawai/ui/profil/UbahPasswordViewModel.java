@@ -1,14 +1,12 @@
-package com.kejaksaan.pemantauan.Pegawai.ui.catatan;
+package com.kejaksaan.pemantauan.Pegawai.ui.profil;
 
 import android.content.Context;
 
 import androidx.lifecycle.ViewModel;
 
-import com.google.android.gms.common.api.Api;
 import com.kejaksaan.pemantauan.core.callback.ActionListener;
 import com.tdn.data.service.ApiService;
-import com.tdn.domain.model.CatatanModel;
-import com.tdn.domain.serialize.req.RequestPostAddCatatan;
+import com.tdn.domain.serialize.req.RequestPostUpdatepassword;
 import com.tdn.domain.serialize.res.ResponseAction;
 
 import retrofit2.Call;
@@ -17,21 +15,19 @@ import retrofit2.Response;
 
 import static com.tdn.data.service.ApiHandler.cek;
 
-public class TambahCatatanViewModel extends ViewModel {
+public class UbahPasswordViewModel extends ViewModel {
     private ApiService apiService;
-    private Context context;
+
     private ActionListener actionListener;
 
-    public TambahCatatanViewModel(Context context, ActionListener actionListener) {
+    public UbahPasswordViewModel(ActionListener actionListener) {
         this.actionListener = actionListener;
-        this.context = context;
         this.apiService = ApiService.Factory.create();
     }
 
-    // TODO: Implement the ViewModel
-    public void simpan(RequestPostAddCatatan req) {
+    public void proses(RequestPostUpdatepassword requestPostUpdatepassword) {
         actionListener.onStart();
-        apiService.postCatatan(req)
+        apiService.ubahpassword(requestPostUpdatepassword)
                 .enqueue(new Callback<ResponseAction>() {
                     @Override
                     public void onResponse(Call<ResponseAction> call, Response<ResponseAction> response) {
@@ -52,4 +48,5 @@ public class TambahCatatanViewModel extends ViewModel {
                     }
                 });
     }
+    // TODO: Implement the ViewModel
 }

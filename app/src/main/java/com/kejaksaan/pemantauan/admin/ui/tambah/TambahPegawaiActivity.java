@@ -44,7 +44,6 @@ public class TambahPegawaiActivity extends AppCompatActivity {
             public void onSuccess(@NonNull String message) {
                 Snackbar.make(binding.getRoot(), message, BaseTransientBottomBar.LENGTH_LONG).show();
                 RESET();
-
                 onBackPressed();
                 finish();
             }
@@ -206,6 +205,12 @@ public class TambahPegawaiActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        MyUser.getInstance(this).setLastPegawai(null);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
         MyUser.getInstance(this).setLastPegawai(null);
     }
 

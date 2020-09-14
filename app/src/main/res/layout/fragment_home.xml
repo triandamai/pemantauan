@@ -228,7 +228,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="1">
+                    android:weightSum="2">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/card_presensi"
@@ -260,7 +260,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Catatan Harian Pegawai"
+                                    android:text="Catatan Harian"
                                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
 
@@ -275,6 +275,62 @@
 
                                 <com.google.android.material.button.MaterialButton
                                     android:id="@+id/btn_catatan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="8dp"
+                                    android:text="Detail"
+                                    style="?attr/borderlessButtonStyle" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_ubahpass"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Media -->
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                app:srcCompat="@drawable/belumabsensi"
+                                android:scaleType="centerInside"
+                                android:contentDescription="Ubah Password" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Ubah Password"
+                                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+
+                            </LinearLayout>
+
+                            <!-- Buttons -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btn_ubahpass"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="8dp"

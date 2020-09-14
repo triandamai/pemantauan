@@ -44,9 +44,10 @@ public class AdapterListCatatan extends RecyclerView.Adapter<AdapterListCatatan.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.binding.tvNama.setText(data.get(position).getNamaLengkap());
-        holder.binding.tvNrp.setText("NRP : " + data.get(position).getNrp() + "\nKet : " + data.get(position).getJudul() + "\nKODE : " + data.get(position).getIsi());
-        holder.binding.tvLevel.setText(data.get(position).getTanggal());
+        holder.binding.tvJudul.setText(data.get(position).getJudul());
+        holder.binding.tvOwner.setText(data.get(position).getNamaLengkap() + " - " + data.get(position).getNrp());
+        holder.binding.tvIsi.setText(data.get(position).getIsi());
+        holder.binding.tvTanggal.setText(data.get(position).getTanggal());
         holder.binding.textViewOptions.setOnClickListener(v -> {
             PopupMenu popupMenu = new PopupMenu(context, holder.binding.textViewOptions);
             popupMenu.inflate(R.menu.menu_item_pegawai);
@@ -63,8 +64,8 @@ public class AdapterListCatatan extends RecyclerView.Adapter<AdapterListCatatan.
             });
             popupMenu.show();
         });
-        MyUser.getInstance(context).setLastCatatan(data.get(position));
-        context.startActivity(new Intent(context, DetailLaporanActivity.class));
+
+        // context.startActivity(new Intent(context, DetailLaporanActivity.class));
 
     }
 
@@ -72,11 +73,15 @@ public class AdapterListCatatan extends RecyclerView.Adapter<AdapterListCatatan.
         if (this.data == null) {
             this.data = namaList;
         } else {
+            this.data.clear();
             this.data.addAll(namaList);
         }
         notifyDataSetChanged();
     }
 
+    public CatatanModel getFromPos(int pos) {
+        return data.get(pos);
+    }
 
     @Override
     public int getItemCount() {

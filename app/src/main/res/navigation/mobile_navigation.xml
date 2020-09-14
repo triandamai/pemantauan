@@ -25,7 +25,6 @@
         android:name="com.kejaksaan.pemantauan.Pegawai.ui.riwayat.Riwayat"
         android:label="Riwayat Presensi"
         tools:layout="@layout/fragment_riwayat" />
-
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.kejaksaan.pemantauan.Pegawai.ui.tentang.TentangAplikasiFragment"
@@ -34,16 +33,21 @@
     <fragment
         android:id="@+id/nav_listcatatan"
         android:name="com.kejaksaan.pemantauan.Pegawai.ui.catatan.ListCatatanFragment"
-        android:label="@string/menu_tentang"
+        android:label="Daftar Catatan"
         tools:layout="@layout/list_catatan" />
     <fragment
         android:id="@+id/nav_tambahcatatan"
         android:name="com.kejaksaan.pemantauan.Pegawai.ui.catatan.TambahCatatanFragment"
-        android:label="@string/menu_tentang"
+        android:label="Tambahkan Catatan"
         tools:layout="@layout/tambah_catatan_fragment" />
     <fragment
-        android:id="@+id/nav_detail"
+        android:id="@+id/nav_detailcatatan"
         android:name="com.kejaksaan.pemantauan.Pegawai.ui.catatan.DetailCatatanFragment"
-        android:label="@string/menu_tentang"
+        android:label="Detail Catatan"
         tools:layout="@layout/detail_catatan_fragment" />
+    <fragment
+        android:id="@+id/nav_ubahpass"
+        android:name="com.kejaksaan.pemantauan.Pegawai.ui.profil.UbahPasswordFragment"
+        android:label="Ubah Password"
+        tools:layout="@layout/ubah_password_fragment" />
 </navigation>

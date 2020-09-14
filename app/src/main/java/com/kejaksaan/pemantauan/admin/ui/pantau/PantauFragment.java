@@ -4,9 +4,7 @@ import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -16,16 +14,14 @@ import android.view.ViewGroup;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.FragmentPantauBinding;
-import com.tdn.domain.model.TitikModel;
 import com.tdn.domain.object.LokasiObject;
-import com.tdn.domain.object.TitikObject;
-
-import java.util.List;
 
 
 /**
@@ -85,6 +81,7 @@ public class PantauFragment extends Fragment {
                             options.position(new LatLng(
                                     Double.parseDouble(o.getLat()),
                                     Double.parseDouble(o.getLng()))).anchor(0.5f, 0.5f)
+                                    .icon(getIcon(o.getTipe()))
                                     .title("Lokasi " + o.getKet())
                                     .snippet(o.getDetail());
                             gmaps.addMarker(options);
@@ -92,11 +89,20 @@ public class PantauFragment extends Fragment {
                         }
                         LatLng latLng = new LatLng(Double.parseDouble(lokasiObjects.get(0).getLat()), Double.parseDouble(lokasiObjects.get(0).getLng()));
                         CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(9).build();
+
                         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                     });
                 }
             }
         });
 
+    }
+
+    public BitmapDescriptor getIcon(String tipe) {
+        if (tipe.equalsIgnoreCase("titik")) {
+            return BitmapDescriptorFactory.fromResource(R.drawable.laporan_icon);
+        } else {
+            return BitmapDescriptorFactory.fromResource(R.drawable.user_icon);
+        }
     }
 }

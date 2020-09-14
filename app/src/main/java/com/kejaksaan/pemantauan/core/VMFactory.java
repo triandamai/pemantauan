@@ -6,8 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.kejaksaan.pemantauan.Pegawai.ui.catatan.ListCatatanFragment;
+import com.kejaksaan.pemantauan.Pegawai.ui.catatan.ListCatatanViewModel;
+import com.kejaksaan.pemantauan.Pegawai.ui.catatan.TambahCatatanViewModel;
 import com.kejaksaan.pemantauan.Pegawai.ui.home.TambahLaporanViewModel;
 import com.kejaksaan.pemantauan.Pegawai.ui.laporan.ListLaporanPegawaiViewModel;
+import com.kejaksaan.pemantauan.Pegawai.ui.profil.UbahPasswordViewModel;
 import com.kejaksaan.pemantauan.Pegawai.ui.profil.UbahProfilViewModel;
 import com.kejaksaan.pemantauan.admin.ui.home.DaftarPegawaiViewModel;
 import com.kejaksaan.pemantauan.admin.ui.tambah.TambahPegawaiViewModel;
@@ -71,6 +75,12 @@ public class VMFactory implements ViewModelProvider.Factory {
             return (T) new TambahLaporanViewModel(context, actionListener);
         } else if (modelClass.isAssignableFrom(ListLaporanPegawaiViewModel.class)) {
             return (T) new ListLaporanPegawaiViewModel(context);
+        } else if (modelClass.isAssignableFrom(TambahCatatanViewModel.class)) {
+            return (T) new TambahCatatanViewModel(context, actionListener);
+        } else if (modelClass.isAssignableFrom(ListCatatanViewModel.class)) {
+            return (T) new ListCatatanViewModel(context, actionListener);
+        } else if (modelClass.isAssignableFrom(UbahPasswordViewModel.class)) {
+            return (T) new UbahPasswordViewModel(actionListener);
         } else {
             throw new IllegalArgumentException("Unknown ViewModel class");
         }

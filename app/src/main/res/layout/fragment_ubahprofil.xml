@@ -17,11 +17,6 @@
             android:gravity="center"
             android:padding="8dp">
 
-            <!--            <androidx.cardview.widget.CardView-->
-            <!--                android:layout_width="320dp"-->
-            <!--                android:layout_height="540dp"-->
-            <!--                app:cardElevation="16dp"-->
-            <!--                app:cardCornerRadius="24dp">-->
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -216,7 +211,6 @@
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
-            <!--            </androidx.cardview.widget.CardView>-->
 
         </RelativeLayout>
     </LinearLayout>

@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.ActivityListPresensiBinding;
@@ -32,7 +33,12 @@ public class ListPresensi extends AppCompatActivity {
     private void observe(ListPresensiViewModel viewModel) {
         viewModel.getPresensi().observe(this, absensiNamas -> {
             if (absensiNamas != null) {
+                binding.rv.setVisibility(View.VISIBLE);
+                binding.lyKosong.setVisibility(View.GONE);
                 adapterListPresensi.setdata(absensiNamas);
+            } else {
+                binding.lyKosong.setVisibility(View.VISIBLE);
+                binding.rv.setVisibility(View.GONE);
             }
         });
     }

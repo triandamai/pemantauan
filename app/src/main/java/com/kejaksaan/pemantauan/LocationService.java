@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
 import com.tdn.data.LocationInterval;
+import com.tdn.data.persistensi.MyUser;
 import com.tdn.data.service.ApiService;
 import com.tdn.domain.serialize.req.RequestPostUpdateLocation;
 import com.tdn.domain.serialize.res.ResponseAction;
@@ -150,6 +151,7 @@ public class LocationService extends Service {
     public class MyLocationListener implements LocationListener {
 
         public void onLocationChanged(final Location loc) {
+
             Log.i("*****", "Location changed");
             if (isBetterLocation(loc, previousBestLocation)) {
                 loc.getLatitude();
@@ -180,7 +182,7 @@ public class LocationService extends Service {
         private void sendLocation(double lat, double lng) {
             try {
                 RequestPostUpdateLocation requestPostUpdateLocation = new RequestPostUpdateLocation();
-                requestPostUpdateLocation.setIdPegawai("1");
+                requestPostUpdateLocation.setIdPegawai(MyUser.getInstance(getApplicationContext()).getUser().getId());
                 requestPostUpdateLocation.setLat(String.valueOf(lat));
                 requestPostUpdateLocation.setLng(String.valueOf(lng));
 
@@ -206,6 +208,7 @@ public class LocationService extends Service {
                 });
             } catch (Exception e) {
                 Log.e("yee", Objects.requireNonNull(e.getMessage()));
+                Toast.makeText(getApplicationContext(), "Gagal Memperbarui Lokasi", Toast.LENGTH_LONG).show();
             }
         }
     }

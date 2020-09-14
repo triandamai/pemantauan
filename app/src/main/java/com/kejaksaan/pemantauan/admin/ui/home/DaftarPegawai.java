@@ -40,7 +40,7 @@ public class DaftarPegawai extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_daftar_pegawai);
         getSupportActionBar().setTitle("Daftar Pegawai");
-        a = new AlertDialog.Builder(DaftarPegawai.this).setTitle("Info!");
+        a = new AlertDialog.Builder(DaftarPegawai.this).setTitle("Info");
         a.create();
         viewModel = new ViewModelProvider(this, new VMFactory(new ActionListener() {
             @Override
@@ -123,7 +123,12 @@ public class DaftarPegawai extends AppCompatActivity {
     private void observe(DaftarPegawaiViewModel viewModel) {
         viewModel.getPegawai().observe(this, pegawaiModels -> {
             if (pegawaiModels != null) {
+                binding.rv.setVisibility(View.VISIBLE);
+                binding.lyKosong.setVisibility(View.GONE);
                 adapterListPegawai.setdata(pegawaiModels);
+            } else {
+                binding.lyKosong.setVisibility(View.VISIBLE);
+                binding.rv.setVisibility(View.GONE);
             }
         });
     }

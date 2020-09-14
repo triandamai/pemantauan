@@ -9,7 +9,7 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:theme="@style/Theme.MaterialComponents.Light"
         android:layout_margin="8dp">
 
         <RelativeLayout
@@ -17,46 +17,71 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <View
+                android:layout_width="5dp"
+                android:layout_height="140dp"
+                android:layout_alignParentLeft="true"
+                android:background="@color/green" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                android:padding="16dp">
+
+                <!-- Title, secondary and supporting text -->
+                <TextView
+                    android:id="@+id/tv_judul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salam Hormat,"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:weightSum="4"
+                    android:orientation="horizontal">
 
-                    <!-- Title, secondary and supporting text -->
-                    <TextView
-                        android:id="@+id/tv_nama"
-                        android:layout_width="wrap_content"
+
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Nama"
-                        android:textAppearance="?attr/textAppearanceHeadline6" />
+                        android:layout_weight="3"
+                        android:layout_marginStart="5dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_nrp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="NRP"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        <TextView
+                            android:id="@+id/tv_owner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="-"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?android:attr/textColorSecondary" />
 
-                    <TextView
-                        android:id="@+id/tv_level"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="LEVEL"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        <TextView
+                            android:id="@+id/tv_isi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="-"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?android:attr/textColorSecondary" />
 
+                        <TextView
+                            android:id="@+id/tv_tanggal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="-"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?android:attr/textColorSecondary" />
+
+
+                    </LinearLayout>
                 </LinearLayout>
-
-
             </LinearLayout>
 
             <TextView
@@ -72,9 +97,7 @@
                 android:text="&#8942;"
                 android:textAppearance="?android:textAppearanceLarge" />
 
-
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
-
 </layout>

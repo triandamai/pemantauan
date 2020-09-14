@@ -3,6 +3,8 @@ package com.tdn.data.service;
 
 import com.tdn.domain.model.PegawaiModel;
 import com.tdn.domain.model.UserModel;
+import com.tdn.domain.serialize.req.RequestPostAddCatatan;
+import com.tdn.domain.serialize.req.RequestPostDeleteCatatan;
 import com.tdn.domain.serialize.req.RequestPostLaporan;
 import com.tdn.domain.serialize.req.RequestPostLogin;
 import com.tdn.domain.serialize.req.RequestPostUpdateLocation;
@@ -91,8 +93,16 @@ public interface ApiService {
     Call<ResponseGetCatatan> getCatatan(@Query("id") String id);
 
     @Headers({accept_json, content_type, api_key})
+    @POST("catatan/catatan")
+    Call<ResponseAction> postCatatan(@Body RequestPostAddCatatan req);
+
+    @Headers({accept_json, content_type, api_key})
     @POST("lokasi/location")
     Call<ResponseAction> updateLocation(@Body RequestPostUpdateLocation req);
+
+    @Headers({accept_json, content_type, api_key})
+    @POST("catatan/delete")
+    Call<ResponseAction> deletecatatan(@Body RequestPostDeleteCatatan req);
 
     @Headers({accept_json, content_type, api_key})
     @POST("laporan/laporan")

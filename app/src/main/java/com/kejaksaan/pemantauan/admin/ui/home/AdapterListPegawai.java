@@ -45,27 +45,21 @@ public class AdapterListPegawai extends RecyclerView.Adapter<AdapterListPegawai.
         holder.binding.tvNama.setText("" + data.get(position).getNamaLengkap());
         holder.binding.tvNrp.setText("NRP : " + data.get(position).getNrp());
         holder.binding.tvLevel.setText("Sebagai : " + data.get(position).getLevel());
-        holder.binding.textViewOptions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PopupMenu popupMenu = new PopupMenu(context, holder.binding.textViewOptions);
-                popupMenu.inflate(R.menu.menu_item_pegawai);
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.edit:
-                                adapterClicked.onEdit(position);
-                                break;
-                            case R.id.hapus:
-                                adapterClicked.onDelete(position);
-                                break;
-                        }
-                        return false;
-                    }
-                });
-                popupMenu.show();
-            }
+        holder.binding.textViewOptions.setOnClickListener(v -> {
+            PopupMenu popupMenu = new PopupMenu(context, holder.binding.textViewOptions);
+            popupMenu.inflate(R.menu.menu_item_pegawai);
+            popupMenu.setOnMenuItemClickListener(item -> {
+                switch (item.getItemId()) {
+                    case R.id.edit:
+                        adapterClicked.onEdit(position);
+                        break;
+                    case R.id.hapus:
+                        adapterClicked.onDelete(position);
+                        break;
+                }
+                return false;
+            });
+            popupMenu.show();
         });
         holder.binding.detail.setOnClickListener(v -> {
             adapterClicked.onDetail(position);

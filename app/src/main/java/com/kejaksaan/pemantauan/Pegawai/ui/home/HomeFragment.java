@@ -29,17 +29,18 @@ public class HomeFragment extends Fragment {
         homeViewModel = new
                 ViewModelProvider(this).get(HomeViewModel.class);
         binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.fragment_home, container, false);
-      
+
         binding.btnUbahprofil.setOnClickListener(v -> {
             Navigation.findNavController(binding.getRoot()).navigate(R.id.nav_gallery);
         });
         binding.btnLaporan.setOnClickListener(v -> {
-                    getContext().startActivity(new Intent(getContext(), ListLaporanPegawaiActivity.class));
-
-                }
-        );
+            getContext().startActivity(new Intent(getContext(), ListLaporanPegawaiActivity.class));
+        });
         binding.btnCatatan.setOnClickListener(v -> {
             Navigation.findNavController(binding.getRoot()).navigate(R.id.nav_listcatatan);
+        });
+        binding.btnUbahpass.setOnClickListener(v -> {
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.nav_ubahpass);
         });
         return binding.getRoot();
     }
