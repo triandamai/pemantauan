@@ -24,6 +24,8 @@ import com.tdn.domain.model.PegawaiModel;
 import com.tdn.domain.model.UserModel;
 import com.tdn.domain.serialize.req.RequestPostUpdateProfil;
 
+import static com.kejaksaan.pemantauan.core.Utility.hideKeyboard;
+
 public class TambahPegawaiActivity extends AppCompatActivity {
     private ActivityTambahPegawaiBinding binding;
     private TambahPegawaiViewModel viewModel;
@@ -92,6 +94,7 @@ public class TambahPegawaiActivity extends AppCompatActivity {
             }
         });
         binding.btnSimpan.setOnClickListener(v -> {
+            hideKeyboard(this);
             if (validasi()) {
                 if (binding.etNIP.getText().length() < 8 || binding.etNRP.getText().length() < 8) {
                     Snackbar.make(binding.getRoot(), "NIP / NRP haru lebih dari 8 karakter !", BaseTransientBottomBar.LENGTH_LONG).show();

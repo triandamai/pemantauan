@@ -16,6 +16,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -39,6 +40,7 @@ import com.tdn.domain.object.LokasiObject;
 import java.io.IOException;
 
 import static com.kejaksaan.pemantauan.ImagePickerActivity.showImagePickerOptions;
+import static com.kejaksaan.pemantauan.core.Utility.hideKeyboard;
 
 public class TambahLaporan extends MyActivity {
     private ActivityTambahLaporanBinding binding;
@@ -128,9 +130,13 @@ public class TambahLaporan extends MyActivity {
         });
 
         binding.btnSimpan.setOnClickListener(v -> {
+
+            hideKeyboard(this);
             viewModel.simpan(binding.etKet.getText().toString());
+
         });
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

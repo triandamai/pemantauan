@@ -4,6 +4,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -30,6 +32,8 @@ import com.kejaksaan.pemantauan.core.callback.ActionListener;
 import com.kejaksaan.pemantauan.databinding.UbahPasswordFragmentBinding;
 import com.tdn.data.persistensi.MyUser;
 import com.tdn.domain.serialize.req.RequestPostUpdatepassword;
+
+import static com.kejaksaan.pemantauan.core.Utility.hideKeyboard;
 
 public class UbahPasswordFragment extends Fragment {
 
@@ -79,6 +83,7 @@ public class UbahPasswordFragment extends Fragment {
                 requestPostUpdatepassword.setPassword(binding.etOldpass.getText().toString());
                 requestPostUpdatepassword.setNewpassword(binding.etNnewpass.getText().toString());
                 mViewModel.proses(requestPostUpdatepassword);
+                hideKeyboard(getActivity());
             }
         });
         return binding.getRoot();

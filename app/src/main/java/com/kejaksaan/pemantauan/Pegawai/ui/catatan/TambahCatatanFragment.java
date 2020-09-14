@@ -25,6 +25,8 @@ import com.kejaksaan.pemantauan.databinding.TambahCatatanFragmentBinding;
 import com.tdn.data.persistensi.MyUser;
 import com.tdn.domain.serialize.req.RequestPostAddCatatan;
 
+import static com.kejaksaan.pemantauan.core.Utility.hideKeyboard;
+
 public class TambahCatatanFragment extends Fragment {
 
     private TambahCatatanViewModel mViewModel;
@@ -68,6 +70,7 @@ public class TambahCatatanFragment extends Fragment {
         }
         binding.btnSimpan.setOnClickListener(v -> {
             if (validasi()) {
+                hideKeyboard(getActivity());
                 if (this.isEdit) {
                     RequestPostAddCatatan requestPostAddCatatan = new RequestPostAddCatatan();
 

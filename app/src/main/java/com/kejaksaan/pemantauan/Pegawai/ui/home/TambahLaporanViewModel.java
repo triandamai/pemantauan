@@ -1,6 +1,7 @@
 package com.kejaksaan.pemantauan.Pegawai.ui.home;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -34,34 +35,39 @@ public class TambahLaporanViewModel extends ViewModel {
 
     public void simpan(String desc) {
         actionListener.onStart();
-        RequestPostLaporan lap = new RequestPostLaporan();
-        lap.setDeskripsi(desc);
-        lap.setIdLaporan("");
-        lap.setIdPegawai(Integer.valueOf(MyUser.getInstance(context).getUser().getId()));
-        lap.setMedia(foto.getValue());
-        lap.setLat(lat.getValue());
-        lap.setLng(lng.getValue());
+        if (TextUtils.isEmpty(lat.getValue().toString()) && TextUtils.isEmpty(lng.getValue().toString()) && TextUtils.isEmpty(foto.getValue().toString()) && TextUtils.isEmpty(desc)) {
+            actionListener.onError("Isi Semua Data!");
+
+        } else {
+            RequestPostLaporan lap = new RequestPostLaporan();
+            lap.setDeskripsi(desc);
+            lap.setIdLaporan("");
+            lap.setIdPegawai(Integer.valueOf(MyUser.getInstance(context).getUser().getId()));
+            lap.setMedia(foto.getValue());
+            lap.setLat(lat.getValue());
+            lap.setLng(lng.getValue());
 
 
-        apiService.saveLaporan(lap).enqueue(new Callback<ResponseAction>() {
-            @Override
-            public void onResponse(Call<ResponseAction> call, Response<ResponseAction> response) {
-                if (cek(response.code())) {
-                    if (cek(response.body().getResponseCode())) {
-                        actionListener.onSuccess(response.body().getResponseMessage());
+            apiService.saveLaporan(lap).enqueue(new Callback<ResponseAction>() {
+                @Override
+                public void onResponse(Call<ResponseAction> call, Response<ResponseAction> response) {
+                    if (cek(response.code())) {
+                        if (cek(response.body().getResponseCode())) {
+                            actionListener.onSuccess(response.body().getResponseMessage());
+                        } else {
+                            actionListener.onError(response.body().getResponseMessage());
+                        }
                     } else {
-                        actionListener.onError(response.body().getResponseMessage());
+                        actionListener.onError(response.message());
                     }
-                } else {
-                    actionListener.onError(response.message());
                 }
-            }
 
-            @Override
-            public void onFailure(Call<ResponseAction> call, Throwable t) {
-                actionListener.onError(t.getMessage());
-            }
-        });
+                @Override
+                public void onFailure(Call<ResponseAction> call, Throwable t) {
+                    actionListener.onError(t.getMessage());
+                }
+            });
 
+        }
     }
 }
