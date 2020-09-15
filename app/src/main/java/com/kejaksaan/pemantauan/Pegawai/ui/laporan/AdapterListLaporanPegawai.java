@@ -46,6 +46,7 @@ public class AdapterListLaporanPegawai extends RecyclerView.Adapter<AdapterListL
         if (this.data == null) {
             this.data = namaList;
         } else {
+            this.data.clear();
             this.data.addAll(namaList);
         }
         notifyDataSetChanged();

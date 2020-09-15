@@ -34,6 +34,7 @@ public class AdapterListPresensi extends RecyclerView.Adapter<AdapterListPresens
         if (this.data == null) {
             this.data = namaList;
         } else {
+            this.data.clear();
             this.data.addAll(namaList);
         }
         notifyDataSetChanged();

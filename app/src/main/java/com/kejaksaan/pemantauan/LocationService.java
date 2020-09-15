@@ -208,7 +208,7 @@ public class LocationService extends Service {
                 });
             } catch (Exception e) {
                 Log.e("yee", Objects.requireNonNull(e.getMessage()));
-                Toast.makeText(getApplicationContext(), "Gagal Memperbarui Lokasi", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Gagal Memperbarui Lokasi", Toast.LENGTH_LONG).show();
             }
         }
     }

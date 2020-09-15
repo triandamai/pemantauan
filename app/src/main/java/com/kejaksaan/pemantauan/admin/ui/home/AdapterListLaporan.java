@@ -49,6 +49,8 @@ public class AdapterListLaporan extends RecyclerView.Adapter<AdapterListLaporan.
         if (this.data == null) {
             this.data = namaList;
         } else {
+            this.data
+                    .clear();
             this.data.addAll(namaList);
         }
         notifyDataSetChanged();

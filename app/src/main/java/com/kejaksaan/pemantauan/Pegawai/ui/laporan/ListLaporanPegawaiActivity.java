@@ -2,6 +2,7 @@ package com.kejaksaan.pemantauan.Pegawai.ui.laporan;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -37,9 +38,14 @@ public class ListLaporanPegawaiActivity extends AppCompatActivity {
 
     private void observe(ListLaporanPegawaiViewModel viewModel) {
         viewModel.getLaporan().observe(this, laporanModels -> {
-            Log.e("iniin", laporanModels.toString());
+
             if (laporanModels != null) {
+                binding.lyKosong.setVisibility(View.GONE);
+                binding.rv.setVisibility(View.VISIBLE);
                 adapterListLaporan.setdata(laporanModels);
+            } else {
+                binding.lyKosong.setVisibility(View.VISIBLE);
+                binding.rv.setVisibility(View.GONE);
             }
         });
     }

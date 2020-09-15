@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,6 +26,8 @@ import com.tdn.data.persistensi.MyUser;
 import com.tdn.domain.model.UserModel;
 import com.tdn.domain.serialize.req.RequestPostLogin;
 
+import static com.kejaksaan.pemantauan.core.Utility.hideKeyboard;
+
 public class LoginUser extends AppCompatActivity {
     private ActivityLoginUserBinding binding;
     private LoginViewModel loginViewModel;
@@ -37,6 +40,7 @@ public class LoginUser extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Masuk ");
         binding.btnLogin.setOnClickListener(v -> {
+            hideKeyboard(this);
             RequestPostLogin req = new RequestPostLogin();
             req.setNrp(binding.etUsername.getText().toString());
             req.setPassword(binding.etPassword.getText().toString());
