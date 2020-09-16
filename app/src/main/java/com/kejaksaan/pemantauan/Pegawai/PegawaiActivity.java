@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -20,6 +23,12 @@ import com.kejaksaan.pemantauan.Pegawai.ui.home.TambahLaporan;
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.auth.LoginUser;
 import com.tdn.data.persistensi.MyUser;
+import com.tdn.data.service.ApiService;
+import com.tdn.domain.model.PegawaiModel;
+import com.tdn.domain.model.UserModel;
+import com.tdn.domain.serialize.req.RequestPostLogin;
+import com.tdn.domain.serialize.res.ResponseAuthLogin;
+import com.tdn.domain.serialize.res.ResponseGetPegawai;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -33,9 +42,17 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.tdn.data.service.ApiHandler.cek;
+
 public class PegawaiActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private ApiService apiService;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +94,7 @@ public class PegawaiActivity extends AppCompatActivity {
                 token.continuePermissionRequest();
             }
         }).check();
-
+        apiService = ApiService.Factory.create();
         start();
     }
 
@@ -119,9 +136,63 @@ public class PegawaiActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_logout:
-                MyUser.getInstance(PegawaiActivity.this).signOut();
-                startActivity(new Intent(PegawaiActivity.this, LoginUser.class));
-                finish();
+//                MyUser.getInstance(PegawaiActivity.this).signOut();
+//                startActivity(new Intent(PegawaiActivity.this, LoginUser.class));
+//                finish();
+                return true;
+            case R.id.action_sinkron:
+                UserModel u = MyUser.getInstance(this).getUser();
+
+                apiService.getPegawai(u.getId())
+                        .enqueue(new Callback<ResponseGetPegawai>() {
+                            @Override
+                            public void onResponse(Call<ResponseGetPegawai> call, Response<ResponseGetPegawai> response) {
+                                Log.e("tes", response.body().toString());
+
+                                if (response.isSuccessful()) {
+                                    if (cek(response.code())) {
+
+                                        if (cek(response.body().getResponseCode())) {
+                                            if (response.body().getData() != null) {
+
+                                                PegawaiModel p = response.body().getData().get(0);
+                                                UserModel us = new UserModel();
+                                                us.setPassword(p.getPassword());
+                                                us.setNrp(p.getNrp());
+                                                us.setNip(p.getNip());
+                                                us.setLevel(p.getLevel());
+                                                us.setTmt(p.getTmt());
+                                                us.setNoHp(p.getNoHp());
+                                                us.setNamaLengkap(p.getNamaLengkap());
+                                                us.setJabatan(p.getJabatan());
+                                                us.setGolonganPangkat(p.getGolonganPangkat());
+                                                us.setAlamatTinggal(p.getAlamatTinggal());
+                                                us.setId(p.getId());
+                                                MyUser.getInstance(PegawaiActivity.this).setUser(us);
+                                                Toast.makeText(PegawaiActivity.this, "Berhasil Sinkronisasi ", Toast.LENGTH_LONG).show();
+
+                                            } else {
+                                                Toast.makeText(PegawaiActivity.this, "Gagal2 Sinkronisasi ", Toast.LENGTH_LONG).show();
+                                            }
+                                        } else {
+                                            Toast.makeText(PegawaiActivity.this, "Gagal3 Sinkronisasi ", Toast.LENGTH_LONG).show();
+                                        }
+                                    } else {
+                                        Toast.makeText(PegawaiActivity.this, "Gagal4 Sinkronisasi ", Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
+                                    Toast.makeText(PegawaiActivity.this, "Gagal5 Sinkronisasi ", Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseGetPegawai> call, Throwable t) {
+                                Log.e("tes", t.getMessage());
+                                Toast.makeText(PegawaiActivity.this, "Gagal6 Sinkronisasi ", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+
                 return true;
             case R.id.action_tambahlaporan:
                 startActivity(new Intent(PegawaiActivity.this, TambahLaporan.class));

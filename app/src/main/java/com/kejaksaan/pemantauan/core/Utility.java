@@ -15,4 +15,6 @@ public class Utility {
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
+    public static final String INTEN_KE_LISTPEGAWAI = "pagepegawai";
 }

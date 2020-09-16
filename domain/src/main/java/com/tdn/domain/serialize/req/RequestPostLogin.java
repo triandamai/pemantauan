@@ -27,4 +27,11 @@ public class RequestPostLogin {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "RequestPostLogin{" +
+                "nrp='" + nrp + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

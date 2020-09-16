@@ -85,6 +85,10 @@ public interface ApiService {
     Call<ResponseGetPegawai> getPegawai();
 
     @Headers({accept_json, content_type, api_key})
+    @GET("user/user")
+    Call<ResponseGetPegawai> getPegawai(@Query("id") String id);
+
+    @Headers({accept_json, content_type, api_key})
     @GET("laporan/laporan")
     Call<ResponseGetLaporan> getLaporan(@Query("id") String id);
 

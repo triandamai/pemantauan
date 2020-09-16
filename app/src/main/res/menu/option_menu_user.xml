@@ -7,6 +7,11 @@
         android:title="Buat Laporan"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_sinkron"
+        android:orderInCategory="100"
+        android:title="Sinkronisasi data"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"
         android:title="Keluar"

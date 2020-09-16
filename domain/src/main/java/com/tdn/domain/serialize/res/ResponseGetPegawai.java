@@ -53,4 +53,13 @@ public class ResponseGetPegawai {
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "ResponseGetPegawai{" +
+                "status=" + status +
+                ", responseCode=" + responseCode +
+                ", responseMessage='" + responseMessage + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

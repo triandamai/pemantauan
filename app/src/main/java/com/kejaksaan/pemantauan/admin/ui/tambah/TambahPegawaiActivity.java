@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -16,6 +17,7 @@ import android.widget.RadioButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.kejaksaan.pemantauan.R;
+import com.kejaksaan.pemantauan.admin.ui.home.DaftarPegawai;
 import com.kejaksaan.pemantauan.core.VMFactory;
 import com.kejaksaan.pemantauan.core.callback.ActionListener;
 import com.kejaksaan.pemantauan.databinding.ActivityTambahPegawaiBinding;
@@ -96,8 +98,10 @@ public class TambahPegawaiActivity extends AppCompatActivity {
         binding.btnSimpan.setOnClickListener(v -> {
             hideKeyboard(this);
             if (validasi()) {
-                if (binding.etNIP.getText().length() < 8 || binding.etNRP.getText().length() < 8) {
-                    Snackbar.make(binding.getRoot(), "NIP / NRP haru lebih dari 8 karakter !", BaseTransientBottomBar.LENGTH_LONG).show();
+                if (binding.etNRP.getText().length() < 6) {
+                    Snackbar.make(binding.getRoot(), "NRP harus lebih dari 6 karakter !", BaseTransientBottomBar.LENGTH_LONG).show();
+                } else if (binding.etNIP.getText().length() < 4 || binding.etNIP.getText().length() > 30) {
+                    Snackbar.make(binding.getRoot(), "NIP harus minimal 4 dan maksimal 30 karakter !", BaseTransientBottomBar.LENGTH_LONG).show();
                 } else {
                     RadioButton level = findViewById(binding.radioGroup.getCheckedRadioButtonId());
                     builder.setTitle("Info");
@@ -117,7 +121,6 @@ public class TambahPegawaiActivity extends AppCompatActivity {
                         u.setTmt(binding.etTmt.getText().toString());
 
                         if (this.isEdit) {
-                            RequestPostUpdateProfil up = new RequestPostUpdateProfil();
                             u.setId(MyUser.getInstance(this).getLastegawai().getId());
 
                             viewModel.ubah(u);
@@ -140,7 +143,7 @@ public class TambahPegawaiActivity extends AppCompatActivity {
 
 
     private void setView() {
-        binding.etNIP.setEnabled(false);
+        binding.etNIP.setEnabled(true);
         binding.etPassword.setEnabled(false);
 
         PegawaiModel model = MyUser.getInstance(this).getLastegawai();
@@ -223,7 +226,7 @@ public class TambahPegawaiActivity extends AppCompatActivity {
             builder.setTitle("Info");
             builder.setMessage("Perubahan belum disimpan, Tetap Batal ?");
             builder.setPositiveButton("Keluar", (dialog, which) -> {
-                onBackPressed();
+                startActivity(new Intent(TambahPegawaiActivity.this, DaftarPegawai.class));
                 finish();
             });
             builder.setNegativeButton("Lanjutkan", (dialog, which) -> dialog.cancel());

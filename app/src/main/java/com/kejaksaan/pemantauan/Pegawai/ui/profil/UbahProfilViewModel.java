@@ -7,7 +7,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.kejaksaan.pemantauan.core.callback.ActionListener;
+import com.kejaksaan.pemantauan.core.callback.AuthListener;
 import com.tdn.data.service.ApiService;
+import com.tdn.domain.model.UserModel;
 import com.tdn.domain.serialize.req.RequestPostUpdateProfil;
 import com.tdn.domain.serialize.res.ResponseAction;
 
@@ -19,15 +21,15 @@ import static com.tdn.data.service.ApiHandler.cek;
 
 public class UbahProfilViewModel extends ViewModel {
     private ApiService apiService;
-    private ActionListener actionListener;
+    private AuthListener actionListener;
 
-    public UbahProfilViewModel(ActionListener actionListener) {
+    public UbahProfilViewModel(AuthListener actionListener) {
         this.apiService = ApiService.Factory.create();
 
         this.actionListener = actionListener;
     }
 
-    public void ubah(RequestPostUpdateProfil req) {
+    public void ubah(RequestPostUpdateProfil req, UserModel u) {
         actionListener.onStart();
 
         apiService.ubahprofil(req).enqueue(new Callback<ResponseAction>() {
@@ -35,7 +37,7 @@ public class UbahProfilViewModel extends ViewModel {
             public void onResponse(Call<ResponseAction> call, Response<ResponseAction> response) {
                 if (cek(response.code())) {
                     if (cek(response.body().getResponseCode())) {
-                        actionListener.onSuccess(response.body().getResponseMessage());
+                        actionListener.onSuccess(response.body().getResponseMessage(), u);
                     } else {
                         actionListener.onError(response.body().getResponseMessage());
                     }

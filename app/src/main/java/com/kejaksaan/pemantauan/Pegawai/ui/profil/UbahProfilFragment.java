@@ -17,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.core.VMFactory;
 import com.kejaksaan.pemantauan.core.callback.ActionListener;
+import com.kejaksaan.pemantauan.core.callback.AuthListener;
 import com.kejaksaan.pemantauan.databinding.FragmentUbahprofilBinding;
 import com.tdn.data.persistensi.MyUser;
 import com.tdn.domain.model.UserModel;
@@ -43,15 +44,15 @@ public class UbahProfilFragment extends Fragment {
         binding.etNohp.setText(u2.getNoHp());
         binding.etTmt.setText(u2.getTmt());
 
-        ubahProfilViewModel = new ViewModelProvider(this, new VMFactory(getContext(), new ActionListener() {
-            @Override
+        ubahProfilViewModel = new ViewModelProvider(this, new VMFactory(getContext(), new AuthListener() {
             public void onStart() {
                 Snackbar.make(binding.getRoot(), "Proses...", BaseTransientBottomBar.LENGTH_INDEFINITE).show();
             }
 
             @Override
-            public void onSuccess(@NonNull String message) {
+            public void onSuccess(@NonNull String message, UserModel u) {
                 Snackbar.make(binding.getRoot(), message, BaseTransientBottomBar.LENGTH_LONG).show();
+                MyUser.getInstance(getContext()).setUser(u);
                 Navigation.findNavController(binding.getRoot()).navigate(R.id.nav_home);
             }
 
@@ -64,6 +65,7 @@ public class UbahProfilFragment extends Fragment {
             if (cekValidasi()) {
                 RequestPostUpdateProfil req = new RequestPostUpdateProfil();
                 UserModel u = MyUser.getInstance(getContext()).getUser();
+                UserModel updatedUser = new UserModel();
                 req.setId(u.getId());
                 req.setAlamatTinggal(binding.etAlamat.getText().toString());
                 req.setGolonganPangkat(binding.etGolongan.getText().toString());
@@ -71,7 +73,20 @@ public class UbahProfilFragment extends Fragment {
                 req.setNamaLengkap(binding.etNamaPegawai.getText().toString());
                 req.setNoHp(binding.etNohp.getText().toString());
                 req.setTmt(binding.etTmt.getText().toString());
-                ubahProfilViewModel.ubah(req);
+
+                updatedUser.setId(u.getId());
+                updatedUser.setAlamatTinggal(binding.etAlamat.getText().toString());
+                updatedUser.setGolonganPangkat(binding.etGolongan.getText().toString());
+                updatedUser.setJabatan(binding.etJabatan.getText().toString());
+                updatedUser.setNamaLengkap(binding.etNamaPegawai.getText().toString());
+                updatedUser.setNoHp(binding.etNohp.getText().toString());
+                updatedUser.setTmt(binding.etTmt.getText().toString());
+                updatedUser.setLevel(u.getLevel());
+                updatedUser.setNip(u.getNip());
+                updatedUser.setNrp(u.getNrp());
+                updatedUser.setPassword(u.getPassword());
+
+                ubahProfilViewModel.ubah(req, updatedUser);
             }
 
         });
