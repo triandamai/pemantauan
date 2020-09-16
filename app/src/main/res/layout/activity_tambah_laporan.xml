@@ -178,7 +178,8 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:layout_width="match_parent"
-                            android:layout_height="200dp" />
+                            android:visibility="invisible"
+                            android:layout_height="10dp" />
 
                         <Button
                             android:id="@+id/btn_simpan"

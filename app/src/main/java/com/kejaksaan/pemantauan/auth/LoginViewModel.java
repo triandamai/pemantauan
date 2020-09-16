@@ -20,13 +20,12 @@ import retrofit2.Response;
 import static com.tdn.data.service.ApiHandler.cek;
 
 public class LoginViewModel extends ViewModel {
-    private Realm realm;
+
     private AuthListener authListener;
     private ApiService apiService;
 
     public LoginViewModel(AuthListener authListener) {
         this.authListener = authListener;
-        this.realm = Realm.getDefaultInstance();
         this.apiService = ApiService.Factory.create();
     }
 

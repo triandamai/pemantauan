@@ -45,6 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
+                    android:minHeight="150dp"
                     android:inputType="textMultiLine"
                     android:hint="Isi Catatan"
                     app:endIconMode="custom">

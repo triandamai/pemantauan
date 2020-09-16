@@ -15,26 +15,23 @@ import retrofit2.Response;
 import static com.tdn.data.service.ApiHandler.cek;
 
 public class TambahPegawaiViewModel extends ViewModel {
-    private ActionListener actionListener;
+
     private ApiService apiService;
 
-    public TambahPegawaiViewModel(ActionListener actionListener) {
-        this.actionListener = actionListener;
+    public TambahPegawaiViewModel() {
         this.apiService = ApiService.Factory.create();
     }
 
-    public void simpan(UserModel u) {
+    public void simpan(UserModel u, ActionListener actionListener) {
         actionListener.onStart();
         apiService.register(u).enqueue(new Callback<ResponseAction>() {
             @Override
             public void onResponse(Call<ResponseAction> call, Response<ResponseAction> response) {
                 if (cek(response.code())) {
                     if (cek(response.body().getResponseCode())) {
-                        if (response.body().getData() != null) {
-                            actionListener.onSuccess(response.body().getResponseMessage());
-                        } else {
-                            actionListener.onError(response.body().getResponseMessage());
-                        }
+
+                        actionListener.onSuccess(response.body().getResponseMessage());
+
                     } else {
                         actionListener.onError(response.body().getResponseMessage());
                     }
@@ -50,18 +47,15 @@ public class TambahPegawaiViewModel extends ViewModel {
         });
     }
 
-    public void ubah(UserModel u) {
+    public void ubah(UserModel u, ActionListener actionListener) {
         actionListener.onStart();
         apiService.ubahpegawai(u).enqueue(new Callback<ResponseAction>() {
             @Override
             public void onResponse(Call<ResponseAction> call, Response<ResponseAction> response) {
                 if (cek(response.code())) {
                     if (cek(response.body().getResponseCode())) {
-                        if (response.body().getData() != null) {
-                            actionListener.onSuccess(response.body().getResponseMessage());
-                        } else {
-                            actionListener.onError(response.body().getResponseMessage());
-                        }
+                        actionListener.onSuccess(response.body().getResponseMessage());
+
                     } else {
                         actionListener.onError(response.body().getResponseMessage());
                     }

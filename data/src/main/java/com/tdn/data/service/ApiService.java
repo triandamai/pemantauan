@@ -20,10 +20,8 @@ import com.tdn.domain.serialize.res.ResponseGetJumlahPegawai;
 import com.tdn.domain.serialize.res.ResponseGetLaporan;
 import com.tdn.domain.serialize.res.ResponseGetLokasi;
 import com.tdn.domain.serialize.res.ResponseGetPegawai;
-import com.tdn.domain.serialize.res.ResponseGetTitik;
 
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -75,10 +73,6 @@ public interface ApiService {
     @Headers({accept_json, content_type, api_key})
     @GET("lokasi/user")
     Call<ResponseGetLokasi> getAllLokasi();
-
-    @Headers({accept_json, content_type, api_key})
-    @GET("lokasi/titil")
-    Call<ResponseGetTitik> getTitik();
 
     @Headers({accept_json, content_type, api_key})
     @GET("user/user")

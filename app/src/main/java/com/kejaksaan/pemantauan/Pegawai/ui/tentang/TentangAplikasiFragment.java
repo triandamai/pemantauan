@@ -12,17 +12,18 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.kejaksaan.pemantauan.R;
 import com.kejaksaan.pemantauan.databinding.FragmentSlideshowBinding;
+import com.kejaksaan.pemantauan.databinding.FragmentTentangaplikasiBinding;
 
 public class TentangAplikasiFragment extends Fragment {
 
     private TentangAplikasiViewModel tentangAplikasiViewModel;
-    private FragmentSlideshowBinding binding;
+    private FragmentTentangaplikasiBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         tentangAplikasiViewModel = new
                 ViewModelProvider(this).get(TentangAplikasiViewModel.class);
-        binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.fragment_slideshow, container, false);
+        binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.fragment_tentangaplikasi, container, false);
 
         return binding.getRoot();
     }

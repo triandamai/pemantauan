@@ -66,7 +66,7 @@ public class VMFactory implements ViewModelProvider.Factory {
         if (modelClass.isAssignableFrom(LoginViewModel.class)) {
             return (T) new LoginViewModel(authListener);
         } else if (modelClass.isAssignableFrom(TambahPegawaiViewModel.class)) {
-            return (T) new TambahPegawaiViewModel(actionListener);
+            return (T) new TambahPegawaiViewModel();
         } else if (modelClass.isAssignableFrom(DaftarPegawaiViewModel.class)) {
             return (T) new DaftarPegawaiViewModel(actionListener);
         } else if (modelClass.isAssignableFrom(UbahProfilViewModel.class)) {

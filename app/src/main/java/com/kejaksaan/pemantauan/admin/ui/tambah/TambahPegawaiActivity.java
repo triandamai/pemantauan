@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 
@@ -38,27 +39,6 @@ public class TambahPegawaiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tambah_pegawai);
-        viewModel = new ViewModelProvider(this, new VMFactory(new ActionListener() {
-            @Override
-            public void onStart() {
-                Snackbar.make(binding.getRoot(), "Proses..", BaseTransientBottomBar.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onSuccess(@NonNull String message) {
-                Snackbar.make(binding.getRoot(), message, BaseTransientBottomBar.LENGTH_LONG).show();
-                RESET();
-                onBackPressed();
-                finish();
-            }
-
-            @Override
-            public void onError(@NonNull String message) {
-                Snackbar.make(binding.getRoot(), message, BaseTransientBottomBar.LENGTH_LONG).show();
-            }
-        })).get(TambahPegawaiViewModel.class);
-        builder = new AlertDialog.Builder(this);
-        builder.create();
         getSupportActionBar().setTitle("Tambah Pegawai");
         if (MyUser.getInstance(TambahPegawaiActivity.this).getLastegawai() != null) {
             this.isEdit = true;
@@ -66,6 +46,10 @@ public class TambahPegawaiActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Edit Pegawai");
         }
         onClick();
+        viewModel = new ViewModelProvider(this).get(TambahPegawaiViewModel.class);
+        builder = new AlertDialog.Builder(this);
+        builder.create();
+
 
     }
 
@@ -123,10 +107,62 @@ public class TambahPegawaiActivity extends AppCompatActivity {
                         if (this.isEdit) {
                             u.setId(MyUser.getInstance(this).getLastegawai().getId());
 
-                            viewModel.ubah(u);
+                            viewModel.ubah(u, new ActionListener() {
+                                @Override
+                                public void onStart() {
+                                    Log.e("ubah start", "tes");
+                                    Snackbar.make(binding.getRoot(), "Proses..", BaseTransientBottomBar.LENGTH_LONG).show();
+                                }
+
+                                @Override
+                                public void onSuccess(@NonNull String message) {
+                                    Log.e("ubah sukse", "tes");
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Log.e("ubah sukses2", "tes");
+                                            startActivity(new Intent(TambahPegawaiActivity.this, DaftarPegawai.class));
+                                            finish();
+                                        }
+                                    }, 200);
+                                }
+
+                                @Override
+                                public void onError(@NonNull String message) {
+                                    Log.e("ubah gagal", "tes");
+                                    Snackbar.make(binding.getRoot(), message, BaseTransientBottomBar.LENGTH_LONG).show();
+                                }
+                            });
                         } else {
                             u.setId("");
-                            viewModel.simpan(u);
+                            viewModel.simpan(u, new ActionListener() {
+                                @Override
+                                public void onStart() {
+                                    Log.e("tambah start", "tes");
+                                    Snackbar.make(binding.getRoot(), "Proses..", BaseTransientBottomBar.LENGTH_LONG).show();
+                                }
+
+                                @Override
+                                public void onSuccess(@NonNull String message) {
+                                    Snackbar.make(binding.getRoot(), message, BaseTransientBottomBar.LENGTH_LONG).show();
+                                    Log.e("tambah sukses", "haha");
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Log.e("tambah sukses2", "haha");
+                                            startActivity(new Intent(TambahPegawaiActivity.this, DaftarPegawai.class));
+                                            finish();
+                                        }
+                                    }, 200);
+
+                                }
+
+                                @Override
+                                public void onError(@NonNull String message) {
+                                    Log.e("tambah error", "tes");
+                                    Snackbar.make(binding.getRoot(), message, BaseTransientBottomBar.LENGTH_LONG).show();
+                                }
+                            });
                         }
 
                     });
@@ -220,20 +256,20 @@ public class TambahPegawaiActivity extends AppCompatActivity {
         MyUser.getInstance(this).setLastPegawai(null);
     }
 
-    @Override
-    public void onBackPressed() {
-        if (masihEdit()) {
-            builder.setTitle("Info");
-            builder.setMessage("Perubahan belum disimpan, Tetap Batal ?");
-            builder.setPositiveButton("Keluar", (dialog, which) -> {
-                startActivity(new Intent(TambahPegawaiActivity.this, DaftarPegawai.class));
-                finish();
-            });
-            builder.setNegativeButton("Lanjutkan", (dialog, which) -> dialog.cancel());
-            builder.show();
-        } else {
-            super.onBackPressed();
-        }
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (masihEdit()) {
+//            builder.setTitle("Info");
+//            builder.setMessage("Perubahan belum disimpan, Tetap Batal ?");
+//            builder.setPositiveButton("Keluar", (dialog, which) -> {
+//                startActivity(new Intent(TambahPegawaiActivity.this, DaftarPegawai.class));
+//                finish();
+//            });
+//            builder.setNegativeButton("Lanjutkan", (dialog, which) -> dialog.cancel());
+//            builder.show();
+//        } else {
+//            super.onBackPressed();
+//        }
+//
+//    }
 }

@@ -26,22 +26,4 @@
     </style>
 
 
-    <style name="dialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
-        <item name="materialButtonStyle">@style/Widget.AppCompat.Button.Borderless</item>
-
-    </style>
-
-    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">@android:color/white</item>
-        <item name="tabIndicatorHeight">3dp</item>
-        <item name="tabBackground">@color/bru_panda</item>
-        <item name="tabSelectedTextColor">@android:color/white</item>
-
-    </style>
-
-    <style name="datepicker" parent="Theme.AppCompat.Light.Dialog">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
 </resources>
