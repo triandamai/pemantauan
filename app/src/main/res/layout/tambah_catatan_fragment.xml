@@ -48,16 +48,14 @@
                     android:minHeight="150dp"
                     android:inputType="textMultiLine"
                     android:hint="Isi Catatan"
-                    app:endIconMode="custom">
+                    app:endIconMode="none">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_isi"
                         android:layout_width="match_parent"
-                        android:layout_height="?actionBarSize"
+                        android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
-                        android:minLines="2"
-                        android:minHeight="150dp"
-                        android:singleLine="false" />
+                        android:minLines="2" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.kejaksaan.pemantauan.R;
-import com.kejaksaan.pemantauan.databinding.FragmentSlideshowBinding;
 import com.kejaksaan.pemantauan.databinding.FragmentTentangaplikasiBinding;
 
 public class TentangAplikasiFragment extends Fragment {

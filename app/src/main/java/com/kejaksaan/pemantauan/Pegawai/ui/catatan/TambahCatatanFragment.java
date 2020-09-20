@@ -40,7 +40,7 @@ public class TambahCatatanFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.tambah_catatan_fragment, container, false);
+
         mViewModel = new ViewModelProvider(this, new VMFactory(getContext(), new ActionListener() {
             @Override
             public void onStart() {
